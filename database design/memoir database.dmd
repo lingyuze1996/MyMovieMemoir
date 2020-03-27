@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="memoir database" id="9C086FBE-85A2-1D3B-905D-3B1D68894EEF" version="3.5">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-27 13:04:41 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>9C086FBE-85A2-1D3B-905D-3B1D68894EEF</designId>
+</OSDM_Design>
