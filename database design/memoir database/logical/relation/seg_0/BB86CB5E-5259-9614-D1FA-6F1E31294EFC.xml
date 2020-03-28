@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="movie_watching" directorySegmentName="seg_0" id="BB86CB5E-5259-9614-D1FA-6F1E31294EFC">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 04:46:04 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<sourcePk>030A8CE8-315A-417C-FC58-46C86A896740</sourcePk>
+<identifying>false</identifying>
+<nameOnTarget>is_from</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B57A50D7-1314-569C-5831-09662143E714</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EE027EFC-92DF-FC88-4FA3-7FE2BD469EFB</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

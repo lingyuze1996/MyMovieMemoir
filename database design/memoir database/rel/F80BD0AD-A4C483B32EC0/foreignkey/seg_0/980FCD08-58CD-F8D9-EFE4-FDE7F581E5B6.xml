@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="980FCD08-58CD-F8D9-EFE4-FDE7F581E5B6" containerWithKeyObject="A25407B0-AFDF-F98C-5AC5-00AB14B9EF54" localFKIndex="A5F3CB01-3FBE-E1A7-0024-A41F3D1F2B2D" name="AUTHENTICATION">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<referredTableLongName>USER</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>F2B7F6C1-019C-8474-E3C4-5F3DB39A2A09</referredTableID>
+<keyObject>04418069-AC26-39DB-7A7C-002EC82D89CE</keyObject>
+<referredKeyID>04418069-AC26-39DB-7A7C-002EC82D89CE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>u_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

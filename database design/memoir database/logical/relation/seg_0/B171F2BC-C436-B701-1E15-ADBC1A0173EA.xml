@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="records" directorySegmentName="seg_0" id="B171F2BC-C436-B701-1E15-ADBC1A0173EA">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:56:59 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<sourcePk>D168C919-8632-AC14-A0F1-390D83AFFC24</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>records</nameOnSource>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>D90A3F65-6E2E-EB47-6B37-3458079C2BA5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EE027EFC-92DF-FC88-4FA3-7FE2BD469EFB</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

@@ -1,0 +1,174 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F2B7F6C1-019C-8474-E3C4-5F3DB39A2A09" name="USER">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>D90A3F65-6E2E-EB47-6B37-3458079C2BA5</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="u_id" id="0581D0E3-F75A-97AD-5A0E-B97B183E99F5">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>86D0537C-5888-F38C-286D-0CD9084A8B86</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_name" id="E36B7154-EB57-4D6A-DF69-990D2BE77842">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>1BA665A1-4263-2D97-8AD1-8081E77799C2</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_surname" id="761293E7-74DC-EC81-9EA8-76800C3E2D7F">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>7EB6B5E0-F2D8-066A-474F-5E03BD3DAB01</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_gender" id="E41B8E45-316A-AF22-0BB0-D6C0801CA6F8">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>614AD688-862A-6837-E634-28CC58262109</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<constraintName>chk_gender</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="F" description=""/>
+<valueDef value="M" description=""/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_dob" id="2E7BE7D8-8D32-03E9-1DAC-153D1E91C3B7">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>8B2A8A20-22D5-709B-A1E1-DE708C14C52F</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_address" id="E13FBC14-55EC-446A-10A2-30C4358103AE">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>1DB9A7DB-ED7B-44EF-C504-FEDF36054030</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_state" id="9C419512-F5F9-31D3-77D7-6B1F2DA51DE7">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>87611BA7-0C8A-46C7-9B2A-BA67AB8B904F</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<constraintName>chk_state</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<listOfValues>
+<valueDef value="ACT" description=""/>
+<valueDef value="NSW" description=""/>
+<valueDef value="NT" description=""/>
+<valueDef value="QLD" description=""/>
+<valueDef value="SA" description=""/>
+<valueDef value="TAS" description=""/>
+<valueDef value="VIC" description=""/>
+<valueDef value="WA" description=""/>
+</listOfValues>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_postcode" id="AABA396D-5E8F-205C-6F8A-FF6ADF0523A4">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>7FDFB36F-732C-2FCC-13C0-83CE941DB6D2</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="username" id="A28F5554-D1C4-B0D0-6B00-1828512AB5A9">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>CD349C3E-358C-5807-D09F-8D9BA119A722</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F1F6B30C-7B21-2582-21A6-470139B68B6C" referredColumn="2F7DE2F7-E2C8-646F-71FB-C4AAAE21B3AF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="04418069-AC26-39DB-7A7C-002EC82D89CE" name="USER_PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>D168C919-8632-AC14-A0F1-390D83AFFC24</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0581D0E3-F75A-97AD-5A0E-B97B183E99F5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="35FE0408-F8DF-5E93-E7E1-2148EB8C4C3F" name="USER_ALTERNATE_PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>D3143A4E-E599-6F4B-1FE8-6DA08505D31B</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A28F5554-D1C4-B0D0-6B00-1828512AB5A9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31E81933-DD87-491C-80B5-E51B360BF01E" name="AUTHENTICATIONv1">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A28F5554-D1C4-B0D0-6B00-1828512AB5A9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

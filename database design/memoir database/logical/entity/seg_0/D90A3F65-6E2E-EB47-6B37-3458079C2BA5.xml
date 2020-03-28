@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="uid" id="86D0537C-5888-F38C-286D-0CD9084A8B86">
+<Attribute name="u_id" id="86D0537C-5888-F38C-286D-0CD9084A8B86">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-27 13:21:15 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
@@ -25,6 +25,127 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_name" id="1BA665A1-4263-2D97-8AD1-8081E77799C2">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:34:14 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_surname" id="7EB6B5E0-F2D8-066A-474F-5E03BD3DAB01">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:35:44 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_gender" id="614AD688-862A-6837-E634-28CC58262109">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:36:18 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<constraintName>chk_gender</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="F" description=""/>
+<valueDef value="M" description=""/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_dob" id="8B2A8A20-22D5-709B-A1E1-DE708C14C52F">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:36:37 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_address" id="1DB9A7DB-ED7B-44EF-C504-FEDF36054030">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:37:06 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_state" id="87611BA7-0C8A-46C7-9B2A-BA67AB8B904F">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:37:33 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<constraintName>chk_state</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<listOfValues>
+<valueDef value="ACT" description=""/>
+<valueDef value="NSW" description=""/>
+<valueDef value="NT" description=""/>
+<valueDef value="QLD" description=""/>
+<valueDef value="SA" description=""/>
+<valueDef value="TAS" description=""/>
+<valueDef value="VIC" description=""/>
+<valueDef value="WA" description=""/>
+</listOfValues>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_postcode" id="7FDFB36F-732C-2FCC-13C0-83CE941DB6D2">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 03:38:00 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="username" id="CD349C3E-358C-5807-D09F-8D9BA119A722">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:13:44 UTC</createdTime>
+<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<referedAttribute>DCD372E5-4839-90B4-279B-52D211604A2A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -39,6 +160,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>86D0537C-5888-F38C-286D-0CD9084A8B86</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="D3143A4E-E599-6F4B-1FE8-6DA08505D31B" name="USER ALTERNATE PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 04:27:39 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<newElementsIDs>8C16DD96-FA1B-B359-1120-85B19B808BE4</newElementsIDs>
+<usedAttributes>
+<attributeRef>CD349C3E-358C-5807-D09F-8D9BA119A722</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A25407B0-AFDF-F98C-5AC5-00AB14B9EF54" name="CREDENTIALS">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>97645F37-AC50-61A8-40CF-373E3640C4FC</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="username" id="2F7DE2F7-E2C8-646F-71FB-C4AAAE21B3AF">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>DCD372E5-4839-90B4-279B-52D211604A2A</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password_hash" id="5E7FACA5-ED89-57B2-8164-5C863C10DED7">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>6FB365DE-43A6-9F2A-7E88-A0D47C663904</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sign_up_date" id="31ADF486-A307-1627-26E0-0C0414E05C07">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>E6455C64-EA5E-569E-6DEB-39F1AD6EF5D2</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="u_id" id="1D899487-0244-8054-8043-94AB19F67411">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>7BC0BA06-4CE7-04A6-B06B-F18328BADDA7</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="980FCD08-58CD-F8D9-EFE4-FDE7F581E5B6" referredColumn="0581D0E3-F75A-97AD-5A0E-B97B183E99F5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="45395C7E-B778-FF5A-A749-75487785FDCD" name="CREDENTIALS_PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>7C73160A-A88B-C009-2F93-20C53564D149</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2F7DE2F7-E2C8-646F-71FB-C4AAAE21B3AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="620DD8D7-96C8-0F33-2E39-932FC8D254B3" name="CREDENTIALS__IDX">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1D899487-0244-8054-8043-94AB19F67411"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5F3CB01-3FBE-E1A7-0024-A41F3D1F2B2D" name="AUTHENTICATION">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1D899487-0244-8054-8043-94AB19F67411"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

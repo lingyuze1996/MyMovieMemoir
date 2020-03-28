@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F463187A-9CBB-AF98-51F1-29EECCB8D045" name="CINEMA">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>B57A50D7-1314-569C-5831-09662143E714</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="c_id" id="2E3D3252-253F-A234-3CDC-5EDB5D87E528">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>62DE14AB-52D1-F379-AF05-F41B344F829E</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="c_name" id="6AB5D44B-DD97-9312-137D-7E313D58BD67">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>0DED54C7-3A5F-2103-6593-00150C5FB1B9</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="c_location_postcode" id="8F3A49E3-3787-4EC4-6551-94B9DCEC8B56">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>4839907B-9FAA-8ECB-1B0E-5CC7C40C7892</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7B7C5DDB-4B9A-976C-9188-71A6B5F4B0BF" name="CINEMA_PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:15:14 UTC</createdTime>
+<generatorID>030A8CE8-315A-417C-FC58-46C86A896740</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E3D3252-253F-A234-3CDC-5EDB5D87E528"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

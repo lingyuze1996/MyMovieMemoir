@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="97645F37-AC50-61A8-40CF-373E3640C4FC" name="CREDENTIALS">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:12:29 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="username" id="DCD372E5-4839-90B4-279B-52D211604A2A">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:12:38 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password_hash" id="6FB365DE-43A6-9F2A-7E88-A0D47C663904">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:12:38 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sign_up_date" id="E6455C64-EA5E-569E-6DEB-39F1AD6EF5D2">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:12:38 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="u_id" id="7BC0BA06-4CE7-04A6-B06B-F18328BADDA7">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:13:12 UTC</createdTime>
+<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<referedAttribute>86D0537C-5888-F38C-286D-0CD9084A8B86</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7C73160A-A88B-C009-2F93-20C53564D149" name="CREDENTIALS PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 06:12:54 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DCD372E5-4839-90B4-279B-52D211604A2A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
