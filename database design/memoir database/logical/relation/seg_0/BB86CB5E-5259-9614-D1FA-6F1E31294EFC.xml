@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="movie_watching" directorySegmentName="seg_0" id="BB86CB5E-5259-9614-D1FA-6F1E31294EFC">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CINEMA_MEMOIR" directorySegmentName="seg_0" id="BB86CB5E-5259-9614-D1FA-6F1E31294EFC">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:46:04 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
@@ -16,5 +16,4 @@
 <targetCardinalityString>*</targetCardinalityString>
 <targetEntity>EE027EFC-92DF-FC88-4FA3-7FE2BD469EFB</targetEntity>
 <transferable>true</transferable>
-<deleteRule>NO ACTION</deleteRule>
 </Relation>

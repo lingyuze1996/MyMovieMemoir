@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="AUTHENTICATION" directorySegmentName="seg_0" id="47021C41-AB1D-60D3-9A87-E6FAD5452DDD">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="USER_CREDENTIALS" directorySegmentName="seg_0" id="47021C41-AB1D-60D3-9A87-E6FAD5452DDD">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 06:13:12 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
@@ -9,7 +9,8 @@
 <sourcePk>D168C919-8632-AC14-A0F1-390D83AFFC24</sourcePk>
 <targetPk>7C73160A-A88B-C009-2F93-20C53564D149</targetPk>
 <identifying>false</identifying>
-<optionalSource>false</optionalSource>
+<nameOnTarget>authenticates</nameOnTarget>
+<optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>D90A3F65-6E2E-EB47-6B37-3458079C2BA5</sourceEntity>

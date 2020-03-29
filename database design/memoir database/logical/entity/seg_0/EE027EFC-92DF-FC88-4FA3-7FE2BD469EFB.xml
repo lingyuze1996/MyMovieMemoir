@@ -52,7 +52,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="m_watching_time" id="809268E6-312D-15A3-D72E-15E386405C2C">
+<Attribute name="m_watching_datetime" id="809268E6-312D-15A3-D72E-15E386405C2C">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:55:13 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
@@ -61,7 +61,7 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="m_comment" id="88DF1628-F537-DC12-8772-FC6A7B5D5E3E">
@@ -146,6 +146,18 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>B85BB2F5-C49E-BD27-1EBE-BB55D2447E89</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="EB964E85-979B-11FC-0767-A2DE9B15716E" name="MEMOIR ALTERNATE PK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-28 09:42:19 UTC</createdTime>
+<ownerDesignName>memoir database</ownerDesignName>
+<engineerTo>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+</engineerTo>
+<newElementsIDs>809268E6-312D-15A3-D72E-15E386405C2C</newElementsIDs>
+<usedAttributes>
+<attributeRef>809268E6-312D-15A3-D72E-15E386405C2C</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D90A3F65-6E2E-EB47-6B37-3458079C2BA5" name="USER">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D90A3F65-6E2E-EB47-6B37-3458079C2BA5" name="USERS">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-27 13:21:09 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
@@ -93,8 +93,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="u_state" id="87611BA7-0C8A-46C7-9B2A-BA67AB8B904F">
 <createdBy>Roger</createdBy>
@@ -133,21 +133,6 @@
 <dataTypeSize>4</dataTypeSize>
 <ownDataTypeParameters>4,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="username" id="CD349C3E-358C-5807-D09F-8D9BA119A722">
-<createdBy>Roger</createdBy>
-<createdTime>2020-03-28 06:13:44 UTC</createdTime>
-<generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
-<engineerTo>
-<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
-</engineerTo>
-<referedAttribute>DCD372E5-4839-90B4-279B-52D211604A2A</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="D168C919-8632-AC14-A0F1-390D83AFFC24" name="USER PK">
@@ -160,18 +145,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>86D0537C-5888-F38C-286D-0CD9084A8B86</attributeRef>
-</usedAttributes>
-</identifier>
-<identifier id="D3143A4E-E599-6F4B-1FE8-6DA08505D31B" name="USER ALTERNATE PK">
-<createdBy>Roger</createdBy>
-<createdTime>2020-03-28 04:27:39 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
-<engineerTo>
-<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
-</engineerTo>
-<newElementsIDs>8C16DD96-FA1B-B359-1120-85B19B808BE4</newElementsIDs>
-<usedAttributes>
-<attributeRef>CD349C3E-358C-5807-D09F-8D9BA119A722</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
