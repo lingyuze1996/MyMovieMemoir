@@ -53,7 +53,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="u_id" id="7BC0BA06-4CE7-04A6-B06B-F18328BADDA7">
+<Attribute name="p_id" id="7BC0BA06-4CE7-04A6-B06B-F18328BADDA7">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 06:13:12 UTC</createdTime>
 <generatorID>47021C41-AB1D-60D3-9A87-E6FAD5452DDD</generatorID>
@@ -73,8 +73,9 @@
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 06:12:54 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

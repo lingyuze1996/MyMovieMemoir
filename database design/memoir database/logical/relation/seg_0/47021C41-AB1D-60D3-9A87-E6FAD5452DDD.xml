@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="USER_CREDENTIALS" directorySegmentName="seg_0" id="47021C41-AB1D-60D3-9A87-E6FAD5452DDD">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="PERSON_CREDENTIALS" directorySegmentName="seg_0" id="47021C41-AB1D-60D3-9A87-E6FAD5452DDD">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 06:13:12 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>

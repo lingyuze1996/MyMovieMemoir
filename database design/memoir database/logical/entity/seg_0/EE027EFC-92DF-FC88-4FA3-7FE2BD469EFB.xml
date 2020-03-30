@@ -106,7 +106,7 @@
 </listOfValues>
 <ownDataTypeParameters>,2,1</ownDataTypeParameters>
 </Attribute>
-<Attribute name="u_id" id="1639CCE3-7205-4EFF-A998-065C99A2CA37">
+<Attribute name="p_id" id="1639CCE3-7205-4EFF-A998-065C99A2CA37">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:56:59 UTC</createdTime>
 <generatorID>B171F2BC-C436-B701-1E15-ADBC1A0173EA</generatorID>
@@ -140,8 +140,9 @@
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:53:38 UTC</createdTime>
 <ownerDesignName>memoir database</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
+<item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
@@ -155,9 +156,10 @@
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
-<newElementsIDs>809268E6-312D-15A3-D72E-15E386405C2C</newElementsIDs>
+<newElementsIDs>809268E6-312D-15A3-D72E-15E386405C2C,B171F2BC-C436-B701-1E15-ADBC1A0173EA</newElementsIDs>
 <usedAttributes>
 <attributeRef>809268E6-312D-15A3-D72E-15E386405C2C</attributeRef>
+<attributeRef>1639CCE3-7205-4EFF-A998-065C99A2CA37</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

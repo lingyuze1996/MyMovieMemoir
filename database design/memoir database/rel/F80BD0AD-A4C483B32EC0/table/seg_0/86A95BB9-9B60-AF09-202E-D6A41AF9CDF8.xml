@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9B0F4276-A6FC-314E-2960-52354BE4B16E" name="USER">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="86A95BB9-9B60-AF09-202E-D6A41AF9CDF8" name="PERSON">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>D90A3F65-6E2E-EB47-6B37-3458079C2BA5</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="u_id" id="423CE201-8907-9504-40CA-430910742431">
+<Column name="p_id" id="56CC1881-EE5A-96FB-2787-762A8B97A237">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>86D0537C-5888-F38C-286D-0CD9084A8B86</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -19,9 +19,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_name" id="F46DC2E4-A87D-C6AB-2B94-89139CA6CA53">
+<Column name="p_first_name" id="3497F1B8-7AE7-BEF1-9C0E-5EC191A2FD68">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>1BA665A1-4263-2D97-8AD1-8081E77799C2</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -31,9 +31,9 @@
 <ownDataTypeParameters>10,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_surname" id="C2C0E115-3604-2CDA-9EC0-FDAA9A2B31B3">
+<Column name="p_surname" id="9588CD52-ED59-6B41-0737-80DE7763655B">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>7EB6B5E0-F2D8-066A-474F-5E03BD3DAB01</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -43,9 +43,9 @@
 <ownDataTypeParameters>10,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_gender" id="F2195BAB-5ACF-2904-5E46-A7670BEED238">
+<Column name="p_gender" id="CAE24191-83C8-DEA2-321C-9B6B69CEA0F5">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>614AD688-862A-6837-E634-28CC58262109</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <constraintName>chk_gender</constraintName>
@@ -60,9 +60,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_dob" id="1449AF4C-02C3-6BF5-48E6-E3C1A31B38EC">
+<Column name="p_dob" id="8F2E7272-3E2E-D04B-BB67-19EAB8554A37">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>8B2A8A20-22D5-709B-A1E1-DE708C14C52F</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -71,9 +71,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_address" id="E1C3D07D-862C-0A34-70CE-64933F789FED">
+<Column name="p_address" id="AA11D0DC-F669-F243-11CE-FB145006BDB3">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>1DB9A7DB-ED7B-44EF-C504-FEDF36054030</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -83,9 +83,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_state" id="D9B4B684-FC62-ACE5-1B0F-B43453D1CCE2">
+<Column name="p_state" id="55AF33FB-96B1-2483-D33B-D87B50B9367D">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>87611BA7-0C8A-46C7-9B2A-BA67AB8B904F</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <constraintName>chk_state</constraintName>
@@ -106,9 +106,9 @@
 <ownDataTypeParameters>3,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="u_postcode" id="6107BD24-B095-8927-EA8D-759F9D44E7D0">
+<Column name="p_postcode" id="26CBC81D-33A6-10B6-7EF0-16AA086497B5">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>7FDFB36F-732C-2FCC-13C0-83CE941DB6D2</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -120,16 +120,16 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="763671DC-ED1B-2ABD-E641-5C4D8BF2B36A" name="USER_PK">
+<ind_PK_UK id="8C6C5E77-1E37-4596-8CCA-E393E2D53D2D" name="PERSON_PK">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-28 09:56:08 UTC</createdTime>
+<createdTime>2020-03-30 10:38:10 UTC</createdTime>
 <generatorID>D168C919-8632-AC14-A0F1-390D83AFFC24</generatorID>
 <ownerDesignName>memoir database</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="423CE201-8907-9504-40CA-430910742431"/>
+<colUsage columnID="56CC1881-EE5A-96FB-2787-762A8B97A237"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
