@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0B403729-04EA-0C6F-CDB5-4632DF827D49" containerWithKeyObject="41529672-0D51-AD3B-6555-F680AC188D24" localFKIndex="A1E9651C-79C0-E5F7-39FC-DBD93F2C5EC3" name="MEMOIR_PERSON_FK">
+<createdBy>Roger</createdBy>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
+<generatorID>B171F2BC-C436-B701-1E15-ADBC1A0173EA</generatorID>
+<ownerDesignName>Memoir Database</ownerDesignName>
+<referredTableLongName>PERSON</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>DC07B0F4-77AE-B6DD-B0AC-04A2B71DF12F</referredTableID>
+<keyObject>00AA39F4-8A23-DC3F-CF6E-79397877FD22</keyObject>
+<referredKeyID>00AA39F4-8A23-DC3F-CF6E-79397877FD22</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>p_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,29 +1,29 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C11FDDDB-7D80-251D-D782-21227BD6CC7F" name="MEMOIR">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="41529672-0D51-AD3B-6555-F680AC188D24" name="MEMOIR">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>EE027EFC-92DF-FC88-4FA3-7FE2BD469EFB</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="m_id" id="E8BE7BEF-7578-1BD7-7544-CBB17B6E0458">
+<Column name="m_id" id="46997F66-D682-31DA-6159-4FF1F2E4C548">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>B85BB2F5-C49E-BD27-1EBE-BB55D2447E89</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="m_movie_name" id="94134021-E6F6-2E3A-E869-ADEDAAF5C4A8">
+<Column name="m_movie_name" id="693DF972-4B48-44CC-0F70-AC0ED28CDCC1">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>0FB904BD-7003-0952-CD71-4412C2E5DD59</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -31,46 +31,46 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="m_movie_release_date" id="3A7E07EA-95ED-CDB9-2827-A1E25A1B2162">
+<Column name="m_movie_release_date" id="BAE45E98-73E0-6A08-300F-19668581DD29">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>69E5B03F-341A-4000-02D0-57751A3F8730</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="m_watching_datetime" id="56A5DC5E-2841-1D77-CF6E-9574F5F70C16">
+<Column name="m_watching_datetime" id="E3AFD185-BEF0-CC34-C18A-8FAFB131861C">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>809268E6-312D-15A3-D72E-15E386405C2C</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT015</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="m_comment" id="EAFD5950-1608-2AC0-7309-7EFA716D36CF">
+<Column name="m_comment" id="568879F4-B82B-975C-1FAB-5DD03E8503CA">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>88DF1628-F537-DC12-8772-FC6A7B5D5E3E</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="m_rating" id="52E69B4A-A2F9-9E59-17C5-5C9C7452673A">
+<Column name="m_rating" id="9D5DA8A1-88BE-6C93-3829-08E7525A3440">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>77755D77-4E2A-3FF4-079F-4EA017DAD16D</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <constraintName>chk_rating</constraintName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -93,11 +93,11 @@
 <ownDataTypeParameters>,2,1</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="p_id" id="C0E831C6-B528-A440-B014-156652D62571">
+<Column name="p_id" id="01A786A6-26A1-1E2A-BBBF-6B73115EE635">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>1639CCE3-7205-4EFF-A998-065C99A2CA37</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -105,14 +105,14 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="09312545-E881-D620-E089-59C49BBC85E6" referredColumn="56CC1881-EE5A-96FB-2787-762A8B97A237"/>
+<colAssociation fkAssociation="0B403729-04EA-0C6F-CDB5-4632DF827D49" referredColumn="D99F2860-912D-2B57-3068-7C7AE8DF6ED2"/>
 </associations>
 </Column>
-<Column name="c_id" id="C35D0BA3-E2E1-C6C1-1F4B-7C834F619D92">
+<Column name="c_id" id="6B30C54C-A2CB-2670-DBA7-BF6449A7B265">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>D69D288F-E1C8-39B4-3F0A-3BE98FA812C9</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -120,55 +120,55 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="5AAD7308-4171-47F0-ABA2-872522CDB3E1" referredColumn="101878B9-80C8-DE77-D708-C90E8B32BC40"/>
+<colAssociation fkAssociation="42F2DA54-5333-6744-CCF4-BE1B4E965EBE" referredColumn="62D12C3B-D1CA-68D3-8BC4-87428DC0D659"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="1A01BBEF-031B-0BF5-7A3E-E495D7D168CC" name="MEMOIR_PK">
+<ind_PK_UK id="633E1E38-2730-4819-32EB-23D98D5BFC48" name="MEMOIR_PK">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>340B9B8B-2878-33F8-C8F1-4EF82C9D54E9</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="E8BE7BEF-7578-1BD7-7544-CBB17B6E0458"/>
+<colUsage columnID="46997F66-D682-31DA-6159-4FF1F2E4C548"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="3AB456EC-6A55-5A08-890E-236CB37B0108" name="MEMOIR_m_watching_datetime_p_id_UN">
+<ind_PK_UK id="FAB86D4B-DAE2-F8C1-2E41-CC4284489516" name="MEMOIR_m_watching_datetime_p_id_UN">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>EB964E85-979B-11FC-0767-A2DE9B15716E</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <indexState>Unique Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="56A5DC5E-2841-1D77-CF6E-9574F5F70C16"/>
-<colUsage columnID="C0E831C6-B528-A440-B014-156652D62571"/>
+<colUsage columnID="E3AFD185-BEF0-CC34-C18A-8FAFB131861C"/>
+<colUsage columnID="01A786A6-26A1-1E2A-BBBF-6B73115EE635"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="14CC694F-35D5-5FE4-A897-B0F424AD542F" name="MEMOIR_CINEMA_FK">
+<ind_PK_UK id="D163B556-7559-DD24-BE9B-769424F947E7" name="MEMOIR_CINEMA_FK">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>BB86CB5E-5259-9614-D1FA-6F1E31294EFC</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C35D0BA3-E2E1-C6C1-1F4B-7C834F619D92"/>
+<colUsage columnID="6B30C54C-A2CB-2670-DBA7-BF6449A7B265"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="4B67B113-6F44-BD10-A563-1D8C0EB0C959" name="MEMOIR_PERSON_FK">
+<ind_PK_UK id="A1E9651C-79C0-E5F7-39FC-DBD93F2C5EC3" name="MEMOIR_PERSON_FK">
 <createdBy>Roger</createdBy>
-<createdTime>2020-03-30 10:38:10 UTC</createdTime>
+<createdTime>2020-03-31 11:53:10 UTC</createdTime>
 <generatorID>B171F2BC-C436-B701-1E15-ADBC1A0173EA</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C0E831C6-B528-A440-B014-156652D62571"/>
+<colUsage columnID="01A786A6-26A1-1E2A-BBBF-6B73115EE635"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

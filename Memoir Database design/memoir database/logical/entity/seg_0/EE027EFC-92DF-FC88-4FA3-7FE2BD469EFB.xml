@@ -2,7 +2,7 @@
 <Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EE027EFC-92DF-FC88-4FA3-7FE2BD469EFB" name="MEMOIR">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:52:47 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -18,7 +18,7 @@
 <Attribute name="m_id" id="B85BB2F5-C49E-BD27-1EBE-BB55D2447E89">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:53:18 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -30,7 +30,7 @@
 <Attribute name="m_movie_name" id="0FB904BD-7003-0952-CD71-4412C2E5DD59">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:53:41 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -43,7 +43,7 @@
 <Attribute name="m_movie_release_date" id="69E5B03F-341A-4000-02D0-57751A3F8730">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:54:05 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -55,7 +55,7 @@
 <Attribute name="m_watching_datetime" id="809268E6-312D-15A3-D72E-15E386405C2C">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:55:13 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -67,7 +67,7 @@
 <Attribute name="m_comment" id="88DF1628-F537-DC12-8772-FC6A7B5D5E3E">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:55:52 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -75,13 +75,13 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="m_rating" id="77755D77-4E2A-3FF4-079F-4EA017DAD16D">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:56:17 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -110,7 +110,7 @@
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:56:59 UTC</createdTime>
 <generatorID>B171F2BC-C436-B701-1E15-ADBC1A0173EA</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -124,7 +124,7 @@
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:46:04 UTC</createdTime>
 <generatorID>BB86CB5E-5259-9614-D1FA-6F1E31294EFC</generatorID>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -139,7 +139,7 @@
 <identifier id="340B9B8B-2878-33F8-C8F1-4EF82C9D54E9" name="MEMOIR PK">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 03:53:38 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <shouldEngineer>false</shouldEngineer>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="false"/>
@@ -152,7 +152,7 @@
 <identifier id="EB964E85-979B-11FC-0767-A2DE9B15716E" name="MEMOIR ALTERNATE PK">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 09:42:19 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>

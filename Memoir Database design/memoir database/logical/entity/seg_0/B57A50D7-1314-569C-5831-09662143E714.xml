@@ -2,7 +2,7 @@
 <Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B57A50D7-1314-569C-5831-09662143E714" name="CINEMA">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:44:23 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -18,7 +18,7 @@
 <Attribute name="c_id" id="62DE14AB-52D1-F379-AF05-F41B344F829E">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:44:31 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -30,20 +30,20 @@
 <Attribute name="c_name" id="0DED54C7-3A5F-2103-6593-00150C5FB1B9">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:45:20 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>10</dataTypeSize>
-<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="c_location_postcode" id="4839907B-9FAA-8ECB-1B0E-5CC7C40C7892">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:44:43 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
@@ -58,7 +58,7 @@
 <identifier id="030A8CE8-315A-417C-FC58-46C86A896740" name="CINEMA PK">
 <createdBy>Roger</createdBy>
 <createdTime>2020-03-28 04:44:42 UTC</createdTime>
-<ownerDesignName>memoir database</ownerDesignName>
+<ownerDesignName>Memoir Database</ownerDesignName>
 <engineerTo>
 <item key="F80BD0AD-D3ED-A2F9-9755-A4C483B32EC0" value="true"/>
 </engineerTo>
