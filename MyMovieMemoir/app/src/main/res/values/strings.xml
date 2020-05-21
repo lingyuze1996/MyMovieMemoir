@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Movie Memoir</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="text_view_no_account">Don\'t have an account?</string>
+    <string name="text_view_sign_up">Sign Up!</string>
+    <string name="error_sign_in">Username/Password not match!\nPlease try again!</string>
+</resources>
