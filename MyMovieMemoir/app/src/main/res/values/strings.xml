@@ -3,7 +3,43 @@
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="button_sign_in">Sign In</string>
+    <string name="button_sign_up">Sign Up</string>
     <string name="text_view_no_account">Don\'t have an account?</string>
     <string name="text_view_sign_up">Sign Up!</string>
     <string name="error_sign_in">Username/Password not match!\nPlease try again!</string>
+    <string name="register_firstName">First Name</string>
+    <string name="register_lastName">Last Name</string>
+    <string name="register_gender">Gender</string>
+    <string name="register_male">Male</string>
+    <string name="register_female">Female</string>
+    <string name="register_dob">Date of Birth</string>
+    <string name="register_address">Address</string>
+    <string name="register_postcode">Postcode</string>
+    <string name="register_state">State</string>
+    <string-array name="register_state_array">
+        <item>ACT</item>
+        <item>NSW</item>
+        <item>NT</item>
+        <item>QLD</item>
+        <item>SA</item>
+        <item>TAS</item>
+        <item>WA</item>
+        <item>VIC</item>
+    </string-array>
+    <string name="register_username">Email as Username</string>
+    <string name="register_password">Set password:</string>
+    <string name="register_passwordCheck">Enter password again:</string>
+    <string name="success_sign_up">Sign up successfully!</string>
+    <string name="error_passwordCheck">Password entered not match!\nPlease try again!</string>
+    <string name="error_username">Username not available!\nPlease try again!</string>
+    <string name="error_username_empty">Username empty!\nPlease try again!</string>
+    <string name="error_first_name_empty">First name empty!\nPlease try again!</string>
+    <string name="error_last_name_empty">Last name empty!\nPlease try again!</string>
+    <string name="error_gender_empty">Gender empty!\nPlease try again!</string>
+    <string name="error_dob_empty">Date of birth empty!\nPlease try again!</string>
+    <string name="error_address_empty">Address empty!\nPlease try again!</string>
+    <string name="error_postcode_empty">Postcode empty!\nPlease try again!</string>
+    <string name="error_password_length">Password length not between 1 and 16!\nPlease try again!</string>
+    <string name="error_postcode_format">Postcode not a four digit number!\nPlease try again!</string>
+    <string name="error">Error!</string>
 </resources>

@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         String welcomeString = "";
         String username = getIntent().getStringExtra("username");
-
-
-        Toast.makeText(this, welcomeString, Toast.LENGTH_LONG).show();
+        new TaskGetFirstName().execute(username);
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav_view);
@@ -65,11 +63,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private class getFirstName extends AsyncTask<String, Void, String> {
+    private class TaskGetFirstName extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             RestService rs = new RestService();
-            rs.getFirstNameByUsername();
+            String credentials = rs.getByUsername(params[0]);
+            return rs.getFirstNameByUsername(credentials);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if (s.equals(""))
+                Toast.makeText(getBaseContext(), R.string.error, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(getBaseContext(), "Welcome back, " + s + "!", Toast.LENGTH_LONG).show();
         }
     }
 }

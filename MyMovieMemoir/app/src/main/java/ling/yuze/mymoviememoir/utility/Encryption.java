@@ -1,4 +1,4 @@
-package ling.yuze.mymoviememoir.formatting;
+package ling.yuze.mymoviememoir.utility;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

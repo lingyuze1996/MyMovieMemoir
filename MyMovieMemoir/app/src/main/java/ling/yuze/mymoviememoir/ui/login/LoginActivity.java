@@ -16,12 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.formatting.Encryption;
+import ling.yuze.mymoviememoir.utility.Encryption;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.MainActivity;
 
@@ -38,8 +34,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         etPassword = findViewById(R.id.etLoginPassword);
-        etUsername = findViewById(R.id.etLoginUsername);
-        btSignIn = findViewById(R.id.btSignIn);
+        etUsername = findViewById(R.id.etRegisterUsername);
+        btSignIn = findViewById(R.id.btSignUp);
         tvSignUp = findViewById(R.id.tv_sign_up);
 
         btSignIn.setOnClickListener(this);
@@ -77,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btSignIn:
+            case R.id.btSignUp:
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String passwordHash = Encryption.md5_encryption(password);
@@ -95,7 +91,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected String doInBackground(String... params) {
             RestService rs = new RestService();
-            String passwordRecord = rs.getPasswordByUsername(params[0]);
+            String credentials = rs.getByUsername(params[0]);
+            String passwordRecord = rs.getPasswordByUsername(credentials);
             if (passwordRecord.equals(params[1])) {
                 return params[0];
             }
