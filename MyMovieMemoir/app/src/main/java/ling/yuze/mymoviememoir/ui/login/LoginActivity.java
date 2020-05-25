@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected String doInBackground(String... params) {
             RestService rs = new RestService();
-            String credentials = rs.getByUsername(params[0]);
+            String credentials = rs.getCredentialsByUsername(params[0]);
             String passwordRecord = rs.getPasswordByUsername(credentials);
             if (passwordRecord.equals(params[1])) {
                 return params[0];

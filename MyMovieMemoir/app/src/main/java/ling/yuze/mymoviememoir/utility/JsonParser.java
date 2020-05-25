@@ -12,11 +12,38 @@ import java.util.HashMap;
 import java.util.List;
 
 public class JsonParser {
-    public static String hashHapToJson(HashMap<String, Object> map) {
-        JSONObject jsonObject = new JSONObject(map);
-        return jsonObject.toString();
+    public static HashMap<String, Integer> toHashMap(String jsonList, String... keys) {
+        HashMap<String, Integer> map = new HashMap<>();
+        try {
+            JSONArray jsonArray = new JSONArray(jsonList);
+            for (int index = 0; index < jsonArray.length(); index ++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(index);
+                map.put(jsonObject.getString(keys[0]), jsonObject.getInt(keys[1]));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return map;
+        }
     }
 
+    public static List<Object[]> toList(String jsonList, String... keys) {
+        List<Object[]> list = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(jsonList);
+            for (int index = 0; index < jsonArray.length(); index ++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(index);
+                Object[] objects = {jsonObject.get(keys[0]), jsonObject.get(keys[1]), jsonObject.get(keys[2])};
+                list.add(objects);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return list;
+        }
+
+    }
 
     public static String objectToJson(Object object) {
         Gson gson = new Gson();

@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">My Movie Memoir</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_movie_search">Movie Search</string>
+    <string name="menu_movie_memoir">Movie Memoir</string>
+    <string name="menu_watchlist">Watchlist</string>
+    <string name="menu_report">Report</string>
+    <string name="menu_map">Map</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="button_sign_in">Sign In</string>
@@ -26,6 +32,14 @@
         <item>WA</item>
         <item>VIC</item>
     </string-array>
+    <string-array name="year_spinner_array">
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+    </string-array>
     <string name="register_username">Email as Username</string>
     <string name="register_password">Set password:</string>
     <string name="register_passwordCheck">Enter password again:</string>
@@ -42,4 +56,17 @@
     <string name="error_password_length">Password length not between 1 and 16!\nPlease try again!</string>
     <string name="error_postcode_format">Postcode not a four digit number!\nPlease try again!</string>
     <string name="error">Error!</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="movies_by_month">Total Movies Watched per Month</string>
+    <string name="year">Year</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="movies_by_suburb">Total Movies Watched per Suburb</string>
+    <string name="app_logo">My Movie\nMemoir</string>
+    <string name="top_five_movies">My Top Five\nRecent Movies</string>
+    <string name="default_date">1900/1/1</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="movie_release">Releasing Date</string>
+    <string name="rating">Rating Score</string>
 </resources>

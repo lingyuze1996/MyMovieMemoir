@@ -1,6 +1,8 @@
 package ling.yuze.mymoviememoir.network;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.utility.JsonParser;
@@ -16,13 +18,30 @@ public class RestService extends NetworkConnection {
         super.setUrl(BASE_URL + path);
     }
 
-    public String getFirstNameByUsername (String credentialsJson) {
+    public Integer getIdFromCredentials (String credentialsJson) {
+        int id = 0;
+        Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PId");
+        if (valueObject != null)
+            id = (Integer) valueObject;
+        return id;
+    }
+
+    public String getFirstNameFromCredentials (String credentialsJson) {
         String firstName = "";
         Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PFirstName");
 
         if (valueObject != null)
             firstName = (String) valueObject;
         return firstName;
+    }
+
+    public String getLastNameFromCredentials (String credentialsJson) {
+        String lastName = "";
+        Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PSurname");
+
+        if (valueObject != null)
+            lastName = (String) valueObject;
+        return lastName;
     }
 
     public String getPasswordByUsername (String credentialsJson) {
@@ -33,7 +52,7 @@ public class RestService extends NetworkConnection {
         return passwordHash;
     }
 
-    public String getByUsername(String username) {
+    public String getCredentialsByUsername(String username) {
         String response = "";
         final String path = "memoir.credentials/" + username;
         setUrl(path);
@@ -44,6 +63,49 @@ public class RestService extends NetworkConnection {
         }
         finally {
             return response;
+        }
+    }
+    public HashMap<String, Integer> getMoviesPerSuburb(int id, String start, String end) {
+        HashMap<String, Integer> map = new HashMap<>();
+        final String path = "memoir.memoir/findSuburbTotalMovies/" + id + "/" + start + "/" + end;
+        setUrl(path);
+        try {
+            String response = httpGet();
+            map = JsonParser.toHashMap(response, "SuburbPostcode", "TotalMovieWatched");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return map;
+        }
+    }
+    public List<Object[]> getTopFiveRecentMovies(int id) {
+        List<Object[]> list = new ArrayList<>();
+        final String path = "memoir.memoir/findTopFiveRecentMovies/" + id;
+        setUrl(path);
+        try {
+            String response = httpGet();
+            list = JsonParser.toList(response, "MovieName", "Rating", "ReleaseDate");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return list;
+        }
+    }
+
+    public int[] getMoviesPerMonth(int id, int year) {
+        int[] numbers = new int[12];
+        final String path = "memoir.memoir/findMonthTotalMovies/" + id + "/" + year;
+        setUrl(path);
+        try {
+            String response = httpGet();
+            List<Object> list = JsonParser.getValueList(response, "TotalMoviesWatched");
+            for (int index = 0; index < list.size(); index ++) {
+                numbers[index] = (int) list.get(index);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return numbers;
         }
     }
 

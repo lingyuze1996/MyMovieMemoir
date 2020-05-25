@@ -106,7 +106,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {return;}
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         etUsername = findViewById(R.id.etRegisterUsername);
@@ -244,7 +244,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         protected Boolean doInBackground(String... params) {
             Boolean available = true;
             RestService rs = new RestService();
-            String credentials = rs.getByUsername(params[0]);
+            String credentials = rs.getCredentialsByUsername(params[0]);
             if (!credentials.equals(""))
                 available = false;
             return available;

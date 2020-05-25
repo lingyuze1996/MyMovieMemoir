@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_home" />
 
+    <item
+        android:id="@+id/menu_item_movie_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_movie_search" />
+    <item
+        android:id="@+id/menu_item_movie_memoir"
+        android:icon="@drawable/ic_collections"
+        android:title="@string/menu_movie_memoir" />
+    <item
+        android:id="@+id/menu_item_watchlist"
+        android:icon="@drawable/ic_live_tv"
+        android:title="@string/menu_watchlist" />
+    <item
+        android:id="@+id/menu_item_report"
+        android:icon="@drawable/ic_report"
+        android:title="@string/menu_report" />
+    <item
+        android:id="@+id/menu_item_map"
+        android:icon="@drawable/ic_map"
+        android:title="@string/menu_map" />
 </menu>
