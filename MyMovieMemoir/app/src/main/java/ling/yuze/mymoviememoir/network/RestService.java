@@ -1,5 +1,8 @@
 package ling.yuze.mymoviememoir.network;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -106,6 +109,42 @@ public class RestService extends NetworkConnection {
             e.printStackTrace();
         } finally {
             return numbers;
+        }
+    }
+
+    public String getAddressByPersonId(int id) {
+        String address = "";
+        final String path = "memoir.person/" + id;
+        setUrl(path);
+        try {
+            String response = httpGet();
+            address = (String) JsonParser.getJsonValue(response, "PAddress");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return address;
+        }
+    }
+
+    public List<Object[]> getAllCinemas() {
+        List<Object[]> list = new ArrayList<>();
+        final String path = "memoir.cinema/";
+        setUrl(path);
+        try {
+            String response = httpGet();
+            JSONArray jsonCinemas = new JSONArray(response);
+            for (int i = 0; i < jsonCinemas.length(); i ++) {
+                Object[] cinema = new Object[3];
+                JSONObject jsonCinema = jsonCinemas.getJSONObject(i);
+                cinema[0] = jsonCinema.getInt("CId");
+                cinema[1] = jsonCinema.getString("CLocationPostcode");
+                cinema[2] = jsonCinema.getString("CName");
+                list.add(cinema);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return list;
         }
     }
 

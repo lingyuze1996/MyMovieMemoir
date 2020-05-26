@@ -69,4 +69,9 @@
     <string name="movie_name">Movie Name</string>
     <string name="movie_release">Releasing Date</string>
     <string name="rating">Rating Score</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="search_movie_hint">Search a movie</string>
+    <string name="search_movie_image">Poster</string>
+    <string name="search_movie_date">Release year</string>
+    <string name="unknown">Unknown</string>
 </resources>
