@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 
 
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,7 +35,6 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
     private int movieId;
 
     private TextView tvTitle;
-    private TextView tvYear;
     private ImageView image;
     private RatingBar ratingBar;
     private TextView tvDirector;
@@ -66,11 +64,11 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         String releaseDate = shared.getString("releaseDate", "Unknown");
         String overview = shared.getString("overview", "Unknown");
         String imagePath = shared.getString("imagePath", "");
-        float rating = shared.getFloat("rating", 0);
+        float ratingOriginal = shared.getFloat("rating", 0);
+        float rating = Math.round(ratingOriginal) / 2.0f;
 
         // initialize widgets
         tvTitle = v.findViewById(R.id.tv_view_movie_name);
-        tvYear = v.findViewById(R.id.tv_view_movie_year);
         image = v.findViewById(R.id.image_view_poster);
         ratingBar = v.findViewById(R.id.view_ratingBar);
         tvDirector = v.findViewById(R.id.tv_view_director);
@@ -87,9 +85,6 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
 
         tvTitle.setText(name);
         tvRelease.setText(releaseDate);
-
-        if (!releaseDate.equals("Unknown"))
-            tvYear.setText("(" + releaseDate.substring(0, 4) + ")");
 
         tvOverview.setText(overview);
         setImage(image, imagePath);
@@ -156,38 +151,45 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             // update director information
             String directors = "";
             for (String director : directorList) {
-                directors += director + ",";
+                directors += director + ", ";
             }
-
-            directors = directors.substring(0, directors.length() - 1);
+            try {
+                directors = directors.substring(0, directors.length() - 2);
+            } catch (IndexOutOfBoundsException e) {e.printStackTrace();}
             tvDirector.setText(directors);
 
             // update country information
             String countries = "";
             for (String country : countryList) {
-                countries += country + ",";
+                countries += country + ", ";
             }
 
-            countries = countries.substring(0, countries.length() - 1);
+            try {
+                countries = countries.substring(0, countries.length() - 2);
+            } catch (IndexOutOfBoundsException e) {e.printStackTrace();}
             tvCountry.setText(countries);
 
             // update genre information
             String genres = "";
             for (String genre : genreList) {
-                genres += genre + ",";
+                genres += genre + ", ";
             }
 
-            genres = genres.substring(0, genres.length() - 1);
+            try {
+                genres = genres.substring(0, genres.length() - 2);
+            } catch (IndexOutOfBoundsException e) {e.printStackTrace();}
             tvGenre.setText(genres);
 
             // update cast information
             String casts = "";
             for (String cast : castList) {
-                casts += cast + ",";
+                casts += cast + ", ";
             }
 
-            casts = casts.substring(0, casts.length() - 1);
-            tvCast.setText(casts);
+            try {
+                casts = casts.substring(0, casts.length() - 2);
+            } catch (IndexOutOfBoundsException e) {e.printStackTrace();}
+            tvCast.setText(casts + "...");
         }
     }
 }

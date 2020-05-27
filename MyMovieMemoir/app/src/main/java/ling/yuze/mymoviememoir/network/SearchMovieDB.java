@@ -82,7 +82,7 @@ public class SearchMovieDB extends NetworkConnection {
         try {
             String response = httpGet();
             JSONObject jsonInfo = new JSONObject(response);
-            JSONArray countryJson = jsonInfo.getJSONArray("production_counties");
+            JSONArray countryJson = jsonInfo.getJSONArray("production_countries");
             for (int i = 0; i < countryJson.length(); i ++) {
                 String country = countryJson.getJSONObject(i).getString("name");
                 list.add(country);

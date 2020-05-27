@@ -80,7 +80,7 @@
     <string name="director_heading">"Director: "</string>
     <string name="genre_heading">"Genre: "</string>
     <string name="country_heading">"Country: "</string>
-    <string name="release_heading">"Release: "</string>
+    <string name="release_heading">"Release Date: "</string>
     <string name="overview_heading">"Synopsis: "</string>
     <string name="rating_heading">"Rating: "</string>
 </resources>
