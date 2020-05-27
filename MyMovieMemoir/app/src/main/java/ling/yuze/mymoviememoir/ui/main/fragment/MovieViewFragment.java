@@ -95,11 +95,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         setImage(image, imagePath);
         ratingBar.setRating(rating);
 
+        new TaskGetDetails().execute(movieId);
 
-
-        //Toast.makeText(getContext(), overview, Toast.LENGTH_LONG).show();
-
-        //Button addToMemoir = v.findViewById()
         return v;
     }
 
@@ -172,7 +169,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             }
 
             countries = countries.substring(0, countries.length() - 1);
-            tvDirector.setText(countries);
+            tvCountry.setText(countries);
 
             // update genre information
             String genres = "";
@@ -181,7 +178,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             }
 
             genres = genres.substring(0, genres.length() - 1);
-            tvDirector.setText(genres);
+            tvGenre.setText(genres);
 
             // update cast information
             String casts = "";
@@ -190,7 +187,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             }
 
             casts = casts.substring(0, casts.length() - 1);
-            tvDirector.setText(casts);
+            tvCast.setText(casts);
         }
     }
 }
