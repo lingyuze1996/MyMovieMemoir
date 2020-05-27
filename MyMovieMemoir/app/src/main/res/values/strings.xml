@@ -74,4 +74,13 @@
     <string name="search_movie_image">Poster</string>
     <string name="search_movie_date">Release year</string>
     <string name="unknown">Unknown</string>
+    <string name="button_add_watchlist">Add to Watchlist</string>
+    <string name="button_add_memoir">Add to Memoir</string>
+    <string name="cast_heading">"Cast: "</string>
+    <string name="director_heading">"Director: "</string>
+    <string name="genre_heading">"Genre: "</string>
+    <string name="country_heading">"Country: "</string>
+    <string name="release_heading">"Release: "</string>
+    <string name="overview_heading">"Synopsis: "</string>
+    <string name="rating_heading">"Rating: "</string>
 </resources>

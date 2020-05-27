@@ -7,19 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ItemDetailsLookup;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Movie;
+
+import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
 public class ListAdapterSearch extends ArrayAdapter<Movie> {
     private int resourceId;
@@ -51,14 +48,5 @@ public class ListAdapterSearch extends ArrayAdapter<Movie> {
         return v;
     }
 
-    private void setImage(ImageView image, String path) {
-        final String base_url = "http://image.tmdb.org/t/p/w200/";
-        String url = base_url + path;
-        Picasso.get()
-                .load(url)
-                .placeholder(R.drawable.ic_cloud_off)
-                .fit()
-                .centerInside()
-                .into(image);
-    }
+
 }
