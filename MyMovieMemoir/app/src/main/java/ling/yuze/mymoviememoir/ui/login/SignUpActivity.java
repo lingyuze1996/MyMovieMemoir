@@ -22,7 +22,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.HashMap;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Credentials;

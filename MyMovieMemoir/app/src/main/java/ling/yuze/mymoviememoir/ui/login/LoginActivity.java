@@ -15,12 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.utility.Encryption;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.MainActivity;
-import ling.yuze.mymoviememoir.utility.FileIO;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername;
@@ -111,8 +109,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     }
-
-
-
 
 }

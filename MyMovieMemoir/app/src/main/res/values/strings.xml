@@ -83,4 +83,11 @@
     <string name="release_heading">"Release Date: "</string>
     <string name="overview_heading">"Synopsis: "</string>
     <string name="rating_heading">"Rating: "</string>
+    <string name="tweets_heading">"Recent Tweets: "</string>
+    <string name="watching_date">Watching Date</string>
+    <string name="watching_time">Watching Time</string>
+    <string name="cinema">Cinema</string>
+    <string name="add_comments">Comment</string>
+    <string name="submit">Submit</string>
+    <string name="comment">Comment</string>
 </resources>

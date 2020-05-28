@@ -26,7 +26,7 @@ import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
 
 public class MovieSearchFragment extends Fragment {
-    private LinearLayout linearLayout;
+    private LinearLayout resultHeading;
     private ListView listView;
     private ListAdapterSearch adapter;
     private List<Movie> movies;
@@ -66,8 +66,8 @@ public class MovieSearchFragment extends Fragment {
         });
 
         //Heading for search results
-        linearLayout = v.findViewById(R.id.search_outcome_header);
-        linearLayout.setVisibility(View.INVISIBLE);
+        resultHeading = v.findViewById(R.id.search_outcome_header);
+        resultHeading.setVisibility(View.INVISIBLE);
 
         //Search Bar
         SearchView searchView = v.findViewById(R.id.movie_search_view);
@@ -77,7 +77,6 @@ public class MovieSearchFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 new TaskSearchMovie().execute(query);
-                linearLayout.setVisibility(View.VISIBLE);
                 return true;
             }
             @Override
@@ -111,6 +110,8 @@ public class MovieSearchFragment extends Fragment {
                 Movie newMovie = new Movie(id, name, date, path, overview, (float) rating);
                 movies.add(newMovie);
             }
+
+            resultHeading.setVisibility(View.VISIBLE);
             adapter.notifyDataSetChanged();
         }
     }
