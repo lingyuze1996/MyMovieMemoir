@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -26,16 +25,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.adapter.ListAdapterTweets;
-import ling.yuze.mymoviememoir.data.Tweet;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
-import ling.yuze.mymoviememoir.network.SearchTwitter;
-import ling.yuze.mymoviememoir.utility.SentimentAnalysis;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
 public class MovieViewFragment extends Fragment implements View.OnClickListener {
-    SentimentAnalysis analyst;
+
 
     private int movieId;
 
@@ -50,22 +45,12 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
     private TextView tvCast;
     private Button buttonWatchlist;
     private Button buttonMemoir;
-
-    private TextView tvTweetsHeading;
-    private ListView listView;
-    private ListAdapterTweets adapter;
-    private List<Tweet> tweets;
-
+    private TextView link;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_view, container, false);
-
-        // initialize the bag of positive and negative words
-        String[] negativeWords = getWordsList(readFile(R.raw.negative_words));
-        String[] positiveWords = getWordsList(readFile(R.raw.positive_words));
-        analyst = new SentimentAnalysis(positiveWords, negativeWords);
 
         // Get movie information from movie search fragment
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
@@ -90,9 +75,11 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         tvCast = v.findViewById(R.id.tv_view_cast);
         buttonWatchlist = v.findViewById(R.id.btAddWatchlist);
         buttonMemoir = v.findViewById(R.id.btAddMemoir);
+        link = v.findViewById(R.id.tv_here);
 
         buttonWatchlist.setOnClickListener(this);
         buttonMemoir.setOnClickListener(this);
+        link.setOnClickListener(this);
 
         tvTitle.setText(name);
         tvRelease.setText(releaseDate);
@@ -102,17 +89,6 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         ratingBar.setRating(rating);
 
         new TaskGetDetails().execute(movieId);
-
-        // Heading for tweets display
-        tvTweetsHeading = v.findViewById(R.id.tv_tweets_heading);
-        tvTweetsHeading.setVisibility(View.INVISIBLE);
-
-        listView = v.findViewById(R.id.view_tweets_list);
-        tweets = Tweet.createTweetList();
-        adapter = new ListAdapterTweets(getContext(), R.layout.list_view_tweets, tweets);
-        listView.setAdapter(adapter);
-
-        new TaskGetTweets().execute(name);
 
         return v;
     }
@@ -126,6 +102,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             case R.id.btAddWatchlist:
                 replaceFragment(new WatchlistFragment());
                 break;
+            case R.id.tv_here:
+                replaceFragment(new TweetsFragment());
         }
     }
 
@@ -135,47 +113,6 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         transaction.replace(R.id.content_frame, next);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    private String[] getWordsList(String content) {
-        String[] wordsList = content.split("\n");
-        return wordsList;
-    }
-
-    public String readFile(int resourceId) {
-        String content = "";
-        StringBuffer buffer = new StringBuffer();
-        try {
-            InputStream inputStream = getResources().openRawResource(resourceId);
-            Scanner scanner = new Scanner(inputStream, "UTF-8");
-            while (scanner.hasNextLine()) {
-                buffer.append(scanner.nextLine() + "\n");
-            }
-            content = buffer.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return content;
-    }
-
-    private class TaskGetTweets extends AsyncTask<String, Void, List<String>> {
-        @Override
-        protected List<String> doInBackground(String... strings) {
-            String keywords = strings[0] + " movie";
-            List<String> tweetsList = SearchTwitter.search(keywords);
-            return tweetsList;
-        }
-
-        @Override
-        protected void onPostExecute(List<String> tweetsResult) {
-            for (String tweetContent : tweetsResult) {
-                Tweet tweet = new Tweet(tweetContent, analyst.analyze(tweetContent));
-                tweets.add(tweet);
-            }
-
-            tvTweetsHeading.setVisibility(View.VISIBLE);
-            adapter.notifyDataSetChanged();
-        }
     }
 
     private class TaskGetDetails extends AsyncTask<Integer, Void, List<List<String>>> {

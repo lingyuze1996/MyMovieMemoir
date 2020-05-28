@@ -33,8 +33,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_memoir_add, container, false);
-        /*
+        View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
 
         // Get movie information from movie view fragment
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
@@ -58,7 +57,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
         tvMovieName.setText(name);
         tvRelease.setText(releaseDate);
-        setImage(image, imagePath);*/
+        setImage(image, imagePath);
 
 
 
