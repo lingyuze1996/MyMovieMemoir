@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         etPassword = findViewById(R.id.etLoginPassword);
         etUsername = findViewById(R.id.etRegisterUsername);
-        btSignIn = findViewById(R.id.btSignUp);
+        btSignIn = findViewById(R.id.btSignIn);
         tvSignUp = findViewById(R.id.tv_sign_up);
 
         btSignIn.setOnClickListener(this);
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btSignUp:
+            case R.id.btSignIn:
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String passwordHash = Encryption.md5_encryption(password);

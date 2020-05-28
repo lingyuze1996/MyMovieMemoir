@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 
 
 import ling.yuze.mymoviememoir.R;
@@ -25,13 +25,16 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private TextView tvMovieName;
     private ImageView image;
     private RatingBar ratingBar;
+    private ImageView calendarImage;
     private TextView tvRelease;
     private Button buttonSubmit;
+    private CalendarView calendar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_add_to_memoir, container, false);
+        View v = inflater.inflate(R.layout.fragment_memoir_add, container, false);
+        /*
 
         // Get movie information from movie view fragment
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
@@ -45,13 +48,19 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         image = v.findViewById(R.id.image_add_poster);
         ratingBar = v.findViewById(R.id.ratingBar_add);
         tvRelease = v.findViewById(R.id.tv_add_release);
+        calendarImage = v.findViewById(R.id.imageWatchingDate);
+        calendarImage.setOnClickListener(this);
+        calendar = v.findViewById(R.id.calendar_watching);
+        calendar.setVisibility(View.GONE);
 
         buttonSubmit = v.findViewById(R.id.btAddSubmit);
         buttonSubmit.setOnClickListener(this);
 
         tvMovieName.setText(name);
         tvRelease.setText(releaseDate);
-        setImage(image, imagePath);
+        setImage(image, imagePath);*/
+
+
 
         return v;
     }
@@ -59,9 +68,13 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            //:
+            case R.id.imageWatchingDate:
+                if (calendar.getVisibility() == View.GONE)
+                    calendar.setVisibility(View.VISIBLE);
+                else
+                    calendar.setVisibility(View.GONE);
+                break;
 
-                //break;
         }
     }
 

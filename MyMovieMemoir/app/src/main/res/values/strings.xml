@@ -90,4 +90,5 @@
     <string name="add_comments">Comment</string>
     <string name="submit">Submit</string>
     <string name="comment">Comment</string>
+    <string name="submit_to_memoir">Submit to Memoir</string>
 </resources>
