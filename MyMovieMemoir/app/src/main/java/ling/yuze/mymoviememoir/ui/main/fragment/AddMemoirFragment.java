@@ -26,7 +26,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private ImageView image;
     private RatingBar ratingBar;
     private TextView tvRelease;
-    private Button buttonAdd;
+    private Button buttonSubmit;
 
     @Nullable
     @Override
@@ -46,8 +46,8 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         ratingBar = v.findViewById(R.id.ratingBar_add);
         tvRelease = v.findViewById(R.id.tv_add_release);
 
-        buttonAdd = v.findViewById(R.id.btAddMemoir);
-        buttonAdd.setOnClickListener(this);
+        buttonSubmit = v.findViewById(R.id.btAddSubmit);
+        buttonSubmit.setOnClickListener(this);
 
         tvMovieName.setText(name);
         tvRelease.setText(releaseDate);
@@ -59,9 +59,9 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btSignUp:
+            //:
 
-                break;
+                //break;
         }
     }
 
