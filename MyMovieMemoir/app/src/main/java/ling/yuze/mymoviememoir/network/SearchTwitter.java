@@ -32,7 +32,15 @@ public class SearchTwitter {
         try {
             QueryResult result = twitter.search(query);
             for (Status status : result.getTweets()) {
-                tweetList.add(status.getText());
+                boolean duplicate = false;
+                for (String tweet : tweetList) {
+                    if (status.getText().equals(tweet)) {
+                        duplicate = true;
+                        break;
+                    }
+                }
+                if (!duplicate)
+                    tweetList.add(status.getText());
                 if (tweetList.size() >= 10) break;
             }
         } catch (Exception e) {

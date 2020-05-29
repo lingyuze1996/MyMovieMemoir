@@ -176,12 +176,32 @@ public class RestService extends NetworkConnection {
 
     }
 
-    public boolean postCredentials(String credentialsJson) {
-        boolean success = false;
-        final String path = "memoir.credentials/";
+    public int getMaxMemoirId() {
+        Integer maxId = 0;
+        final String path = "memoir.memoir/";
         setUrl(path);
         try {
-            int responseCode = httpPost(credentialsJson);
+            String response = httpGet();
+            JSONArray jsonMemoirs = new JSONArray(response);
+            for (int i = 0; i < jsonMemoirs.length(); i ++) {
+                JSONObject jsonCinema = jsonMemoirs.getJSONObject(i);
+                int id = jsonCinema.getInt("MId");
+                if (id > maxId)
+                    maxId = id;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return maxId;
+        }
+    }
+
+    public boolean post(String jsonString, String destination) {
+        boolean success = false;
+        final String path = "memoir." + destination + "/";
+        setUrl(path);
+        try {
+            int responseCode = httpPost(jsonString);
             if (responseCode == 204) {
                 success = true;
             }
@@ -193,20 +213,5 @@ public class RestService extends NetworkConnection {
         }
     }
 
-    public boolean postPerson(String personJson) {
-        boolean success = false;
-        final String path = "memoir.person/";
-        setUrl(path);
-        try {
-            int responseCode = httpPost(personJson);
-            if (responseCode == 204) {
-                success = true;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            return success;
-        }
-    }
+
 }

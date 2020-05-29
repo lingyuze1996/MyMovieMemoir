@@ -253,18 +253,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         protected void onPostExecute(Boolean available) {
             if (!available) {
                 Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
-                return;
             }
             else {
                 Toast.makeText(getBaseContext(), R.string.success_sign_up, Toast.LENGTH_LONG).show();
 
-                String dobString = DateFormat.toString(dob[0], dob[1], dob[2]);
+                String dobString = DateFormat.toCompleteString(dob[0], dob[1], dob[2]);
                 Person person = new Person(0, firstName, lastName, gender,
                         dobString, address, state, postcodeString);
 
                 String passwordHash = Encryption.md5_encryption(password);
                 Calendar c = Calendar.getInstance();
-                String signUpDate = DateFormat.toString(c.get(Calendar.YEAR),
+                String signUpDate = DateFormat.toCompleteString(c.get(Calendar.YEAR),
                         (c.get(Calendar.MONTH) + 1), c.get(Calendar.DAY_OF_MONTH));
                 Credentials credentials = new Credentials(username, signUpDate, passwordHash);
 
@@ -287,12 +286,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
             Person person = (Person) params[0];
             person.setPId(newId);
             String jsonPerson = JsonParser.objectToJson(person);
-            rs.postPerson(jsonPerson);
+            rs.post(jsonPerson, "person");
 
             Credentials credentials = (Credentials) params[1];
             credentials.setPId(newId);
             String jsonCredentials = JsonParser.objectToJson(credentials);
-            rs.postCredentials(jsonCredentials);
+            rs.post(jsonCredentials, "credentials");
 
             return null;
         }

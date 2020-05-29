@@ -18,10 +18,10 @@ public class SentimentAnalysis {
 
         for (String cut : cuts) {
             for (String positive : positiveWords) {
-                if (cut.equals(positive)) countPositive ++;
+                if (cut.toLowerCase().equals(positive.toLowerCase())) countPositive ++;
             }
             for (String negative : negativeWords) {
-                if (cut.equals(negative)) countNegative ++;
+                if (cut.toLowerCase().equals(negative.toLowerCase())) countNegative ++;
             }
         }
 
