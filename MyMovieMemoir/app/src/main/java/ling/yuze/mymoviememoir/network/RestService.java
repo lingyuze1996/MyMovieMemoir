@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.utility.JsonParser;
 
 public class RestService extends NetworkConnection {
@@ -123,6 +124,35 @@ public class RestService extends NetworkConnection {
             e.printStackTrace();
         } finally {
             return address;
+        }
+    }
+
+    public List<Object[]> getAllMemoirs() {
+        List<Object[]> list = new ArrayList<>();
+        final String path = "memoir.memoir/";
+        setUrl(path);
+        try {
+            String response = httpGet();
+            JSONArray jsonMemoirs = new JSONArray(response);
+            for (int i = 0; i < jsonMemoirs.length(); i ++) {
+                JSONObject jsonMemoir = jsonMemoirs.getJSONObject(i);
+                String name = jsonMemoir.getString("MMovieName");
+                String comment = jsonMemoir.getString("MComment");
+                String time = jsonMemoir.getString("MWatchingDatetime")
+                        .substring(0, 10);
+                String release = jsonMemoir.getString("MMovieReleaseDate");
+                String suburb = jsonMemoir.getJSONObject("CId").
+                        getString("CLocationPostcode");
+                Double rating = jsonMemoir.getDouble("MRating");
+
+                Object[] memoir = {name, release, time, comment, suburb, rating};
+
+                list.add(memoir);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return list;
         }
     }
 
