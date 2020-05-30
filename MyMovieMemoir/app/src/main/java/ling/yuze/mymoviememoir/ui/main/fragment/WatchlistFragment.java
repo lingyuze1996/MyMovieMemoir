@@ -23,7 +23,7 @@ import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 public class WatchlistFragment extends Fragment {
     private ListView listView;
     private ListAdapterWatchlist adapter;
-    private MovieToWatchViewModel viewModel;
+    //private MovieToWatchViewModel viewModel;
     private List<MovieToWatch> movieList;
 
 
@@ -35,7 +35,7 @@ public class WatchlistFragment extends Fragment {
         adapter = new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, movieList);
         listView.setAdapter(adapter);
 
-        viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
+        MovieToWatchViewModel viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
         viewModel.initializeVars(this.getActivity().getApplication());
         viewModel.getAllMoviesToWatch().observe(this, new Observer<List<MovieToWatch>>() {
             @Override

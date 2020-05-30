@@ -212,7 +212,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 int hour = Integer.parseInt(spinnerHour.getSelectedItem().toString());
                 int minute = Integer.parseInt(spinnerMinute.getSelectedItem().toString());
                 String watchingDateTime = watchingDate
-                        + DateFormat.toTimeString(hour, minute);
+                        + DateFormat.toCompleteTimeString(hour, minute);
                 String comment = etAddComment.getText().toString();
                 float rating = ratingBar.getRating();
 

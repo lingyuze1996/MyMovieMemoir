@@ -17,11 +17,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
+import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
+import ling.yuze.mymoviememoir.utility.DateFormat;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
@@ -29,6 +34,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
 
 
     private int movieId;
+    private String name;
+    private String releaseDate;
 
     private TextView tvTitle;
     private ImageView image;
@@ -52,8 +59,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
 
         movieId = shared.getInt("id", -1);
-        String name = shared.getString("name", "Unknown");
-        String releaseDate = shared.getString("releaseDate", "Unknown");
+        name = shared.getString("name", "Unknown");
+        releaseDate = shared.getString("releaseDate", "Unknown");
         String overview = shared.getString("overview", "Unknown");
         String imagePath = shared.getString("imagePath", "");
         float ratingOriginal = shared.getFloat("rating", 0);
@@ -96,6 +103,16 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
                 replaceFragment(new AddMemoirFragment());
                 break;
             case R.id.btAddWatchlist:
+                MovieToWatchViewModel viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
+                viewModel.initializeVars(this.getActivity().getApplication());
+
+
+                try {
+                    viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
+
+                }
+
+
                 replaceFragment(new WatchlistFragment());
                 break;
             case R.id.tv_here:
