@@ -4,41 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemoirItem {
-    private String name;
-    private String release;
+    private Movie movie;
     private String watching;
     private String suburb;
     private String comment;
-    private String imagePath;
     private float myRating;
-    private float publicRating;
 
-    public MemoirItem(String mName, String mRelease, String mWatching, String mSuburb,
-                      String path, String mComment, float mMyRating, float mPublicRating) {
-        name = mName;
-        release = mRelease;
+    public MemoirItem() {}
+
+    public MemoirItem(String mName, String mRelease, String mWatching,
+                      String mSuburb, String mComment, float mMyRating) {
+        movie = new Movie();
+        movie.setName(mName);
+        movie.setReleaseDate(mRelease);
+
         watching = mWatching;
         suburb = mSuburb;
         myRating = mMyRating;
-        publicRating = mPublicRating;
-        imagePath = path;
         comment = mComment;
-    }
-
-    public String getImagePath() {
-        return imagePath;
     }
 
     public float getMyRating() {
         return myRating;
-    }
-
-    public float getPublicRating() {
-        return publicRating;
-    }
-
-    public String getRelease() {
-        return release;
     }
 
     public String getSuburb() {
@@ -49,12 +36,30 @@ public class MemoirItem {
         return comment;
     }
 
-    public String getWatching() {
-        return watching;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public String getName() {
-        return name;
+    public String getWatching() { return watching; }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void setMyRating(float myRating) {
+        this.myRating = myRating;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
+    }
+
+    public void setWatching(String watching) {
+        this.watching = watching;
     }
 
     public static List<MemoirItem> createList() {

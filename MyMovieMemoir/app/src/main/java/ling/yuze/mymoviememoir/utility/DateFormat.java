@@ -39,4 +39,24 @@ public class DateFormat {
 
         return buffer.toString();
     }
+
+    public static int compareDate(String d1, String d2) {
+        if (Integer.parseInt(d1.substring(0, 4)) > Integer.parseInt(d2.substring(0, 4)))
+            return 1;
+        else if (Integer.parseInt(d1.substring(0, 4)) < Integer.parseInt(d2.substring(0, 4)))
+            return -1;
+        else {
+            if (Integer.parseInt(d1.substring(5, 7)) > Integer.parseInt(d2.substring(5, 7)))
+                return 1;
+            else if (Integer.parseInt(d1.substring(5, 7)) < Integer.parseInt(d2.substring(5, 7)))
+                return -1;
+            else {
+                if (Integer.parseInt(d1.substring(8, 10)) > Integer.parseInt(d2.substring(8, 10)))
+                    return 1;
+                if (Integer.parseInt(d1.substring(8, 10)) < Integer.parseInt(d2.substring(8, 10)))
+                    return -1;
+            }
+        }
+        return 0;
+    }
 }

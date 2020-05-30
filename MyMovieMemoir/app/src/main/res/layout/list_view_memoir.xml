@@ -22,24 +22,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tv_ls_memoir_movie_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
+                android:gravity="bottom"
                 android:textStyle="bold"
                 tools:text="Titanic" />
 
             <TextView
                 android:id="@+id/tv_ls_memoir_release_year"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                tools:text="2020-01-19" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="10dp"
+                android:layout_marginLeft="2dp"
+                android:padding="1dp"
+                android:textStyle="italic"
+                android:gravity="bottom"
+                tools:text="(2020-01-19)" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,18 +51,21 @@
 
             <TextView
                 android:id="@+id/tv_ls_memoir_watching_date"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                tools:text="2020-01-06" />
+                android:gravity="center_vertical|start"
+                android:textSize="10dp"
+                android:padding="2dp"
+                tools:text="Watched on 2020-01-06" />
 
             <TextView
                 android:id="@+id/tv_ls_memoir_watching_suburb"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
+                android:layout_marginLeft="8dp"
+                android:textSize="10dp"
+                android:padding="2dp"
                 tools:text="3163" />
         </LinearLayout>
 
@@ -71,8 +77,9 @@
                 android:id="@+id/tv_ls_memoir_comment_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start|center_vertical"
                 android:padding="2dp"
+                android:textSize="10dp"
                 android:text="@string/comment_heading" />
 
             <TextView
@@ -80,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textSize="10dp"
                 android:gravity="start"
                 tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
         </LinearLayout>
@@ -91,14 +99,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="start"
                 android:layout_weight="1.2">
 
                 <TextView
                     android:id="@+id/tv_ls_memoir_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center_vertical|start"
+                    android:textSize="10dp"
+                    android:padding="2dp"
                     android:text="@string/my_rating_heading" />
 
                 <RatingBar
@@ -114,7 +124,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="start"
                 android:layout_weight="1">
 
                 <TextView
@@ -122,6 +132,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="10dp"
                     android:text="@string/public_rating_heading" />
 
                 <RatingBar

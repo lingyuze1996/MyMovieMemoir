@@ -32,6 +32,16 @@
         <item>WA</item>
         <item>VIC</item>
     </string-array>
+
+    <string-array name="memoir_sort_array">
+        <item>watching date ↓</item>
+        <item>watching date ↑</item>
+        <item>my rating ↓</item>
+        <item>my rating ↑</item>
+        <item>public rating ↓</item>
+        <item>public rating ↑</item>
+    </string-array>
+
     <string-array name="year_spinner_array">
         <item>2015</item>
         <item>2016</item>
@@ -72,7 +82,7 @@
     <string name="top_five_movies">My Top Five\nRecent Movies</string>
     <string name="default_date">1900/1/1</string>
     <string name="movie_name">Movie Name</string>
-    <string name="movie_release">Releasing Date</string>
+    <string name="movie_release">Release Date</string>
     <string name="rating">Rating Score</string>
     <string name="title_activity_maps">Map</string>
     <string name="search_movie_hint">Search a movie</string>
@@ -107,4 +117,7 @@
     <string name="comment_heading">"Comment: "</string>
     <string name="my_rating_heading">My Rating:</string>
     <string name="public_rating_heading">Public Rating:</string>
+    <string name="sort">"sort by: "</string>
+    <string name="filter">"filter by genre: "</string>
+    <string name="watchlist_added_heading">Added Time</string>
 </resources>

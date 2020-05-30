@@ -12,8 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
@@ -44,14 +42,14 @@ public class ListAdapterMemoir extends ArrayAdapter<MemoirItem> {
         RatingBar myRating = v.findViewById(R.id.ratingBar_my);
         RatingBar publicRating = v.findViewById(R.id.ratingBar_public);
 
-        tvMovieName.setText(memoir.getName());
-        tvReleaseYear.setText(memoir.getRelease());
-        setImage(imageMovie, memoir.getImagePath());
+        tvMovieName.setText(memoir.getMovie().getName());
+        tvReleaseYear.setText("(" + memoir.getMovie().getReleaseDate() + ")");
+        setImage(imageMovie, memoir.getMovie().getImagePath());
         tvWatching.setText("Watched on: " + memoir.getWatching());
         tvPostcode.setText("At suburb: " + memoir.getSuburb());
         tvComment.setText(memoir.getComment());
         myRating.setRating(memoir.getMyRating());
-        publicRating.setRating(memoir.getPublicRating());
+        publicRating.setRating(Math.round(memoir.getMovie().getRating()) / 2.0f);
 
 
         return v;

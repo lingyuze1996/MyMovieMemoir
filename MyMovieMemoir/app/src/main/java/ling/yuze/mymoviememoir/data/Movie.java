@@ -10,6 +10,9 @@ public class Movie {
     private float rating;
     private String overview;
     private String imagePath;
+    private List<String> genres;
+
+    public Movie() {}
 
     public Movie(int mId, String mName, String mReleaseDate, String mImagePath, String mOverview, float mRating) {
         id = mId;
@@ -32,6 +35,38 @@ public class Movie {
     public float getRating() {return rating;}
     public String getImagePath() {return imagePath;}
     public String getOverview() { return overview; }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
 
     public static List<Movie> createMovieList() {
         List<Movie> movieList = new ArrayList<>();
