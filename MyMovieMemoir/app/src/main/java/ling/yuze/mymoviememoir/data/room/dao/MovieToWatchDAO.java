@@ -17,8 +17,8 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 public interface MovieToWatchDAO {
     @Query("SELECT * FROM MOVIETOWATCH")
     LiveData<List<MovieToWatch>> getAll();
-    @Query("SELECT * FROM MOVIETOWATCH WHERE mid = :movieId LIMIT 1")
-    MovieToWatch findByID(int movieId);
+    @Query("SELECT * FROM MOVIETOWATCH WHERE movieName = :mName AND releaseDate = :mRelease LIMIT 1")
+    MovieToWatch findByID(String mName, String mRelease);
     @Insert
     void insertAll(MovieToWatch... moviesToWatch);
     @Insert

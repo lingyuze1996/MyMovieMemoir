@@ -2,54 +2,49 @@ package ling.yuze.mymoviememoir.data.room.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity
+import org.jetbrains.annotations.NotNull;
+
+@Entity (primaryKeys = {"movieName", "releaseDate"})
 public class MovieToWatch {
-    @PrimaryKey(autoGenerate = true)
-    public int mid;
-    @ColumnInfo(name = "movie_name")
+    @ColumnInfo(name = "movieName")
+    @NotNull
     public String movieName;
-    @ColumnInfo(name = "release_date")
-    public String release;
-    @ColumnInfo(name = "time_added")
+    @ColumnInfo(name = "releaseDate")
+    @NotNull
+    public String releaseDate;
+    @ColumnInfo(name = "timeAdded")
     public String timeAdded;
 
-    public MovieToWatch(String name, String releaseDate, String time){
-        movieName = name;
-        release = releaseDate;
-        timeAdded = time;
-    }
-
-    public String getRelease() {
-        return release;
-    }
-
-    public int getMid() {
-        return mid;
-    }
-
-    public String getMovieName() {
-        return movieName;
+    public MovieToWatch(@NotNull String movieName, @NotNull String releaseDate, String timeAdded) {
+        this.releaseDate = releaseDate;
+        this.movieName = movieName;
+        this.timeAdded = timeAdded;
     }
 
     public String getTimeAdded() {
         return timeAdded;
     }
 
-    public void setMid(int mid) {
-        this.mid = mid;
+    @NotNull
+    public String getMovieName() {
+        return movieName;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public void setRelease(String release) {
-        this.release = release;
+    @NotNull
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
     public void setTimeAdded(String timeAdded) {
         this.timeAdded = timeAdded;
+    }
+
+    public void setMovieName(@NotNull String movieName) {
+        this.movieName = movieName;
+    }
+
+    public void setReleaseDate(@NotNull String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }

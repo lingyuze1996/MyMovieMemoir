@@ -39,7 +39,7 @@ public class ListAdapterWatchlist extends ArrayAdapter<MovieToWatch> {
         TextView tvAdded = v.findViewById(R.id.tv_ls_watchlist_added);
 
         tvMovieName.setText(movie.getMovieName());
-        tvRelease.setText(movie.getRelease());
+        tvRelease.setText(movie.getReleaseDate());
         tvAdded.setText(movie.getTimeAdded());
 
         return v;

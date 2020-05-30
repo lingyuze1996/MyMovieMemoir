@@ -55,6 +55,7 @@
     <string name="register_passwordCheck">Enter password again:</string>
     <string name="success_add_cinema">Add cinema successfully!</string>
     <string name="success_add_memoir">Add to memoir successfully!</string>
+    <string name="success_add_watchlist">Add to watchlist successfully!</string>
     <string name="success_sign_up">Sign up successfully!</string>
     <string name="error_passwordCheck">Password entered not match!\nPlease try again!</string>
     <string name="error_username">Username not available!\nPlease try again!</string>
@@ -70,6 +71,7 @@
     <string name="error_cinema_exist">Cinema added already exists!\nPlease make choice!</string>
     <string name="error_password_length">Password length not between 1 and 16!\nPlease try again!</string>
     <string name="error_postcode_format">Postcode not a four digit number!\nPlease try again!</string>
+    <string name="error_movie_exist">This movie already exists in the watchlist!\nNo need to add!</string>
     <string name="error">Error!</string>
     <string name="open">Open</string>
     <string name="close">Close</string>

@@ -2,6 +2,7 @@ package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -103,17 +105,18 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
                 replaceFragment(new AddMemoirFragment());
                 break;
             case R.id.btAddWatchlist:
-                MovieToWatchViewModel viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
+                MovieToWatchViewModel viewModel = new ViewModelProvider(requireActivity()).get(MovieToWatchViewModel.class);
                 viewModel.initializeVars(this.getActivity().getApplication());
-
 
                 try {
                     viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
+                    Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
 
+                    replaceFragment(new WatchlistFragment());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), R.string.error, Toast.LENGTH_LONG).show();
                 }
-
-
-                replaceFragment(new WatchlistFragment());
                 break;
             case R.id.tv_here:
                 replaceFragment(new TweetsFragment());

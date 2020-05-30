@@ -27,7 +27,7 @@ public class MovieToWatchViewModel extends ViewModel {
     public void initializeVars(Application application){
         repository = new MovieToWatchRepository(application);
     }
-    public void insert(MovieToWatch movieToWatch) {
+    public void insert(MovieToWatch movieToWatch) throws Exception{
         repository.insert(movieToWatch);
     }
     public void insertAll(MovieToWatch... moviesToWatch) {
@@ -42,7 +42,7 @@ public class MovieToWatchViewModel extends ViewModel {
     public void update(MovieToWatch... moviesToWatch) {
         repository.updateMoviesToWatch(moviesToWatch);
     }
-    public MovieToWatch findByID(int mId){
-        return repository.findByID(mId);
+    public MovieToWatch findByID(String name, String release){
+        return repository.findByID(name, release);
     }
 }

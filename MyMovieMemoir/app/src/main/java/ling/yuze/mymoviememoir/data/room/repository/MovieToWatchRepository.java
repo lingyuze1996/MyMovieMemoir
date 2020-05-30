@@ -26,7 +26,7 @@ public class MovieToWatchRepository {
         return moviesToWatch;
     }
 
-    public void insert (final MovieToWatch m) {
+    public void insert (final MovieToWatch m) throws Exception{
         MovieToWatchDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -69,11 +69,11 @@ public class MovieToWatchRepository {
             }
         });
     }
-    public MovieToWatch findByID(final int mId){
+    public MovieToWatch findByID(final String name, final String release){
         MovieToWatchDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                MovieToWatch runMovieToWatch= dao.findByID(mId);
+                MovieToWatch runMovieToWatch= dao.findByID(name, release);
                 setMovieToWatch(runMovieToWatch);
             }
         });
