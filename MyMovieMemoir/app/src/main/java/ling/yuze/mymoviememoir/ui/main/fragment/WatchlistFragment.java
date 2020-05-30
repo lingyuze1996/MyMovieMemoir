@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,27 +25,30 @@ import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 
 public class WatchlistFragment extends Fragment {
     private ListView listView;
-    private ListAdapterWatchlist adapter;
-    private List<MovieToWatch> movieList;
+    private MovieToWatchViewModel viewModel;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_watchlist, container, false);
-        listView = v.findViewById(R.id.list_view_watchlist);
-        movieList = new ArrayList<>();
-        adapter = new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, movieList);
-        listView.setAdapter(adapter);
 
-        MovieToWatchViewModel viewModel = new ViewModelProvider(this.getActivity()).get(MovieToWatchViewModel.class);
-        viewModel.initializeVars(this.getActivity().getApplication());
+        listView = v.findViewById(R.id.list_view_watchlist);
+
+        viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
+        viewModel.initializeVars(requireActivity().getApplication());
         viewModel.getAllMoviesToWatch().observe(this.getActivity(), new Observer<List<MovieToWatch>>() {
             @Override
             public void onChanged(@Nullable final List<MovieToWatch> moviesToWatch)
             {
-                movieList = moviesToWatch;
-                adapter.notifyDataSetChanged();
+                listView.setAdapter(new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, moviesToWatch));
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MovieToWatch m = (MovieToWatch) listView.getAdapter().getItem(position);
             }
         });
 

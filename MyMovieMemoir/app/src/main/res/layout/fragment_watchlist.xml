@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/movie_name"
-            android:layout_weight="0.8"/>
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/tv_watchlist_date_heading"
             android:layout_width="match_parent"

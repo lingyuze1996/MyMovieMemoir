@@ -34,7 +34,7 @@ import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
 public class MovieViewFragment extends Fragment implements View.OnClickListener {
 
-
+    private MovieToWatchViewModel viewModel;
     private int movieId;
     private String name;
     private String releaseDate;
@@ -105,8 +105,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
                 replaceFragment(new AddMemoirFragment());
                 break;
             case R.id.btAddWatchlist:
-                MovieToWatchViewModel viewModel = new ViewModelProvider(this.getActivity()).get(MovieToWatchViewModel.class);
-                viewModel.initializeVars(this.getActivity().getApplication());
+                viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
+                viewModel.initializeVars(requireActivity().getApplication());
 
                 try {
                     viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
