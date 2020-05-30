@@ -105,7 +105,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
                 replaceFragment(new AddMemoirFragment());
                 break;
             case R.id.btAddWatchlist:
-                MovieToWatchViewModel viewModel = new ViewModelProvider(requireActivity()).get(MovieToWatchViewModel.class);
+                MovieToWatchViewModel viewModel = new ViewModelProvider(this.getActivity()).get(MovieToWatchViewModel.class);
                 viewModel.initializeVars(this.getActivity().getApplication());
 
                 try {

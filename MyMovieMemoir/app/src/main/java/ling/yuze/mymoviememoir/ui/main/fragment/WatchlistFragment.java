@@ -31,10 +31,14 @@ public class WatchlistFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_watchlist, container, false);
+        listView = v.findViewById(R.id.list_view_watchlist);
+        movieList = new ArrayList<>();
+        adapter = new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, movieList);
+        listView.setAdapter(adapter);
 
-        MovieToWatchViewModel viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
+        MovieToWatchViewModel viewModel = new ViewModelProvider(this.getActivity()).get(MovieToWatchViewModel.class);
         viewModel.initializeVars(this.getActivity().getApplication());
-        viewModel.getAllMoviesToWatch().observe(requireActivity(), new Observer<List<MovieToWatch>>() {
+        viewModel.getAllMoviesToWatch().observe(this.getActivity(), new Observer<List<MovieToWatch>>() {
             @Override
             public void onChanged(@Nullable final List<MovieToWatch> moviesToWatch)
             {
@@ -42,11 +46,6 @@ public class WatchlistFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-
-        listView = v.findViewById(R.id.list_view_watchlist);
-        movieList = new ArrayList<>();
-        adapter = new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, movieList);
-        listView.setAdapter(adapter);
 
 
         return v;
