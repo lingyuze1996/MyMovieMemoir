@@ -35,6 +35,8 @@ import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 public class MovieViewFragment extends Fragment implements View.OnClickListener {
 
     private MovieToWatchViewModel viewModel;
+    private SharedPreferences shared;
+    private boolean inWatchlist;
     private int movieId;
     private String name;
     private String releaseDate;
@@ -52,13 +54,18 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
     private Button buttonMemoir;
     private TextView link;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        // Get movie information from movie search fragment
+        shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
+        inWatchlist = shared.getBoolean("added", false);
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_view, container, false);
-
-        // Get movie information from movie search fragment
-        SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
 
         movieId = shared.getInt("id", -1);
         name = shared.getString("name", "Unknown");
@@ -80,6 +87,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         tvCast = v.findViewById(R.id.tv_view_cast);
         buttonWatchlist = v.findViewById(R.id.btAddWatchlist);
         buttonMemoir = v.findViewById(R.id.btAddMemoir);
+
         link = v.findViewById(R.id.tv_here);
 
         buttonWatchlist.setOnClickListener(this);
@@ -96,6 +104,20 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         new TaskGetDetails().execute(movieId);
 
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        if (inWatchlist) buttonWatchlist.setVisibility(View.INVISIBLE);
+        super.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        SharedPreferences.Editor editor = shared.edit();
+        editor.putBoolean("added", false);
+        editor.apply();
+        super.onPause();
     }
 
     @Override
