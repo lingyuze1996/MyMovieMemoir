@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.adapter.ListAdapterTweets;
+import ling.yuze.mymoviememoir.adapter.ListAdapterTweet;
 import ling.yuze.mymoviememoir.data.Tweet;
 import ling.yuze.mymoviememoir.network.SearchTwitter;
 import ling.yuze.mymoviememoir.utility.SentimentAnalysis;
@@ -29,7 +29,7 @@ public class TweetsFragment extends Fragment {
 
     private TextView tvTweetsHeading;
     private ListView listView;
-    private ListAdapterTweets adapter;
+    private ListAdapterTweet adapter;
     private List<Tweet> tweets;
 
     @Nullable
@@ -52,7 +52,7 @@ public class TweetsFragment extends Fragment {
 
         listView = v.findViewById(R.id.view_tweets_list);
         tweets = Tweet.createTweetList();
-        adapter = new ListAdapterTweets(getContext(), R.layout.list_view_tweets, tweets);
+        adapter = new ListAdapterTweet(getContext(), R.layout.list_view_tweets, tweets);
         listView.setAdapter(adapter);
 
         new TaskGetTweets().execute(name);

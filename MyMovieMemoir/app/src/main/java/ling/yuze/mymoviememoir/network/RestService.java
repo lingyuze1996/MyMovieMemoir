@@ -127,9 +127,9 @@ public class RestService extends NetworkConnection {
         }
     }
 
-    public List<Object[]> getAllMemoirs() {
+    public List<Object[]> getAllMemoirsByPerson(int personId) {
         List<Object[]> list = new ArrayList<>();
-        final String path = "memoir.memoir/";
+        final String path = "memoir.memoir/findByPersonId/" + personId;
         setUrl(path);
         try {
             String response = httpGet();
@@ -140,7 +140,8 @@ public class RestService extends NetworkConnection {
                 String comment = jsonMemoir.getString("MComment");
                 String time = jsonMemoir.getString("MWatchingDatetime")
                         .substring(0, 10);
-                String release = jsonMemoir.getString("MMovieReleaseDate");
+                String release = jsonMemoir.getString("MMovieReleaseDate")
+                        .substring(0, 10);
                 String suburb = jsonMemoir.getJSONObject("CId").
                         getString("CLocationPostcode");
                 Double rating = jsonMemoir.getDouble("MRating");

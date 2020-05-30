@@ -16,11 +16,11 @@ import java.util.List;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Tweet;
 
-public class ListAdapterTweets extends ArrayAdapter<Tweet> {
+public class ListAdapterTweet extends ArrayAdapter<Tweet> {
     private int resourceId;
 
 
-    public ListAdapterTweets(Context context, int resource, List<Tweet> tweets) {
+    public ListAdapterTweet(Context context, int resource, List<Tweet> tweets) {
         super(context, resource, tweets);
         resourceId = resource;
     }

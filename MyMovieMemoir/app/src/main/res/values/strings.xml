@@ -104,4 +104,7 @@
     <string name="cinema_name">Cinema name</string>
     <string name="confirm">Confirm</string>
     <string name="cinema_postcode">Cinema Postcode</string>
+    <string name="comment_heading">"Comment: "</string>
+    <string name="my_rating_heading">My Rating:</string>
+    <string name="public_rating_heading">Public Rating:</string>
 </resources>
