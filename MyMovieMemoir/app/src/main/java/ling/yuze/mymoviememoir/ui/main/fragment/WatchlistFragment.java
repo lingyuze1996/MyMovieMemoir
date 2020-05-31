@@ -88,6 +88,7 @@ public class WatchlistFragment extends Fragment {
                         builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), R.string.success_delete, Toast.LENGTH_LONG).show();
                                 viewModel.delete(m);
                             }
                         });

@@ -53,6 +53,7 @@
     <string name="register_username">Email as Username</string>
     <string name="register_password">Set password:</string>
     <string name="register_passwordCheck">Enter password again:</string>
+    <string name="success_delete">Delete successfully!</string>
     <string name="success_add_cinema">Add cinema successfully!</string>
     <string name="success_add_memoir">Add to memoir successfully!</string>
     <string name="success_add_watchlist">Add to watchlist successfully!</string>
