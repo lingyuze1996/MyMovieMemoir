@@ -122,4 +122,6 @@
     <string name="sort">"sort by: "</string>
     <string name="filter">"filter by genre: "</string>
     <string name="watchlist_added_heading">Added Time</string>
+    <string name="delete">Delete</string>
+    <string name="view">View</string>
 </resources>

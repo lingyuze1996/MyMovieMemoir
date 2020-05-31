@@ -27,7 +27,7 @@ public class MovieToWatchViewModel extends ViewModel {
     public void initializeVars(Application application){
         repository = new MovieToWatchRepository(application);
     }
-    public void insert(MovieToWatch movieToWatch) throws Exception{
+    public void insert(MovieToWatch movieToWatch) {
         repository.insert(movieToWatch);
     }
     public void insertAll(MovieToWatch... moviesToWatch) {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -37,10 +38,15 @@ public class ListAdapterWatchlist extends ArrayAdapter<MovieToWatch> {
         TextView tvMovieName = v.findViewById(R.id.tv_ls_watchlist_movie_name);
         TextView tvRelease = v.findViewById(R.id.tv_ls_watchlist_release);
         TextView tvAdded = v.findViewById(R.id.tv_ls_watchlist_added);
+        Button btView = v.findViewById(R.id.bt_view);
+        Button btDelete = v.findViewById(R.id.bt_delete);
+        btDelete.setVisibility(View.GONE);
+        btView.setVisibility(View.GONE);
 
         tvMovieName.setText(movie.getMovieName());
         tvRelease.setText(movie.getReleaseDate());
         tvAdded.setText(movie.getTimeAdded());
+
 
         return v;
     }

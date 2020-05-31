@@ -1,6 +1,8 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,11 +57,42 @@ public class WatchlistFragment extends Fragment {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MovieToWatch m = (MovieToWatch) listView.getAdapter().getItem(position);
-                new TaskGetMovieBasics().execute(m.getMovieName(), m.getReleaseDate());
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
+                final MovieToWatch m = (MovieToWatch) listView.getAdapter().getItem(position);
+                Button delete = view.findViewById(R.id.bt_delete);
+                final Button viewMovie = view.findViewById(R.id.bt_view);
+
+                viewMovie.setVisibility(View.VISIBLE);
+                viewMovie.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new TaskGetMovieBasics().execute(m.getMovieName(), m.getReleaseDate());
+                    }
+                });
+
+                delete.setVisibility(View.VISIBLE);
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setMessage("Delete from watchlist?");
+                        builder.setTitle("Attention");
+                        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                viewModel.delete(m);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {}
+                        });
+                        builder.create().show();
+                    }
+                });
+                return true;
             }
         });
 

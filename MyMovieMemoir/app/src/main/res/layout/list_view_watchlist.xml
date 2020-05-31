@@ -26,4 +26,27 @@
         android:gravity="center"
         android:layout_weight="1"/>
 
+    <Button
+        android:id="@+id/bt_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.19"
+        android:layout_gravity="center"
+        android:textSize="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorGreen"
+        android:text="@string/view"/>
+
+    <Button
+        android:id="@+id/bt_delete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.19"
+        android:layout_gravity="center"
+        android:textSize="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorRed"
+        android:text="@string/delete"/>
+
+
 </LinearLayout>

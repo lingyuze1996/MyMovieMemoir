@@ -26,7 +26,7 @@ public class MovieToWatchRepository {
         return moviesToWatch;
     }
 
-    public void insert (final MovieToWatch m) throws Exception{
+    public void insert (final MovieToWatch m) {
         MovieToWatchDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {

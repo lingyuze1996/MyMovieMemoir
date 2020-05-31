@@ -19,12 +19,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.adapter.ListAdapterWatchlist;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
@@ -126,20 +128,24 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             case R.id.btAddMemoir:
                 replaceFragment(new AddMemoirFragment());
                 break;
+
             case R.id.btAddWatchlist:
                 viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
                 viewModel.initializeVars(requireActivity().getApplication());
-
-                try {
-                    viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
-                    Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
-
-                    replaceFragment(new WatchlistFragment());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getContext(), R.string.error, Toast.LENGTH_LONG).show();
+                new TaskCheckExistence().execute(name, releaseDate);
+                /*
+                if (m != null) {
+                    Toast.makeText(getContext(), R.string.error_movie_exist, Toast.LENGTH_LONG).show();
+                    break;
                 }
+
+                viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
+                Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
+                replaceFragment(new WatchlistFragment());
+                /
+                 */
                 break;
+
             case R.id.tv_here:
                 replaceFragment(new TweetsFragment());
         }
@@ -151,6 +157,26 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         transaction.replace(R.id.content_frame, next);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private class TaskCheckExistence extends AsyncTask<String, Void, MovieToWatch> {
+        @Override
+        protected MovieToWatch doInBackground(String... strings) {
+            MovieToWatch movieToWatch = viewModel.findByID(strings[0], strings[1]);
+            return movieToWatch;
+        }
+
+        @Override
+        protected void onPostExecute(MovieToWatch m) {
+            if (m != null) {
+                Toast.makeText(getContext(), R.string.error_movie_exist, Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
+            Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
+            replaceFragment(new WatchlistFragment());
+        }
     }
 
     private class TaskGetDetails extends AsyncTask<Integer, Void, List<List<String>>> {
