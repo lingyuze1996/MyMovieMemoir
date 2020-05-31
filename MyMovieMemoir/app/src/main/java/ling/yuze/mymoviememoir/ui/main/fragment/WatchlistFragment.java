@@ -47,19 +47,24 @@ public class WatchlistFragment extends Fragment {
 
         listView = v.findViewById(R.id.list_view_watchlist);
 
+        // room database view model observer
         viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
         viewModel.getAllMoviesToWatch().observe(this.getActivity(), new Observer<List<MovieToWatch>>() {
             @Override
             public void onChanged(@Nullable final List<MovieToWatch> moviesToWatch)
             {
+                // update the list of movies to watch
                 listView.setAdapter(new ListAdapterWatchlist(getContext(), R.layout.list_view_watchlist, moviesToWatch));
             }
         });
 
+        // show view/delete options when long clicking on the item
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
+                // locate the watchlist item selected
                 final MovieToWatch m = (MovieToWatch) listView.getAdapter().getItem(position);
+
                 Button delete = view.findViewById(R.id.bt_delete);
                 final Button viewMovie = view.findViewById(R.id.bt_view);
 
@@ -67,6 +72,7 @@ public class WatchlistFragment extends Fragment {
                 viewMovie.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // when view button is clicked, redirect to view screen
                         new TaskGetMovieBasics().execute(m.getMovieName(), m.getReleaseDate());
                     }
                 });
@@ -75,6 +81,7 @@ public class WatchlistFragment extends Fragment {
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // when delete button is clicked, pop the alert dialogue
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         builder.setMessage("Delete from watchlist?");
                         builder.setTitle("Attention");
@@ -124,6 +131,7 @@ public class WatchlistFragment extends Fragment {
 
             int id = (Integer) theMovie[0];
 
+            // update shared movie information
             SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = shared.edit();
             editor.putInt("id", id);

@@ -132,6 +132,15 @@
                     android:dropDownWidth="45dp"
                     android:layout_marginLeft="8dp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:text=" : "/>
+
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_add_minute"
                     android:layout_width="wrap_content"

@@ -77,6 +77,7 @@ public class MovieMemoirFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = sort.getSelectedItem().toString();
+                // sort the list based on different options and notify the adapter to refresh
                 switch (selected) {
                     case "my rating ↓":
                         sortMyRatingDescending();
@@ -110,8 +111,8 @@ public class MovieMemoirFragment extends Fragment {
         });
 
         listView = v.findViewById(R.id.list_view_memoir);
-        memoirs = MemoirItem.createList();
-        memoirsAll = MemoirItem.createList();
+        memoirs = MemoirItem.createList(); // store memoir items for display in the list
+        memoirsAll = MemoirItem.createList(); // store all memoir items
         adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
 
         listView.setAdapter(adapter);
@@ -121,6 +122,8 @@ public class MovieMemoirFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // redirect to view screen when memoir item is clicked
                 MemoirItem memoir = memoirs.get(position);
                 SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = shared.edit();
@@ -293,12 +296,10 @@ public class MovieMemoirFragment extends Fragment {
             return null;
         }
 
-
         @Override
         protected void onPostExecute(Void aVoid) {
             sortWatchingDateDescending();
             adapter.notifyDataSetChanged();
-
 
             List<String> genres = new ArrayList<>();
             genres.add("All");

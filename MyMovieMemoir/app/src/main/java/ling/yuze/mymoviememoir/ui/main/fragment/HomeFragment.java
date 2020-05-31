@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // get person id
         SharedPreferences shared = getActivity().getSharedPreferences("Info", Context.MODE_PRIVATE);
         id = shared.getInt("id", 0);
 
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
         Calendar c = Calendar.getInstance();
         String currentDate =
                 c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH);
-        tvDate.setText(currentDate);
+        tvDate.setText(currentDate); // display current date
 
         recyclerView = v.findViewById(R.id.home_recycler);
         movies = Movie.createMovieList();
@@ -52,6 +53,7 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+        // retrieve top five recent movies
         new TaskFindTopFiveRecentMovies().execute();
 
         return v;

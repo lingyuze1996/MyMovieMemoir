@@ -2,7 +2,6 @@ package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteConstraintException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -69,6 +68,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_view, container, false);
 
+        // get basic movie information passed from last screen
         movieId = shared.getInt("id", -1);
         name = shared.getString("name", "Unknown");
         releaseDate = shared.getString("releaseDate", "Unknown");
@@ -103,6 +103,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         setImage(image, imagePath);
         ratingBar.setRating(rating);
 
+        // retrieve detailed movie information
         new TaskGetDetails().execute(movieId);
 
         return v;

@@ -54,11 +54,13 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_report, container, false);
 
         barChart = v.findViewById(R.id.barChart);
-        initializeBarChart();
+        initializeBarChart(); // basic Axis settings for the bar chart
 
         pieChart = v.findViewById(R.id.pieChart);
 
         Spinner spinner = v.findViewById(R.id.spinner_year);
+
+        // populate the bar chart according to the year selected
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -79,6 +81,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         calendarEnd = v.findViewById(R.id.calendarEnd);
         calendarStart.setVisibility(View.GONE);
         calendarEnd.setVisibility(View.GONE);
+
+        // when both start date and end date are selected, retrieve data and populate the pie chart
         calendarStart.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

@@ -46,6 +46,7 @@ public class MovieSearchFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // when the movie item is clicked, share the information and redirect to view screen
                 Movie movie = movies.get(position);
                 SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = shared.edit();

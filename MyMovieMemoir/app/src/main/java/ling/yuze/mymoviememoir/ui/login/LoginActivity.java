@@ -40,7 +40,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btSignIn.setOnClickListener(this);
         tvSignUp.setOnClickListener(this);
 
+        // Hide password by default
         etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        // switch hide/show when touching the icon
         etPassword.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -75,12 +78,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btSignIn:
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
+
+                // encrypt password to hash
                 String passwordHash = Encryption.md5_encryption(password);
-                RestService rs = new RestService();
+
+                // Check whether password hash matches
                 new TaskGetPassword().execute(username, passwordHash);
 
                 break;
             case R.id.tv_sign_up:
+                // redirect to sign up screen
                 Intent intent = new Intent(this, SignUpActivity.class);
                 startActivity(intent);
         }
@@ -93,15 +100,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String credentials = rs.getCredentialsByUsername(params[0]);
             String passwordRecord = rs.getPasswordByUsername(credentials);
             if (passwordRecord.equals(params[1])) {
-                return params[0];
+                return params[0]; // password hash matches
             }
-            return "";
+            return ""; // password hash not match
         }
 
         @Override
         protected void onPostExecute(String s) {
+            // password doesn't match username
             if (s.equals(""))
                 Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+
+            // password matches username, proceed
             else {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("username", s);

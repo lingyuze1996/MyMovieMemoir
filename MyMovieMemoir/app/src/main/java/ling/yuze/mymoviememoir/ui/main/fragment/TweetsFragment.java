@@ -55,6 +55,7 @@ public class TweetsFragment extends Fragment {
         adapter = new ListAdapterTweet(getContext(), R.layout.list_view_tweets, tweets);
         listView.setAdapter(adapter);
 
+        // retrieve tweets according to movie name
         new TaskGetTweets().execute(name);
 
         return v;
@@ -92,6 +93,8 @@ public class TweetsFragment extends Fragment {
         @Override
         protected void onPostExecute(List<String> tweetsResult) {
             for (String tweetContent : tweetsResult) {
+
+                // perform sentiment analysis for each tweet
                 Tweet tweet = new Tweet(tweetContent, analyst.analyze(tweetContent));
                 tweets.add(tweet);
             }

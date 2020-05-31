@@ -43,10 +43,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // initialize local room database view model
         viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
         viewModel.initializeVars(getApplication());
 
+        // get username passed from login page
         String username = getIntent().getStringExtra("username");
+
+        // retrieve personal information details
         new TaskGetInfo().execute(username);
 
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -72,9 +76,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
             String currentFragment = fm.findFragmentById(R.id.content_frame).getClass().toString();
             String nextFragment = next.getClass().toString();
+
+            // don't replace if on the same fragment
             if (nextFragment.equals(currentFragment))
                 return;
         } catch (NullPointerException e) {}
+
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.content_frame, next);
         transaction.addToBackStack(null);
@@ -132,12 +139,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getBaseContext(), "Welcome, " + info[0] + "!", Toast.LENGTH_LONG).show();
                 TextView tv = findViewById(R.id.nav_header_text);
                 tv.setText(info[0] + " " + info[1]);
+
+                // share personal information among all the fragments under main activity
                 shared = getBaseContext().getSharedPreferences("Info", MODE_PRIVATE);
                 SharedPreferences.Editor editor = shared.edit();
                 editor.putInt("id", (int) info[2]);
                 editor.putString("firstName", (String) info[0]);
                 editor.putString("lastName", (String) info[1]);
                 editor.apply();
+
+                //automatically redirect to home page after passing the information
                 replaceFragment(new HomeFragment());
             }
         }

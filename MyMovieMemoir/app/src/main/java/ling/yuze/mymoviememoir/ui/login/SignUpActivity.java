@@ -82,6 +82,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
 
         calendar = findViewById(R.id.calendar);
         calendar.setVisibility(View.GONE);
+
+        // automatically store dob into an int array
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -121,12 +123,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btSignUp:
+
+                // check whether the password entered twice matches
                 if (!etPassword.getText().toString().equals(etCheckPassword.getText().toString())) {
                     Toast.makeText(this, R.string.error_passwordCheck, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
 
+                // check whether username is empty
                 username = etUsername.getText().toString().trim();
                 if (username.equals("")) {
                     Toast.makeText(this, R.string.error_username_empty, Toast.LENGTH_LONG)
@@ -134,6 +139,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check password length
                 password = etPassword.getText().toString();
                 if (!Validation.checkLength(password, 16)) {
                     Toast.makeText(this, R.string.error_password_length, Toast.LENGTH_LONG)
@@ -141,6 +147,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check whether user's first name is empty
                 firstName = etFirstName.getText().toString().trim();
                 if (firstName.equals("")) {
                     Toast.makeText(this, R.string.error_first_name_empty, Toast.LENGTH_LONG)
@@ -148,6 +155,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check whether user's last name is empty
                 lastName = etLastName.getText().toString().trim();
                 if (lastName.equals("")) {
                     Toast.makeText(this, R.string.error_last_name_empty, Toast.LENGTH_LONG)
@@ -155,18 +163,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check whether gender is empty
                 if (gender.equals("")) {
                     Toast.makeText(this, R.string.error_gender_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
 
+                // check whether dob is empty
                 if (dob[0] == 0 && dob[1] == 0 && dob[2] == 0) {
                     Toast.makeText(this, R.string.error_dob_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
 
+                // check whether address is empty
                 address = etAddress.getText().toString().trim();
                 if (address.equals("")) {
                     Toast.makeText(this, R.string.error_address_empty, Toast.LENGTH_LONG)
@@ -174,6 +185,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check whether postcode is a four digit number
                 postcodeString = etPostcode.getText().toString().trim();
                 if (postcodeString.equals("")) {
                     Toast.makeText(this, R.string.error_postcode_empty, Toast.LENGTH_LONG)
@@ -186,6 +198,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 }
 
+                // check whether username is available
                 TaskCheckUsername taskCheckUsername = new TaskCheckUsername();
                 taskCheckUsername.execute(username);
                 break;
@@ -212,6 +225,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         return false;
     }
 
+    // switch password hide/show
     private void alterVisibility(EditText et, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             Drawable drawable_right = et.getCompoundDrawables()[2];
@@ -242,6 +256,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
             Boolean available = true;
             RestService rs = new RestService();
             String credentials = rs.getCredentialsByUsername(params[0]);
+            // if there is a record in database, username is not available
             if (!credentials.equals(""))
                 available = false;
             return available;
@@ -263,7 +278,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                 String signUpDate = DateFormat.getCurrentDate();
                 Credentials credentials = new Credentials(username, signUpDate, passwordHash);
 
+                // post personal information and credentials to server database
                 new TaskUploadData().execute(person, credentials);
+
+                // redirect to login screen
                 Intent intent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(intent);
             }

@@ -185,6 +185,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
                 setAddCinemaVisibility(View.GONE);
 
+                // check whether the cinema is already provided
                 if (checkCinemaId(newCinemaName + " " + newCinemaPostcode) != 0) {
                     Toast.makeText(getContext(), R.string.error_cinema_exist, Toast.LENGTH_LONG)
                             .show();
@@ -198,6 +199,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
                 spinnerCinema.setSelection(cinemaAdapter.getPosition(newCinema));
 
+                // post newly added cinema to server database
                 new TaskPostNewCinema().execute(newCinemaName, newCinemaPostcode);
                 Toast.makeText(getContext(), R.string.success_add_cinema, Toast.LENGTH_LONG)
                         .show();
@@ -231,6 +233,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 int personId = sharedPersonInfo.getInt("id", 0);
                 memoir.setPId(personId);
 
+                // post memoir into server database
                 new TaskPostNewMemoir().execute(memoir);
                 Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
 

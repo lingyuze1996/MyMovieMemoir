@@ -46,11 +46,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
+        // get person id
         SharedPreferences shared = getActivity().getSharedPreferences("Info", Context.MODE_PRIVATE);
         id = shared.getInt("id", 0);
 
+        //retrieve person's home address and show it on the map
         new TaskGetAddress().execute();
+
+        //retrieve addresses of all cinemas in server database and show them on the map
         new TaskGetCinemas().execute();
 
         return v;
@@ -83,6 +86,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                             .get(0);
 
                     LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
+
+                    // add marker for each cinema and set color to azure
                     mMap.addMarker(new MarkerOptions()
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                             .position(location).title(name));

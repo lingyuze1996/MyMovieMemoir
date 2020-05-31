@@ -39,6 +39,8 @@ public class SearchTwitter {
                         break;
                     }
                 }
+
+                // avoid duplicate tweets
                 if (!duplicate)
                     tweetList.add(status.getText());
                 if (tweetList.size() >= 10) break;
