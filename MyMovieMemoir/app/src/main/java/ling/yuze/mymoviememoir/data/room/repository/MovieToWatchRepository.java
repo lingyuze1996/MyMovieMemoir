@@ -14,10 +14,9 @@ public class MovieToWatchRepository {
     private MovieToWatchDAO dao;
     private MovieToWatch movieToWatch;
     private LiveData<List<MovieToWatch>> moviesToWatch;
-    private MovieToWatchDatabase db;
 
     public MovieToWatchRepository(Application application) {
-        db = MovieToWatchDatabase.getInstance(application);
+        MovieToWatchDatabase db = MovieToWatchDatabase.getInstance(application);
         dao = db.movieToWatchDao();
     }
 
@@ -80,8 +79,8 @@ public class MovieToWatchRepository {
         return movieToWatch;
     }
 
-    public void setMovieToWatch(MovieToWatch movieToWatch){
-        this.movieToWatch = movieToWatch;
+    public void setMovieToWatch(MovieToWatch m){
+        this.movieToWatch = m;
     }
 
 }

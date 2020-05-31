@@ -131,19 +131,10 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
 
             case R.id.btAddWatchlist:
                 viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
-                viewModel.initializeVars(requireActivity().getApplication());
-                new TaskCheckExistence().execute(name, releaseDate);
-                /*
-                if (m != null) {
-                    Toast.makeText(getContext(), R.string.error_movie_exist, Toast.LENGTH_LONG).show();
-                    break;
-                }
-
                 viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
                 Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
                 replaceFragment(new WatchlistFragment());
-                /
-                 */
+
                 break;
 
             case R.id.tv_here:
@@ -157,26 +148,6 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
         transaction.replace(R.id.content_frame, next);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    private class TaskCheckExistence extends AsyncTask<String, Void, MovieToWatch> {
-        @Override
-        protected MovieToWatch doInBackground(String... strings) {
-            MovieToWatch movieToWatch = viewModel.findByID(strings[0], strings[1]);
-            return movieToWatch;
-        }
-
-        @Override
-        protected void onPostExecute(MovieToWatch m) {
-            if (m != null) {
-                Toast.makeText(getContext(), R.string.error_movie_exist, Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
-            Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
-            replaceFragment(new WatchlistFragment());
-        }
     }
 
     private class TaskGetDetails extends AsyncTask<Integer, Void, List<List<String>>> {

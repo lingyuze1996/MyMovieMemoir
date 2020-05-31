@@ -48,7 +48,6 @@ public class WatchlistFragment extends Fragment {
         listView = v.findViewById(R.id.list_view_watchlist);
 
         viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
-        viewModel.initializeVars(requireActivity().getApplication());
         viewModel.getAllMoviesToWatch().observe(this.getActivity(), new Observer<List<MovieToWatch>>() {
             @Override
             public void onChanged(@Nullable final List<MovieToWatch> moviesToWatch)

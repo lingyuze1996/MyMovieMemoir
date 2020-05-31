@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.fragment.HomeFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MapFragment;
@@ -33,11 +36,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     private SharedPreferences shared;
+    private MovieToWatchViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
+        viewModel.initializeVars(getApplication());
 
         String username = getIntent().getStringExtra("username");
         new TaskGetInfo().execute(username);

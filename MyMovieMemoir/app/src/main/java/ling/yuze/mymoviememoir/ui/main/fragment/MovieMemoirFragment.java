@@ -38,12 +38,12 @@ import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
 public class MovieMemoirFragment extends Fragment {
     private List<MemoirItem> memoirs;
+    private List<MemoirItem> memoirsAll;
     private ListView listView;
     private ListAdapterMemoir adapter;
     private Spinner filter;
     private ArrayAdapter<String> genreAdapter;
     private HashSet<String> genreSet = new HashSet<>();
-    private List<String> genresAll = new ArrayList<>();
     private Spinner sort;
     private int personId;
 
@@ -56,16 +56,26 @@ public class MovieMemoirFragment extends Fragment {
         SharedPreferences shared = getContext().getSharedPreferences("Info", Context.MODE_PRIVATE);
         personId = shared.getInt("id", 0);
 
-        genresAll.add("All");
         filter = v.findViewById(R.id.spinner_filter);
-        genreAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, genresAll);
-        filter.setAdapter(genreAdapter);
-
 
         filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = filter.getSelectedItem().toString();
 
+                if (selected.equals("All")) {
+                    //memoirs = memoirsAll.clone();
+                    return;
+                }
+
+                List<MemoirItem> filteredMemoirs = new ArrayList<>();
+                for (MemoirItem memoir : memoirsAll) {
+                    if (memoir.getMovie().getGenres().contains(selected)) {
+                        filteredMemoirs.add(memoir);
+                    }
+                }
+                memoirs = filteredMemoirs;
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -112,6 +122,7 @@ public class MovieMemoirFragment extends Fragment {
 
         listView = v.findViewById(R.id.list_view_memoir);
         memoirs = MemoirItem.createList();
+        memoirsAll = MemoirItem.createList();
         adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
         listView.setAdapter(adapter);
 
@@ -219,6 +230,7 @@ public class MovieMemoirFragment extends Fragment {
                 new TaskGetMovieDetails().execute(name, release, item);
 
                 memoirs.add(item);
+                memoirsAll.add(item);
             }
 
             adapter.notifyDataSetChanged();
@@ -268,8 +280,15 @@ public class MovieMemoirFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             sortWatchingDateDescending();
-            genreAdapter.notifyDataSetChanged();
             adapter.notifyDataSetChanged();
+
+
+            List<String> genres = new ArrayList<>();
+            genres.add("All");
+            genres.addAll(genreSet);
+
+            genreAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, genres);
+            filter.setAdapter(genreAdapter);
         }
     }
 }

@@ -21,7 +21,7 @@ public interface MovieToWatchDAO {
     MovieToWatch findByID(String mName, String mRelease);
     @Insert
     void insertAll(MovieToWatch... moviesToWatch);
-    @Insert
+    @Insert(onConflict = REPLACE)
     long insert(MovieToWatch movieToWatch);
     @Delete
     void delete(MovieToWatch movieToWatch);
