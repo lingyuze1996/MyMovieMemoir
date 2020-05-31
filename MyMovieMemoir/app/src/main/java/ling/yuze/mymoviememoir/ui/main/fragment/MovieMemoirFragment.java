@@ -2,6 +2,7 @@ package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.DataSetObserver;
 import android.graphics.PathDashPathEffect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -63,19 +64,7 @@ public class MovieMemoirFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = filter.getSelectedItem().toString();
 
-                if (selected.equals("All")) {
-                    //memoirs = memoirsAll.clone();
-                    return;
-                }
-
-                List<MemoirItem> filteredMemoirs = new ArrayList<>();
-                for (MemoirItem memoir : memoirsAll) {
-                    if (memoir.getMovie().getGenres().contains(selected)) {
-                        filteredMemoirs.add(memoir);
-                    }
-                }
-                memoirs = filteredMemoirs;
-                adapter.notifyDataSetChanged();
+                new TaskFilterGenre().execute(selected);
             }
 
             @Override
@@ -124,6 +113,7 @@ public class MovieMemoirFragment extends Fragment {
         memoirs = MemoirItem.createList();
         memoirsAll = MemoirItem.createList();
         adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
+
         listView.setAdapter(adapter);
 
         new TaskGetAllMemoirs().execute();
@@ -206,6 +196,33 @@ public class MovieMemoirFragment extends Fragment {
                 return compareDate(o1.getWatching(), o2.getWatching()) * (-1);
             }
         });
+    }
+
+    private class TaskFilterGenre extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... strings) {
+            String selected = strings[0];
+            if (selected.equals("All")) {
+                memoirs = memoirsAll;
+                return null;
+            }
+
+            List<MemoirItem> filteredMemoirs = new ArrayList<>();
+            for (MemoirItem memoir : memoirsAll) {
+                if (memoir.getMovie().getGenres().contains(selected)) {
+                    filteredMemoirs.add(memoir);
+                }
+            }
+            memoirs = filteredMemoirs;
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
+            listView.setAdapter(adapter);
+        }
+
     }
 
     private class TaskGetAllMemoirs extends AsyncTask<Void, Void, List<Object[]>> {
