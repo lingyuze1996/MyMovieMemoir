@@ -111,7 +111,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 double longitude = addressList.get(0).getLongitude();
                 coordinate[0] = latitude;
                 coordinate[1] = longitude;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return coordinate;
@@ -119,6 +119,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         @Override
         protected void onPostExecute(Double[] coordinate) {
+            if (coordinate[0] == null || coordinate[1] == null) return;
             homeAddress = new LatLng(coordinate[0], coordinate[1]);
             mMap.addMarker(new MarkerOptions().position(homeAddress).title("Home"));
 
