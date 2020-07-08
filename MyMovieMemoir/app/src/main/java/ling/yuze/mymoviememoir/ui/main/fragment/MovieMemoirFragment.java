@@ -34,6 +34,7 @@ import ling.yuze.mymoviememoir.data.MemoirItem;
 import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
+import ling.yuze.mymoviememoir.utility.FileIO;
 
 import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
@@ -261,6 +262,7 @@ public class MovieMemoirFragment extends Fragment {
         @Override
         protected Void doInBackground(Object... params) {
             SearchMovieDB search = new SearchMovieDB();
+            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
 
             // first find movies with corresponding movie name
             List<Object[]> movieList = search.searchBasics((String) params[0]);

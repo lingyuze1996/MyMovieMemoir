@@ -30,6 +30,7 @@ import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
 import ling.yuze.mymoviememoir.utility.DateFormat;
+import ling.yuze.mymoviememoir.utility.FileIO;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
@@ -157,6 +158,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             ArrayList<List<String>> list = new ArrayList<>();
 
             SearchMovieDB search = new SearchMovieDB();
+            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
             List<String> castList = search.searchCast(movieId);
             List<String> countryList = search.searchCountries(movieId);
             List<String> directorList = search.searchDirector(movieId);

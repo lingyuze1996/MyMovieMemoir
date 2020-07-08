@@ -120,8 +120,7 @@
     <string name="comment_heading">"Comment: "</string>
     <string name="my_rating_heading">My Rating:</string>
     <string name="public_rating_heading">Public Rating:</string>
-    <string name="sort">"sort by: "</string>
-    <string name="filter">"filter by genre: "</string>
+    <string name="filter_genre">"Genre: "</string>
     <string name="watchlist_added_heading">Added Time</string>
     <string name="delete">Delete</string>
     <string name="view">View</string>

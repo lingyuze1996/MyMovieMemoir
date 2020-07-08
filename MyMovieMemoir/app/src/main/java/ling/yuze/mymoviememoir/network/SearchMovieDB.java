@@ -9,10 +9,16 @@ import java.util.List;
 
 
 public class SearchMovieDB extends NetworkConnection {
-    private final String API_KEY = "930da87fa148bd65f892db89edff2e58";
-    private final String BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=";
+    private String API_KEY;
+    private String BASE_URL;
     private final String BASE_URL_DETAIL = "https://api.themoviedb.org/3/movie/";
-    private final String TAIL_URL_DETAIL = "?api_key=" + API_KEY;
+    private String TAIL_URL_DETAIL;
+
+    public void setAPIKey(String key) {
+        API_KEY = key;
+        BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=";
+        TAIL_URL_DETAIL = "?api_key=" + API_KEY;
+    }
 
     public SearchMovieDB() {super();}
     @Override

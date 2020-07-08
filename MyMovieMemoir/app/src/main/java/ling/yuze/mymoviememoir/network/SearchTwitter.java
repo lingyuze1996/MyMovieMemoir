@@ -3,6 +3,9 @@ package ling.yuze.mymoviememoir.network;
 import java.util.ArrayList;
 import java.util.List;
 
+import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.ui.main.fragment.TweetsFragment;
+import ling.yuze.mymoviememoir.utility.FileIO;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -11,10 +14,17 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class SearchTwitter {
-    private static final String CONSUMER_KEY = "ms8pi1My78bvSWpwtLs75mdaU";
-    private static final String CONSUMER_SECRET = "SMx93bFTVN6xXIFNwir0zbRsTq19zjnvS7IehBI5lyze4G9nnS";
-    private static final String ACCESS_TOKEN = "953300632152178688-yDyukO5Mc6FWUneypTekLmM1D3qeGeM";
-    private static final String ACCESS_SECRET = "X5mXiAVmAbgGzFXrLvQXYpTHAQpv5UcpMsYsfTxVa92Fx";
+    private static String CONSUMER_KEY;
+    private static String CONSUMER_SECRET;
+    private static String ACCESS_TOKEN;
+    private static String ACCESS_SECRET;
+
+    public static void setAPIKeys(String[] keys) {
+        CONSUMER_KEY = keys[0];
+        CONSUMER_SECRET = keys[1];
+        ACCESS_TOKEN = keys[2];
+        ACCESS_SECRET = keys[3];
+    }
 
     public static List<String> search(String keyword) {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();

@@ -22,6 +22,7 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterTweet;
 import ling.yuze.mymoviememoir.data.Tweet;
 import ling.yuze.mymoviememoir.network.SearchTwitter;
+import ling.yuze.mymoviememoir.utility.FileIO;
 import ling.yuze.mymoviememoir.utility.SentimentAnalysis;
 
 public class TweetsFragment extends Fragment {
@@ -42,8 +43,8 @@ public class TweetsFragment extends Fragment {
         String name = shared.getString("name", "Unknown");
 
         // initialize the bag of positive and negative words
-        String[] negativeWords = getWordsList(readFile(R.raw.negative_words));
-        String[] positiveWords = getWordsList(readFile(R.raw.positive_words));
+        String[] negativeWords = FileIO.readFile(this.getContext(), R.raw.negative_words).split("\n");
+        String[] positiveWords = FileIO.readFile(this.getContext(), R.raw.positive_words).split("\n");
         analyst = new SentimentAnalysis(positiveWords, negativeWords);
 
         // Heading for tweets display
@@ -61,31 +62,12 @@ public class TweetsFragment extends Fragment {
         return v;
     }
 
-    private String[] getWordsList(String content) {
-        String[] wordsList = content.split("\n");
-        return wordsList;
-    }
-
-    public String readFile(int resourceId) {
-        String content = "";
-        StringBuffer buffer = new StringBuffer();
-        try {
-            InputStream inputStream = getResources().openRawResource(resourceId);
-            Scanner scanner = new Scanner(inputStream, "UTF-8");
-            while (scanner.hasNextLine()) {
-                buffer.append(scanner.nextLine() + "\n");
-            }
-            content = buffer.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return content;
-    }
 
     private class TaskGetTweets extends AsyncTask<String, Void, List<String>> {
         @Override
         protected List<String> doInBackground(String... strings) {
             String keywords = strings[0] + " movie";
+            SearchTwitter.setAPIKeys(FileIO.readFile(getContext(), R.raw.twitter_api_keys).split("\n"));
             List<String> tweetsList = SearchTwitter.search(keywords);
             return tweetsList;
         }

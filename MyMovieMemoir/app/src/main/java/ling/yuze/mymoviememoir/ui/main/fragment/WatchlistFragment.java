@@ -34,6 +34,7 @@ import ling.yuze.mymoviememoir.data.room.database.MovieToWatchDatabase;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
+import ling.yuze.mymoviememoir.utility.FileIO;
 
 public class WatchlistFragment extends Fragment {
     private ListView listView;
@@ -111,6 +112,7 @@ public class WatchlistFragment extends Fragment {
         @Override
         protected Void doInBackground(Object... params) {
             SearchMovieDB search = new SearchMovieDB();
+            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
 
             // first find movies with corresponding movie name
             List<Object[]> movieList = search.searchBasics((String) params[0]);

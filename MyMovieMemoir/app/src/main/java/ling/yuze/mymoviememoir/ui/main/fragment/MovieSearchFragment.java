@@ -24,6 +24,7 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterSearch;
 import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
+import ling.yuze.mymoviememoir.utility.FileIO;
 
 public class MovieSearchFragment extends Fragment {
     private LinearLayout resultHeading;
@@ -93,6 +94,7 @@ public class MovieSearchFragment extends Fragment {
         @Override
         protected List<Object[]> doInBackground(String... strings) {
             SearchMovieDB search = new SearchMovieDB();
+            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
             List<Object[]> basics = search.searchBasics(strings[0]);
             return basics;
         }

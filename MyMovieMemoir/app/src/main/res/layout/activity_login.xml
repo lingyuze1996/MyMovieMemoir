@@ -101,7 +101,6 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="35dp"
-        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/etRegisterUsername"
         app:layout_constraintEnd_toEndOf="parent"
 
