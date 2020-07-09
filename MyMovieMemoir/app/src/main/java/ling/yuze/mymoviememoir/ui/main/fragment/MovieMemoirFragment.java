@@ -118,7 +118,7 @@ public class MovieMemoirFragment extends Fragment {
 
         listView.setAdapter(adapter);
 
-        new TaskGetAllMemoirs().execute();
+        //new TaskGetAllMemoirs().execute(); // Some problems here
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

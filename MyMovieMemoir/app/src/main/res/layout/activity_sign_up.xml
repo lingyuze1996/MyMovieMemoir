@@ -12,13 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/btSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tv_create_account">
 
         <LinearLayout
             android:id="@+id/linearLayoutRegister"
@@ -28,6 +27,8 @@
 
             <EditText
                 android:id="@+id/etRegisterFirstName"
+                android:background="@drawable/text_background"
+                android:paddingHorizontal="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -37,6 +38,8 @@
 
             <EditText
                 android:id="@+id/etRegisterLastName"
+                android:background="@drawable/text_background"
+                android:paddingHorizontal="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -46,11 +49,12 @@
 
 
             <TextView
-                style="@style/Widget.AppCompat.EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textColor="#000000"
                 android:text="@string/register_gender"
+                android:padding="5dp"
                 android:textAllCaps="false" />
 
             <RadioGroup
@@ -61,15 +65,17 @@
 
                 <RadioButton
                     android:id="@+id/bt_radio_male"
+                    android:paddingHorizontal="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/register_male" />
 
                 <RadioButton
                     android:id="@+id/bt_radio_female"
+                    android:layout_marginStart="25dp"
+                    android:paddingHorizontal="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
                     android:text="@string/register_female" />
 
             </RadioGroup>
@@ -84,10 +90,11 @@
 
                 <TextView
                     android:id="@+id/text_dob"
-                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="#000000"
                     android:text="@string/register_dob" />
 
                 <ImageView
@@ -110,8 +117,10 @@
 
             <EditText
                 android:id="@+id/etRegisterAddress"
+                android:background="@drawable/text_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="5dp"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/register_address"
                 android:inputType="text"/>
@@ -124,34 +133,39 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/text_state"
-                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="#000000"
                     android:text="@string/register_state" />
                 <Spinner
                     android:id="@+id/spinner_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
                     android:layout_gravity="center"
                     android:entries="@array/register_state_array" />
             </LinearLayout>
 
             <EditText
                 android:id="@+id/etRegisterPostcode"
+                android:background="@drawable/text_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="5dp"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/register_postcode"
                 android:inputType="number"/>
 
             <EditText
                 android:id="@+id/etRegisterUsername"
+                android:background="@drawable/text_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:paddingHorizontal="5dp"
                 android:hint="@string/register_username"
                 android:inputType="textEmailAddress" />
 
@@ -164,10 +178,12 @@
 
                 <EditText
                     android:id="@+id/etRegisterPassword"
+                    android:background="@drawable/text_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_visibility_off"
                     android:gravity="start"
+                    android:paddingHorizontal="5dp"
                     android:hint="@string/register_password"
                     android:inputType="textPassword" />
             </LinearLayout>
@@ -181,10 +197,12 @@
 
                 <EditText
                     android:id="@+id/etCheckPassword"
+                    android:background="@drawable/text_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_visibility_off"
                     android:gravity="start"
+                    android:paddingHorizontal="5dp"
                     android:hint="@string/register_passwordCheck"
                     android:inputType="textPassword" />
             </LinearLayout>
@@ -197,9 +215,9 @@
         android:id="@+id/btSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#377AFF"
         android:text="@string/button_sign_up"
@@ -211,6 +229,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94" />
+
+    <TextView
+        android:id="@+id/tv_create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:padding="32dp"
+        app:layout_constraintStart_toStartOf="@+id/btSignUp"
+        app:layout_constraintEnd_toEndOf="@id/btSignUp"
+        app:layout_constraintBottom_toTopOf="@id/btSignUp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,14 +4,14 @@
     <string name="menu_movie_search">Movie Search</string>
     <string name="menu_movie_memoir">Movie Memoir</string>
     <string name="menu_watchlist">Watchlist</string>
-    <string name="menu_report">Report</string>
+    <string name="menu_report">Reports</string>
     <string name="menu_map">Map</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="button_sign_in">Sign In</string>
     <string name="button_sign_up">Sign Up</string>
     <string name="text_view_no_account">Don\'t have an account?</string>
-    <string name="text_view_sign_up">Sign Up!</string>
+    <string name="text_view_sign_up">Sign Up.</string>
     <string name="error_sign_in">Username/Password not match!\nPlease try again!</string>
     <string name="register_firstName">First Name</string>
     <string name="register_lastName">Last Name</string>
@@ -110,7 +110,7 @@
     <string name="comment">Comment</string>
     <string name="submit_to_memoir">Submit to Memoir</string>
     <string name="tweets_hint">"Recent tweets? Click"</string>
-    <string name="here">here</string>
+    <string name="here">here.</string>
     <string name="cinema_not_found">Cinema not found?</string>
     <string name="add">Add</string>
     <string name="add_cinema">Add cinema</string>
@@ -124,4 +124,8 @@
     <string name="watchlist_added_heading">Added Time</string>
     <string name="delete">Delete</string>
     <string name="view">View</string>
+    <string name="menu_settings">Settings</string>
+    <string name="tv_forget">Forget login details?</string>
+    <string name="get_help">Get help.</string>
+    <string name="create_account">Create An Account</string>
 </resources>

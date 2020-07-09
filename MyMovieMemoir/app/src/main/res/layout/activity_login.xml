@@ -14,6 +14,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5.5dp"
+        android:background="@drawable/text_background"
         android:hint="@string/login_username_hint"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,11 +42,14 @@
             android:id="@+id/etLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/text_background"
             android:drawableEnd="@drawable/ic_visibility_off"
-            android:ems="10"
             android:gravity="start"
             android:hint="@string/login_password_hint"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5.5dp"
+            />
     </LinearLayout>
 
     <Button
@@ -51,14 +57,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="28dp"
         android:backgroundTint="#377AFF"
         android:text="@string/button_sign_in"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout10"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -89,6 +95,36 @@
             android:gravity="start"
             android:padding="4dp"
             android:text="@string/text_view_sign_up"
+            android:textColor="#1822A7"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+        app:layout_constraintStart_toStartOf="@id/linearLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/btSignIn">
+
+        <TextView
+            android:id="@+id/tv_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="@string/tv_forget"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/tv_get_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="4dp"
+            android:text="@string/get_help"
             android:textColor="#1822A7"
             android:textStyle="bold" />
     </LinearLayout>

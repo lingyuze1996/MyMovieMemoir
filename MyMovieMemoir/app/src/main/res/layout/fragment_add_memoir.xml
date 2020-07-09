@@ -276,6 +276,7 @@
                 <androidx.appcompat.widget.AppCompatRatingBar
                     android:id="@+id/ratingBar_add"
                     android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="8dp"
