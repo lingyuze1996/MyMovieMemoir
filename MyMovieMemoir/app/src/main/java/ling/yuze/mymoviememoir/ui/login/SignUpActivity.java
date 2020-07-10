@@ -24,6 +24,7 @@ import android.widget.Toast;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Credentials;
 import ling.yuze.mymoviememoir.data.Person;
+import ling.yuze.mymoviememoir.ui.TestActivity;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.Encryption;
 import ling.yuze.mymoviememoir.utility.JsonParser;
@@ -122,6 +123,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.buttontest:
+                Intent intent = new Intent(getBaseContext(), TestActivity.class);
+                startActivity(intent);
+
             case R.id.btSignUp:
 
                 // check whether the password entered twice matches

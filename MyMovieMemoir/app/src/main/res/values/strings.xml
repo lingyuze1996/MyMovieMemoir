@@ -100,7 +100,7 @@
     <string name="country_heading">"Country: "</string>
     <string name="release_heading">"Release Date: "</string>
     <string name="overview_heading">"Synopsis: "</string>
-    <string name="rating_heading">"Rating: "</string>
+    <string name="rating_heading">"Rating "</string>
     <string name="tweets_heading">"Recent Tweets: "</string>
     <string name="watching_date">Watching Date</string>
     <string name="watching_time">Watching Time</string>
@@ -128,4 +128,5 @@
     <string name="tv_forget">Forget login details?</string>
     <string name="get_help">Get help.</string>
     <string name="create_account">Create An Account</string>
+    <string name="add_memoir">Add a Memoir</string>
 </resources>

@@ -28,6 +28,7 @@ import ling.yuze.mymoviememoir.ui.main.fragment.MapFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MovieMemoirFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MovieSearchFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.ReportFragment;
+import ling.yuze.mymoviememoir.ui.main.fragment.SettingsFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.WatchlistFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -116,6 +117,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_item_movie_memoir:
                 replaceFragment(new MovieMemoirFragment());
+                break;
+            case R.id.menu_item_settings:
+                replaceFragment(new SettingsFragment());
                 break;
         }
         return true;

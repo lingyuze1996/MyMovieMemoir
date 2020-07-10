@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,8 +43,8 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private TextView tvRelease;
     private ImageView calendarImage;
     private CalendarView calendar;
-    private Spinner spinnerHour;
-    private Spinner spinnerMinute;
+    private ImageView timePickerImage;
+    private TimePicker timePicker;
     private Spinner spinnerCinema;
     private TextView tvAddCinemaClick;
     private TextView tvAddCinemaHeading;
@@ -97,24 +98,12 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        // Spinners for watching hour and minute
-        spinnerHour = v.findViewById(R.id.spinner_add_hour);
-        spinnerMinute = v.findViewById(R.id.spinner_add_minute);
+        timePickerImage = v.findViewById(R.id.imageWatchingTime);
+        timePickerImage.setOnClickListener(this);
 
-        List<String> hours = new ArrayList<>();
-        for (int h = 0; h < 24; h ++) {
-            hours.add(Integer.toString(h));
-        }
-
-        List<String> minutes = new ArrayList<>();
-        for (int m = 0; m < 60; m ++) {
-            minutes.add(Integer.toString(m));
-        }
-
-        ArrayAdapter<String> hourAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, hours);
-        ArrayAdapter<String> minuteAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, minutes);
-        spinnerHour.setAdapter(hourAdapter);
-        spinnerMinute.setAdapter(minuteAdapter);
+        timePicker = v.findViewById(R.id.time_picker);
+        timePicker.setVisibility(View.GONE);
+        timePicker.setIs24HourView(true);
 
         // Spinner for cinema name and postcode
         spinnerCinema = v.findViewById(R.id.spinner_add_cinema);
@@ -153,6 +142,13 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
+            case R.id.imageWatchingTime:
+                if (timePicker.getVisibility() == View.GONE)
+                    timePicker.setVisibility(View.VISIBLE);
+                else
+                    timePicker.setVisibility(View.GONE);
+                break;
+
             case R.id.imageWatchingDate:
                 if (calendar.getVisibility() == View.GONE)
                     calendar.setVisibility(View.VISIBLE);
@@ -211,8 +207,8 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                             .show();
                     break;
                 }
-                int hour = Integer.parseInt(spinnerHour.getSelectedItem().toString());
-                int minute = Integer.parseInt(spinnerMinute.getSelectedItem().toString());
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
                 String watchingDateTime = watchingDate
                         + DateFormat.toCompleteTimeString(hour, minute);
                 String comment = etAddComment.getText().toString();
