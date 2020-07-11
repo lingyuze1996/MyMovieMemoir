@@ -1,5 +1,7 @@
 package ling.yuze.mymoviememoir.data;
 
+import androidx.annotation.NonNull;
+
 public class Cinema {
     private int CId;
     private String CLocationPostcode;
@@ -34,5 +36,11 @@ public class Cinema {
 
     public String getCLocationPostcode() {
         return CLocationPostcode;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

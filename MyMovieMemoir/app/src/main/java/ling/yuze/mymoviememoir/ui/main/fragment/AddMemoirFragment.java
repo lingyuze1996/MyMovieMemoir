@@ -1,33 +1,27 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
@@ -38,36 +32,41 @@ import ling.yuze.mymoviememoir.utility.JsonParser;
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 
 public class AddMemoirFragment extends Fragment implements View.OnClickListener {
+
+    // widgets
     private TextView tvMovieName;
-    private ImageView image;
+    private ImageView movieImage;
     private TextView tvRelease;
+
     private ImageView calendarImage;
     private CalendarView calendar;
+    private TextView tvDate;
+
     private ImageView timePickerImage;
     private TimePicker timePicker;
-    private Spinner spinnerCinema;
-    private TextView tvAddCinemaClick;
-    private TextView tvAddCinemaHeading;
-    private EditText etCinemaName;
-    private EditText etCinemaPostcode;
-    private TextView tvConfirm;
+    private TextView tvTime;
+
+    private ImageView cinemaImage;
+    private TextView tvCinema;
+
     private EditText etAddComment;
+
     private RatingBar ratingBar;
+
     private Button buttonSubmit;
 
+    // information
     private int maxMemoirId;
     private String watchingDate;
-    private int maxCinemaId = 0;
-    private List<String> cinemas;
-    private List<Object[]> cinemasList;
-    private ArrayAdapter<String> cinemaAdapter;
+    private String watchingTime;
+    private Cinema cinema;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
 
-        new TaskGetMaxMemoirId().execute();
+        //new TaskGetMaxMemoirId().execute();
 
         // Get movie information from movie view fragment
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
@@ -80,8 +79,8 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         tvMovieName = v.findViewById(R.id.tv_add_name);
         tvMovieName.setText(name);
 
-        image = v.findViewById(R.id.image_add_poster);
-        setImage(image, imagePath);
+        movieImage = v.findViewById(R.id.image_add_poster);
+        setImage(movieImage, imagePath);
 
         tvRelease = v.findViewById(R.id.tv_add_release);
         tvRelease.setText(releaseDate);
@@ -89,45 +88,38 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         calendarImage = v.findViewById(R.id.imageWatchingDate);
         calendarImage.setOnClickListener(this);
 
+        tvDate = v.findViewById(R.id.tv_add_date);
+
         calendar = v.findViewById(R.id.calendar_watching);
         calendar.setVisibility(View.GONE);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 watchingDate = DateFormat.toDateString(year, month + 1, dayOfMonth);
+                tvDate.setText(watchingDate);
             }
         });
 
         timePickerImage = v.findViewById(R.id.imageWatchingTime);
         timePickerImage.setOnClickListener(this);
 
+        tvTime = v.findViewById(R.id.tv_add_time);
+
         timePicker = v.findViewById(R.id.time_picker);
         timePicker.setVisibility(View.GONE);
         timePicker.setIs24HourView(true);
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                watchingTime = DateFormat.toTimeString(hourOfDay, minute);
+                tvTime.setText(watchingTime);
+            }
+        });
 
-        // Spinner for cinema name and postcode
-        spinnerCinema = v.findViewById(R.id.spinner_add_cinema);
+        cinemaImage = v.findViewById(R.id.image_cinema);
+        cinemaImage.setOnClickListener(this);
 
-        cinemas = new ArrayList<>();
-
-        cinemaAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, cinemas);
-
-        spinnerCinema.setAdapter(cinemaAdapter);
-
-        // retrieve cinema names and postcodes into spinners
-        new TaskGetCinemas().execute();
-
-        // Click button to add a cinema not in the list
-        tvAddCinemaClick = v.findViewById(R.id.tv_supplement_cinema);
-        tvAddCinemaClick.setOnClickListener(this);
-
-        // View of supplement cinema
-        tvAddCinemaHeading = v.findViewById(R.id.tv_supplement_cinema_heading);
-        etCinemaName = v.findViewById(R.id.etAddCinemaName);
-        etCinemaPostcode = v.findViewById(R.id.etAddCinemaPostcode);
-        tvConfirm = v.findViewById(R.id.tv_supplement_cinema_confirm);
-        tvConfirm.setOnClickListener(this);
-        setAddCinemaVisibility(View.GONE);
+        tvCinema = v.findViewById(R.id.tv_cinema_chosen);
 
         etAddComment = v.findViewById(R.id.etAddComment);
 
@@ -142,13 +134,6 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.imageWatchingTime:
-                if (timePicker.getVisibility() == View.GONE)
-                    timePicker.setVisibility(View.VISIBLE);
-                else
-                    timePicker.setVisibility(View.GONE);
-                break;
-
             case R.id.imageWatchingDate:
                 if (calendar.getVisibility() == View.GONE)
                     calendar.setVisibility(View.VISIBLE);
@@ -156,49 +141,24 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                     calendar.setVisibility(View.GONE);
                 break;
 
-            case R.id.tv_supplement_cinema:
-                if (tvAddCinemaHeading.getVisibility() == View.GONE)
-                    setAddCinemaVisibility(View.VISIBLE);
+            case R.id.imageWatchingTime:
+                if (timePicker.getVisibility() == View.GONE)
+                    timePicker.setVisibility(View.VISIBLE);
                 else
-                    setAddCinemaVisibility(View.GONE);
+                    timePicker.setVisibility(View.GONE);
                 break;
 
-            case R.id.tv_supplement_cinema_confirm:
-                String newCinemaName = etCinemaName.getText().toString();
-                String newCinemaPostcode = etCinemaPostcode.getText().toString();
+            case R.id.image_cinema:
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
 
-                if (newCinemaPostcode.length() != 4) {
-                    Toast.makeText(getContext(), R.string.error_postcode_format, Toast.LENGTH_LONG)
-                            .show();
-                    break;
-                }
+                CinemaChooseFragment fragment = new CinemaChooseFragment();
+                fragment.setTargetFragment(this, 0);
 
-                if (newCinemaName.length() == 0) {
-                    Toast.makeText(getContext(), R.string.error_cinema_empty, Toast.LENGTH_LONG)
-                            .show();
-                    break;
-                }
-
-                setAddCinemaVisibility(View.GONE);
-
-                // check whether the cinema is already provided
-                if (checkCinemaId(newCinemaName + " " + newCinemaPostcode) != 0) {
-                    Toast.makeText(getContext(), R.string.error_cinema_exist, Toast.LENGTH_LONG)
-                            .show();
-                    break;
-                }
-
-                String newCinema = newCinemaName + " " + newCinemaPostcode;
-                cinemas.add(newCinema);
-
-                cinemasList.add(new Object[]{++ maxCinemaId, newCinemaPostcode, newCinemaName});
-
-                spinnerCinema.setSelection(cinemaAdapter.getPosition(newCinema));
-
-                // post newly added cinema to server database
-                new TaskPostNewCinema().execute(newCinemaName, newCinemaPostcode);
-                Toast.makeText(getContext(), R.string.success_add_cinema, Toast.LENGTH_LONG)
-                        .show();
+                transaction.add(R.id.content_frame, fragment);
+                transaction.hide(this);
+                transaction.addToBackStack(null);
+                transaction.commit();
                 break;
 
             case R.id.btAddSubmit:
@@ -207,21 +167,19 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                             .show();
                     break;
                 }
-                int hour = timePicker.getHour();
-                int minute = timePicker.getMinute();
                 String watchingDateTime = watchingDate
-                        + DateFormat.toCompleteTimeString(hour, minute);
+                        + watchingTime;
                 String comment = etAddComment.getText().toString();
                 float rating = ratingBar.getRating();
 
                 Memoir memoir = new Memoir(tvMovieName.getText().toString(), tvRelease.getText().toString() + "T00:00:00+10:00",
                         watchingDateTime, comment, rating);
 
-                String cinemaSelected = spinnerCinema.getSelectedItem().toString();
+                // String cinemaSelected = spinnerCinema.getSelectedItem().toString();
 
-                int cinemaId = checkCinemaId(cinemaSelected);
+                // int cinemaId = checkCinemaId(cinemaSelected);
 
-                memoir.setCId(cinemaId);
+                // memoir.setCId(cinemaId);
 
                 SharedPreferences sharedPersonInfo = getContext().
                         getSharedPreferences("Info", Context.MODE_PRIVATE);
@@ -233,44 +191,27 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 new TaskPostNewMemoir().execute(memoir);
                 Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
 
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.content_frame, new MovieMemoirFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
+                replaceFragment(new MovieMemoirFragment());
 
                 break;
         }
     }
 
-    private int checkCinemaId(String cString) {
-        for (Object[] cinema : cinemasList) {
-            String cinemaString = (String) cinema[2] + " " + (String) cinema[1];
-            if (cinemaString.equals(cString)) {
-                return (Integer) cinema[0];
-            }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            tvCinema.setText(data.getStringExtra("cinemaChosen"));
+            tvCinema.setVisibility(View.VISIBLE);
         }
 
-        return 0;
     }
 
-    private void setAddCinemaVisibility(int visibilityId) {
-        tvAddCinemaHeading.setVisibility(visibilityId);
-        etCinemaName.setVisibility(visibilityId);
-        etCinemaPostcode.setVisibility(visibilityId);
-        tvConfirm.setVisibility(visibilityId);
-    }
-
-    private class TaskPostNewCinema extends AsyncTask<String, Void, Void> {
-        @Override
-        protected Void doInBackground(String... params) {
-            RestService rs = new RestService();
-            Cinema cinema = new Cinema(maxCinemaId, params[0], params[1]);
-            String cinemaJson = JsonParser.objectToJson(cinema);
-            rs.post(cinemaJson, "cinema");
-
-            return null;
-        }
+    private void replaceFragment(Fragment next) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.content_frame, next);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     private class TaskPostNewMemoir extends AsyncTask<Memoir, Void, Void> {
@@ -286,6 +227,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    /*
     private class TaskGetCinemas extends AsyncTask<Void, Void, List<Object[]>> {
         @Override
         protected List<Object[]> doInBackground(Void... voids) {
@@ -316,6 +258,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+
     private class TaskGetMaxMemoirId extends AsyncTask<Void, Void, Integer> {
         @Override
         protected Integer doInBackground(Void... voids) {
@@ -328,4 +271,5 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
             maxMemoirId = integer;
         }
     }
+    */
 }

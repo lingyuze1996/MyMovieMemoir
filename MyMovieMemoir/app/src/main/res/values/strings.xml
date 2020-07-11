@@ -11,7 +11,7 @@
     <string name="button_sign_in">Sign In</string>
     <string name="button_sign_up">Sign Up</string>
     <string name="text_view_no_account">Don\'t have an account?</string>
-    <string name="text_view_sign_up">Sign Up.</string>
+    <string name="text_view_sign_up">Sign up</string>
     <string name="error_sign_in">Username/Password not match!\nPlease try again!</string>
     <string name="register_firstName">First Name</string>
     <string name="register_lastName">Last Name</string>
@@ -82,7 +82,7 @@
     <string name="end_date">End Date</string>
     <string name="movies_by_suburb">Total Movies Watched per Suburb</string>
     <string name="app_logo">My Movie\nMemoir</string>
-    <string name="top_five_movies">My Top Five\nRecent Movies</string>
+    <string name="trending_movies">Trending Movies</string>
     <string name="default_date">1900/1/1</string>
     <string name="movie_name">Movie Name</string>
     <string name="movie_release">Release Date</string>
@@ -129,4 +129,7 @@
     <string name="get_help">Get help.</string>
     <string name="create_account">Create An Account</string>
     <string name="add_memoir">Add a Memoir</string>
+    <string name="public_rating">Public Rating</string>
+    <string name="select_region">Select a Region</string>
+    <string name="select_state">Select a State</string>
 </resources>
