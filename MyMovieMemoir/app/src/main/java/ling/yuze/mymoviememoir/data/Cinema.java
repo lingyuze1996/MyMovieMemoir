@@ -1,46 +1,57 @@
 package ling.yuze.mymoviememoir.data;
 
-import androidx.annotation.NonNull;
-
 public class Cinema {
-    private int CId;
-    private String CLocationPostcode;
-    private String CName;
+    private String id;
+    private String name;
+    private String address;
+    private String state;
+    private String region;
 
-    public Cinema (int id, String name, String postcode) {
-        CId = id;
-        CName = name;
-        CLocationPostcode = postcode;
+    public Cinema(String id, String name, String address, String state, String region) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.state = state;
+        this.region = region;
     }
 
-    public Cinema (String name, String postcode) {
-        CName = name;
-        CLocationPostcode = postcode;
+    public String getId() {
+        return id;
     }
 
-    public Cinema (int id) {
-        CId = id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        CId = id;
+    public String getAddress() {
+        return address;
     }
 
-    public int getCId() {
-        return CId;
+    public String getState() {
+        return state;
     }
 
-    public String getCName() {
-        return CName;
+    public String getRegion() {
+        return region;
     }
 
-    public String getCLocationPostcode() {
-        return CLocationPostcode;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return super.toString();
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }

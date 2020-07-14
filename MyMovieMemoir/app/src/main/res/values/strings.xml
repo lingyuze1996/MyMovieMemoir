@@ -21,7 +21,7 @@
     <string name="register_dob">Date of Birth</string>
     <string name="register_address">Address</string>
     <string name="register_postcode">Postcode</string>
-    <string name="register_state">State</string>
+    <string name="state">State</string>
     <string-array name="register_state_array">
         <item>ACT</item>
         <item>NSW</item>
@@ -130,6 +130,6 @@
     <string name="create_account">Create An Account</string>
     <string name="add_memoir">Add a Memoir</string>
     <string name="public_rating">Public Rating</string>
-    <string name="select_region">Select a Region</string>
-    <string name="select_state">Select a State</string>
+    <string name="region">Region</string>
+    <string name="search_cinemas">Search Cinemas</string>
 </resources>

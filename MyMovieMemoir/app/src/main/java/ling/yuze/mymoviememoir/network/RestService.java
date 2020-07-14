@@ -13,6 +13,7 @@ import ling.yuze.mymoviememoir.utility.JsonParser;
 
 public class RestService extends NetworkConnection {
     private static final String BASE_URL = "http://192.168.0.5:8080/MemoirREST/webresources/";
+
     public RestService() {
         super();
     }
@@ -22,7 +23,7 @@ public class RestService extends NetworkConnection {
         super.setUrl(BASE_URL + path);
     }
 
-    public Integer getIdFromCredentials (String credentialsJson) {
+    public Integer getIdFromCredentials(String credentialsJson) {
         int id = 0;
         Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PId");
         if (valueObject != null)
@@ -30,7 +31,7 @@ public class RestService extends NetworkConnection {
         return id;
     }
 
-    public String getFirstNameFromCredentials (String credentialsJson) {
+    public String getFirstNameFromCredentials(String credentialsJson) {
         String firstName = "";
         Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PFirstName");
 
@@ -39,7 +40,7 @@ public class RestService extends NetworkConnection {
         return firstName;
     }
 
-    public String getLastNameFromCredentials (String credentialsJson) {
+    public String getLastNameFromCredentials(String credentialsJson) {
         String lastName = "";
         Object valueObject = JsonParser.getJsonValue(credentialsJson, "PId", "PSurname");
 
@@ -48,9 +49,9 @@ public class RestService extends NetworkConnection {
         return lastName;
     }
 
-    public String getPasswordByUsername (String credentialsJson) {
+    public String getPasswordByUsername(String credentialsJson) {
         String passwordHash = "";
-        Object valueObject = JsonParser.getJsonValue(credentialsJson,"passwordHash");
+        Object valueObject = JsonParser.getJsonValue(credentialsJson, "passwordHash");
         if (valueObject != null)
             passwordHash = (String) valueObject;
         return passwordHash;
@@ -64,11 +65,11 @@ public class RestService extends NetworkConnection {
             response = httpGet();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return response;
         }
     }
+
     public HashMap<String, Integer> getMoviesPerSuburb(int id, String start, String end) {
         HashMap<String, Integer> map = new HashMap<>();
         final String path = "memoir.memoir/findSuburbTotalMovies/" + id + "/" + start + "/" + end;
@@ -82,6 +83,7 @@ public class RestService extends NetworkConnection {
             return map;
         }
     }
+
     public List<Object[]> getTopFiveRecentMovies(int id) {
         List<Object[]> list = new ArrayList<>();
         final String path = "memoir.memoir/findTopFiveRecentMovies/" + id;
@@ -103,7 +105,7 @@ public class RestService extends NetworkConnection {
         try {
             String response = httpGet();
             List<Object> list = JsonParser.getValueList(response, "TotalMoviesWatched");
-            for (int index = 0; index < list.size(); index ++) {
+            for (int index = 0; index < list.size(); index++) {
                 numbers[index] = (int) list.get(index);
             }
         } catch (Exception e) {
@@ -134,7 +136,7 @@ public class RestService extends NetworkConnection {
         try {
             String response = httpGet();
             JSONArray jsonMemoirs = new JSONArray(response);
-            for (int i = 0; i < jsonMemoirs.length(); i ++) {
+            for (int i = 0; i < jsonMemoirs.length(); i++) {
                 JSONObject jsonMemoir = jsonMemoirs.getJSONObject(i);
                 String name = jsonMemoir.getString("MMovieName");
                 String comment = jsonMemoir.getString("MComment");
@@ -164,7 +166,7 @@ public class RestService extends NetworkConnection {
         try {
             String response = httpGet();
             JSONArray jsonCinemas = new JSONArray(response);
-            for (int i = 0; i < jsonCinemas.length(); i ++) {
+            for (int i = 0; i < jsonCinemas.length(); i++) {
                 Object[] cinema = new Object[3];
                 JSONObject jsonCinema = jsonCinemas.getJSONObject(i);
                 cinema[0] = jsonCinema.getInt("CId");
@@ -187,8 +189,7 @@ public class RestService extends NetworkConnection {
             response = httpGet();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return response;
         }
     }
@@ -214,7 +215,7 @@ public class RestService extends NetworkConnection {
         try {
             String response = httpGet();
             JSONArray jsonMemoirs = new JSONArray(response);
-            for (int i = 0; i < jsonMemoirs.length(); i ++) {
+            for (int i = 0; i < jsonMemoirs.length(); i++) {
                 JSONObject jsonCinema = jsonMemoirs.getJSONObject(i);
                 int id = jsonCinema.getInt("MId");
                 if (id > maxId)
@@ -238,8 +239,7 @@ public class RestService extends NetworkConnection {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return success;
         }
     }

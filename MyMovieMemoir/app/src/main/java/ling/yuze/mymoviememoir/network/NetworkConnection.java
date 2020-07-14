@@ -8,18 +8,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkConnection {
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+public abstract class NetworkConnection {
+    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
     private String url;
     public NetworkConnection() {
         client = new OkHttpClient();
-        url = new String();
-    }
-
-    public NetworkConnection(String urlString) {
-        client = new OkHttpClient();
-        url = urlString;
     }
 
     public void setUrl(String urlString) {

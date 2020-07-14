@@ -21,7 +21,7 @@ public class Memoir {
     public void setPId(int id) {
         PId = new Person(id);
     }
-    public void setCId(int id) { CId = new Cinema(id); }
+    //public void setCId(int id) { CId = new Cinema(id); }
     public void setId(int id) { MId = id; }
 }
 

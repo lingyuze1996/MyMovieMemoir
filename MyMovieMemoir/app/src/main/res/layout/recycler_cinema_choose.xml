@@ -2,28 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="35dp"
+    android:background="@drawable/text_background"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
     <TextView
-        android:id="@+id/tv_rec_home_movie_name"
+        android:id="@+id/tv_rec_cinema_choose_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"/>
+        android:layout_weight="2"
+        tools:text="some name"
+        android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/tv_rec_home_release_date"
+        android:id="@+id/tv_rec_cinema_choose_address"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:layout_weight="1"
-        android:textColor="#FFFFFF"/>
+        tools:text="some address"
+        android:textColor="#000000"/>
 
-    <TextView
-        android:id="@+id/tv_rec_home_rating"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"/>
 </LinearLayout>
