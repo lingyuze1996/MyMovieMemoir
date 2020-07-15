@@ -24,6 +24,8 @@ import android.widget.Toast;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Credentials;
 import ling.yuze.mymoviememoir.data.Person;
+import ling.yuze.mymoviememoir.data.User;
+import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.Encryption;
 import ling.yuze.mymoviememoir.utility.JsonParser;
@@ -253,18 +255,25 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
 
         @Override
         protected Boolean doInBackground(String... params) {
-            Boolean available = true;
+
+            new TaskSignUp().execute();
+            return false;
+            //Boolean available = true;
+            /*
             RestService rs = new RestService();
             String credentials = rs.getCredentialsByUsername(params[0]);
             // if there is a record in database, username is not available
             if (!credentials.equals(""))
                 available = false;
-            return available;
+
+            */
+            //return available;
         }
 
         @Override
         protected void onPostExecute(Boolean available) {
             if (!available) {
+
                 Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
             }
             else {
@@ -286,6 +295,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                 startActivity(intent);
             }
 
+        }
+    }
+
+    private class TaskSignUp extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            AWS aws = new AWS();
+            User user = new User(username, password, firstName, lastName, gender, "2000-01-01",
+                    address, state, postcodeString);
+            String request = JsonParser.objectToJson(user);
+            aws.userSignUp(request);
+            return null;
         }
     }
 

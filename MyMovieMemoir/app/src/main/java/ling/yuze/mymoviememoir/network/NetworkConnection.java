@@ -8,7 +8,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public abstract class NetworkConnection {
+public class NetworkConnection {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
     private String url;
@@ -39,6 +39,9 @@ public abstract class NetworkConnection {
         Request request = builder.post(body).build();
         Response response = client.newCall(request).execute();
         responseCode = response.code();
+
+        String s = response.body().string();
+
         return responseCode;
     }
 

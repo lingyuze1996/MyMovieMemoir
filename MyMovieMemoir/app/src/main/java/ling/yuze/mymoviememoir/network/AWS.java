@@ -3,18 +3,35 @@ package ling.yuze.mymoviememoir.network;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.data.Cinema;
 
-public class SearchAWS extends NetworkConnection{
+public class AWS extends NetworkConnection{
     private static final String BASE_URL = "https://j0wq6141yh.execute-api.ap-southeast-2.amazonaws.com/beta/";
-    public SearchAWS() {super();}
+    public AWS() {super();}
 
     @Override
     public void setUrl(String path) {
         super.setUrl(BASE_URL + path);
+    }
+
+    public boolean userSignUp(String request) {
+        boolean success = false;
+        final String path = "signup";
+        setUrl(path);
+        try {
+            int responseCode = httpPost(request);
+            if (responseCode == 204) {
+                success = true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return success;
     }
 
     public List<Cinema> getCinemas(String state, String region) {

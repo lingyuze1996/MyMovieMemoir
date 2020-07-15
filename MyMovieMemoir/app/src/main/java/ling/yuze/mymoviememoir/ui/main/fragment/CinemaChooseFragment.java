@@ -1,43 +1,31 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.CinemaChooseRecyclerAdapter;
-import ling.yuze.mymoviememoir.adapter.HomeRecyclerAdapter;
 import ling.yuze.mymoviememoir.data.Cinema;
-import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.network.NetworkConnection;
-import ling.yuze.mymoviememoir.network.RestService;
-import ling.yuze.mymoviememoir.network.SearchAWS;
-import okhttp3.internal.concurrent.Task;
+import ling.yuze.mymoviememoir.network.AWS;
 
 public class CinemaChooseFragment extends Fragment {
     private Spinner spinnerState;
@@ -121,7 +109,7 @@ public class CinemaChooseFragment extends Fragment {
     private class TaskGetCinemas extends AsyncTask<String, Void, List<Cinema>> {
         @Override
         protected List<Cinema> doInBackground(String... strings) {
-            SearchAWS search = new SearchAWS();
+            AWS search = new AWS();
             List<Cinema> cinemas = search.getCinemas(strings[0], strings[1]);
             return cinemas;
         }
@@ -137,7 +125,7 @@ public class CinemaChooseFragment extends Fragment {
     private class TaskGetCinemaRegions extends AsyncTask<String, Void, List<String>> {
         @Override
         protected List<String> doInBackground(String... strings) {
-            SearchAWS search = new SearchAWS();
+            AWS search = new AWS();
             List<String> regions = search.getCinemaRegionsByState(strings[0]);
             return regions;
         }
