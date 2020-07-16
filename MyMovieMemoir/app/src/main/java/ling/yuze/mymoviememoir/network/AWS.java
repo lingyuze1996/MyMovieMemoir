@@ -1,6 +1,14 @@
 package ling.yuze.mymoviememoir.network;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.amplifyframework.api.ApiException;
+import com.amplifyframework.api.rest.RestOptions;
+import com.amplifyframework.api.rest.RestResponse;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.Consumer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,11 +21,17 @@ import ling.yuze.mymoviememoir.data.Cinema;
 
 public class AWS extends NetworkConnection{
     private static final String BASE_URL = "https://j0wq6141yh.execute-api.ap-southeast-2.amazonaws.com/beta/";
+    private String response;
+
     public AWS() {super();}
 
     @Override
     public void setUrl(String path) {
         super.setUrl(BASE_URL + path);
+    }
+
+    public String getResponse() {
+        return response;
     }
 
     public boolean userSignUp(String request) {
@@ -83,5 +97,21 @@ public class AWS extends NetworkConnection{
         }
 
         return regions;
+    }
+
+    public void get() {
+        RestOptions options = new RestOptions("/cinema");
+        Amplify.API.get(options, new Consumer<RestResponse>() {
+                    @Override
+                    public void accept(@NonNull RestResponse value) {
+                        response = value.getData().asString();
+                    }
+                }, new Consumer<ApiException>() {
+                    @Override
+                    public void accept(@NonNull ApiException value) {
+                        value.printStackTrace();
+                        response = "Error";
+                    }
+                });
     }
 }
