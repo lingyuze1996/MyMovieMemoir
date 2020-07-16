@@ -1,5 +1,7 @@
 package ling.yuze.mymoviememoir.network;
 
+import com.amplifyframework.core.Amplify;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +26,7 @@ public class AWS extends NetworkConnection{
         setUrl(path);
         try {
             int responseCode = httpPost(request);
-            if (responseCode == 204) {
+            if (responseCode == 200) {
                 success = true;
             }
         } catch (IOException e) {
