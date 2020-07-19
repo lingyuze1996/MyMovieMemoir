@@ -2,7 +2,6 @@ package ling.yuze.mymoviememoir.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -20,17 +19,12 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.google.gson.Gson;
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.data.Credentials;
-import ling.yuze.mymoviememoir.data.Person;
 import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.DateFormat;
-import ling.yuze.mymoviememoir.utility.Encryption;
-import ling.yuze.mymoviememoir.utility.JsonParser;
 import ling.yuze.mymoviememoir.utility.Validation;
-import ling.yuze.mymoviememoir.network.RestService;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
     private EditText etFirstName;
@@ -46,15 +40,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     private EditText etCheckPassword;
     private Button btSignUp;
 
-    private String firstName = "";
-    private String lastName = "";
-    private String gender = "";
-    private int[] dob = new int[3];
-    private String address = "";
-    private String postcodeString = "";
-    private String state = "";
-    private String username = "";
-    private String password = "";
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private String dob;
+    private String address;
+    private String postcode;
+    private String state;
+    private String username;
+    private String password;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -85,13 +79,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         calendar = findViewById(R.id.calendar);
         calendar.setVisibility(View.GONE);
 
-        // automatically store dob into an int array
+        // automatically store dob into a String
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                dob[0] = year;
-                dob[1] = month + 1;
-                dob[2] = dayOfMonth;
+                dob = DateFormat.toDateString(year, month + 1, dayOfMonth);
             }
         });
 
@@ -143,7 +135,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
 
                 // check password length
                 password = etPassword.getText().toString();
-                if (!Validation.checkLength(password, 16)) {
+                if (!Validation.checkLength(password, 8)) {
                     Toast.makeText(this, R.string.error_password_length, Toast.LENGTH_LONG)
                             .show();
                     break;
@@ -166,14 +158,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                 }
 
                 // check whether gender is empty
-                if (gender.equals("")) {
+                if (gender == null) {
                     Toast.makeText(this, R.string.error_gender_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
 
                 // check whether dob is empty
-                if (dob[0] == 0 && dob[1] == 0 && dob[2] == 0) {
+                if (dob == null) {
                     Toast.makeText(this, R.string.error_dob_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
@@ -188,21 +180,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                 }
 
                 // check whether postcode is a four digit number
-                postcodeString = etPostcode.getText().toString().trim();
-                if (postcodeString.equals("")) {
+                postcode = etPostcode.getText().toString().trim();
+                if (postcode.equals("")) {
                     Toast.makeText(this, R.string.error_postcode_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
-                if (postcodeString.length() != 4) {
+                if (postcode.length() != 4) {
                     Toast.makeText(this, R.string.error_postcode_format, Toast.LENGTH_LONG)
                             .show();
                     break;
                 }
 
-                // check whether username is available
-                TaskCheckUsername taskCheckUsername = new TaskCheckUsername();
-                taskCheckUsername.execute(username);
+                // try sign up
+                new TaskSignUp().execute();
                 break;
 
             case R.id.imageDate:
@@ -218,22 +209,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     public boolean onTouch(View v, MotionEvent event) {
         switch (v.getId()) {
             case R.id.etRegisterPassword:
-                alterVisibility(etPassword, event);
+                alterPasswordVisibility(etPassword, event);
                 break;
             case R.id.etCheckPassword:
-                alterVisibility(etCheckPassword, event);
+                alterPasswordVisibility(etCheckPassword, event);
                 break;
         }
         return false;
     }
 
     // switch password hide/show
-    private void alterVisibility(EditText et, MotionEvent event) {
+    private void alterPasswordVisibility(EditText et, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             Drawable drawable_right = et.getCompoundDrawables()[2];
-            if (drawable_right == null)
-                return;
-            else {
+            if (drawable_right != null) {
                 if (event.getRawX() >= (et.getRight() - drawable_right.getBounds().width())) {
                     if (drawable_right.getConstantState().equals
                             (getResources().getDrawable(R.drawable.ic_visibility, null).getConstantState())) {
@@ -251,85 +240,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         }
     }
 
-    private class TaskCheckUsername extends AsyncTask<String, Void, Boolean> {
-
+    private class TaskSignUp extends AsyncTask<Void, Void, Boolean> {
         @Override
-        protected Boolean doInBackground(String... params) {
-
-            new TaskSignUp().execute();
-            return false;
-            //Boolean available = true;
-            /*
-            RestService rs = new RestService();
-            String credentials = rs.getCredentialsByUsername(params[0]);
-            // if there is a record in database, username is not available
-            if (!credentials.equals(""))
-                available = false;
-
-            */
-            //return available;
+        protected Boolean doInBackground(Void... voids) {
+            AWS aws = new AWS();
+            User user = new User(username, password, firstName, lastName, gender, dob,
+                    address, state, postcode);
+            String request = new Gson().toJson(user);
+            return aws.userSignUp(request);
         }
 
         @Override
-        protected void onPostExecute(Boolean available) {
-            if (!available) {
-
+        protected void onPostExecute(Boolean success) {
+            if (!success)
                 Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
-            }
             else {
                 Toast.makeText(getBaseContext(), R.string.success_sign_up, Toast.LENGTH_LONG).show();
-
-                String dobString = DateFormat.toCompleteDateString(dob[0], dob[1], dob[2]);
-                Person person = new Person(0, firstName, lastName, gender,
-                        dobString, address, state, postcodeString);
-
-                String passwordHash = Encryption.md5_encryption(password);
-                String signUpDate = DateFormat.getCurrentDate();
-                Credentials credentials = new Credentials(username, signUpDate, passwordHash);
-
-                // post personal information and credentials to server database
-                new TaskUploadData().execute(person, credentials);
-
                 // redirect to login screen
                 Intent intent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(intent);
             }
-
         }
-    }
-
-    private class TaskSignUp extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            AWS aws = new AWS();
-            User user = new User(username, password, firstName, lastName, gender, "2000-01-01",
-                    address, state, postcodeString);
-            String request = JsonParser.objectToJson(user);
-            aws.userSignUp(request);
-            return null;
-        }
-    }
-
-    private class TaskUploadData extends AsyncTask<Object, Void, Void> {
-        @Override
-        protected Void doInBackground(Object... params) {
-            //Firstly get the largest id number
-            RestService rs = new RestService();
-            String persons = rs.getAllPersons();
-            int largestId = rs.getLargestPersonId(persons);
-            int newId = largestId + 1; //set the newly arranged id
-            Person person = (Person) params[0];
-            person.setPId(newId);
-            String jsonPerson = JsonParser.objectToJson(person);
-            rs.post(jsonPerson, "person");
-
-            Credentials credentials = (Credentials) params[1];
-            credentials.setPId(newId);
-            String jsonCredentials = JsonParser.objectToJson(credentials);
-            rs.post(jsonCredentials, "credentials");
-
-            return null;
-        }
-
     }
 }

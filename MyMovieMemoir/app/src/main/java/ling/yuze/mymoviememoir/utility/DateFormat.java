@@ -3,19 +3,6 @@ package ling.yuze.mymoviememoir.utility;
 import java.util.Calendar;
 
 public class DateFormat {
-    public static String toCompleteDateString(int year, int month, int day) {
-        String dateString = toDateString(year, month, day);
-        String completeString = dateString + "T00:00:00+10:00";
-        return completeString;
-    }
-
-    public static String toCompleteTimeString(int hour, int minute) {
-        StringBuffer buffer = new StringBuffer("T");
-        buffer.append(toTimeString(hour, minute));
-        buffer.append(":00+10:00");
-        return buffer.toString();
-    }
-
     public static String toDateString(int year, int month, int day) {
         StringBuffer buffer = new StringBuffer();
 
@@ -75,7 +62,7 @@ public class DateFormat {
         int month = c.get(Calendar.MONTH) + 1;
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        return toCompleteDateString(year, month, day);
+        return toDateString(year, month, day);
     }
 
     public static String getCurrentDatetime() {
