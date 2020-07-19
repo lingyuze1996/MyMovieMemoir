@@ -1,6 +1,7 @@
 package ling.yuze.mymoviememoir.network;
 
 import com.amplifyframework.core.Amplify;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.data.Cinema;
+import ling.yuze.mymoviememoir.data.Memoir;
+import ling.yuze.mymoviememoir.data.User;
 
 public class AWS extends NetworkConnection{
     private static final String BASE_URL = "https://j0wq6141yh.execute-api.ap-southeast-2.amazonaws.com/beta/";
@@ -20,10 +23,28 @@ public class AWS extends NetworkConnection{
         super.setUrl(BASE_URL + path);
     }
 
-    public boolean userSignUp(String request) {
+    public boolean userSignUp(User user) {
         boolean success = false;
         final String path = "signup";
         setUrl(path);
+        String request = new Gson().toJson(user);
+        try {
+            int responseCode = httpPost(request);
+            if (responseCode == 200) {
+                success = true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return success;
+    }
+
+    public boolean postMemoir(Memoir memoir) {
+        boolean success = false;
+        final String path = "memoir";
+        setUrl(path);
+        String request = new Gson().toJson(memoir);
         try {
             int responseCode = httpPost(request);
             if (responseCode == 200) {

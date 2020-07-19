@@ -246,8 +246,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
             AWS aws = new AWS();
             User user = new User(username, password, firstName, lastName, gender, dob,
                     address, state, postcode);
-            String request = new Gson().toJson(user);
-            return aws.userSignUp(request);
+            return aws.userSignUp(user);
         }
 
         @Override

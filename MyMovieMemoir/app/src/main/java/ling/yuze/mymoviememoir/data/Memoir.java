@@ -1,28 +1,21 @@
 package ling.yuze.mymoviememoir.data;
 
 public class Memoir {
-    private int MId;
-    private String MComment;
-    private String MMovieName;
-    private String MMovieReleaseDate;
-    private String MWatchingDatetime;
-    private float MRating;
-    private Person PId;
-    private Cinema CId;
+    private User user;
+    private Cinema cinema;
+    private Movie movie;
+    private String watchDateTime;
+    private float rating;
+    private String comment;
 
-    public Memoir(String name, String release, String time, String comment, float rating) {
-        MMovieName = name;
-        MMovieReleaseDate = release;
-        MWatchingDatetime = time;
-        MComment = comment;
-        MRating = rating;
+    public Memoir(User user, Cinema cinema, Movie movie, String watchDateTime, float rating, String comment) {
+        this.user = user;
+        this.cinema = cinema;
+        this.movie = movie;
+        this.watchDateTime = watchDateTime;
+        this.rating = rating;
+        this.comment = comment;
     }
-
-    public void setPId(int id) {
-        PId = new Person(id);
-    }
-    //public void setCId(int id) { CId = new Cinema(id); }
-    public void setId(int id) { MId = id; }
 }
 
 

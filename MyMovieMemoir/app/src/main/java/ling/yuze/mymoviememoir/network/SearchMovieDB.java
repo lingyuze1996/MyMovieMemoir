@@ -54,9 +54,9 @@ public class SearchMovieDB extends NetworkConnection {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return basics;
         }
+
+        return basics;
     }
 
     public List<String> searchCast(int id) {

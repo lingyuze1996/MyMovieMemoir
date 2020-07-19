@@ -25,6 +25,9 @@ import androidx.fragment.app.FragmentTransaction;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
+import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.data.User;
+import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.JsonParser;
@@ -56,7 +59,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private Button buttonSubmit;
 
     // information
-    private int maxMemoirId;
+
     private String watchingDate;
     private String watchingTime;
     private Cinema cinema;
@@ -167,25 +170,19 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                             .show();
                     break;
                 }
-                String watchingDateTime = watchingDate
-                        + watchingTime;
+
                 String comment = etAddComment.getText().toString();
                 float rating = ratingBar.getRating();
 
-                Memoir memoir = new Memoir(tvMovieName.getText().toString(), tvRelease.getText().toString() + "T00:00:00+10:00",
-                        watchingDateTime, comment, rating);
+                Memoir memoir = new Memoir(new User("testuser"),
+                        new Cinema("test", "test", "test", "test", "test"),
+                        new Movie("test"),
+                        watchingDate + " " + watchingTime, rating, comment);
 
-                // String cinemaSelected = spinnerCinema.getSelectedItem().toString();
+                //SharedPreferences sharedPersonInfo = getContext().
+                //        getSharedPreferences("Info", Context.MODE_PRIVATE);
 
-                // int cinemaId = checkCinemaId(cinemaSelected);
-
-                // memoir.setCId(cinemaId);
-
-                SharedPreferences sharedPersonInfo = getContext().
-                        getSharedPreferences("Info", Context.MODE_PRIVATE);
-
-                int personId = sharedPersonInfo.getInt("id", 0);
-                memoir.setPId(personId);
+                //int personId = sharedPersonInfo.getInt("id", 0);
 
                 // post memoir into server database
                 new TaskPostNewMemoir().execute(memoir);
@@ -217,59 +214,10 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private class TaskPostNewMemoir extends AsyncTask<Memoir, Void, Void> {
         @Override
         protected Void doInBackground(Memoir... memoirs) {
-            RestService rs = new RestService();
+            AWS aws = new AWS();
             Memoir memoir = memoirs[0];
-            memoir.setId(++ maxMemoirId);
-            String memoirJson = JsonParser.objectToJson(memoir);
-            rs.post(memoirJson, "memoir");
-
+            aws.postMemoir(memoir);
             return null;
         }
     }
-
-    /*
-    private class TaskGetCinemas extends AsyncTask<Void, Void, List<Object[]>> {
-        @Override
-        protected List<Object[]> doInBackground(Void... voids) {
-            List<Object[]> cinemaList = new ArrayList<>();
-            RestService rs = new RestService();
-            cinemaList = rs.getAllCinemas();
-            return cinemaList;
-        }
-
-        @Override
-        protected void onPostExecute(List<Object[]> cinemaList) {
-            cinemasList = cinemaList;
-            for (Object[] cinema : cinemaList) {
-                String name = (String) cinema[2];
-                String postcode = (String) cinema[1];
-                int id = (Integer) cinema[0];
-
-                cinemas.add(name + " " + postcode);
-            }
-
-            cinemaAdapter.notifyDataSetChanged();
-
-            for (Object[] cinema : cinemaList) {
-                int id = (Integer) cinema[0];
-                if (id > maxCinemaId)
-                    maxCinemaId = id;
-            }
-        }
-    }
-
-
-    private class TaskGetMaxMemoirId extends AsyncTask<Void, Void, Integer> {
-        @Override
-        protected Integer doInBackground(Void... voids) {
-            RestService rs = new RestService();
-            return rs.getMaxMemoirId();
-        }
-
-        @Override
-        protected void onPostExecute(Integer integer) {
-            maxMemoirId = integer;
-        }
-    }
-    */
 }

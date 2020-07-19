@@ -12,7 +12,7 @@ import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.utility.JsonParser;
 
 public class RestService extends NetworkConnection {
-    private static final String BASE_URL = "http://192.168.0.5:8080/MemoirREST/webresources/";
+    private static final String BASE_URL = "http://192.168.0.32:8080/MemoirREST/webresources/";
 
     public RestService() {
         super();

@@ -14,6 +14,10 @@ public class Movie {
 
     public Movie() {}
 
+    public Movie(String name) {
+        this.name = name;
+    }
+
     public Movie(int mId, String mName, String mReleaseDate, String mImagePath, String mOverview, float mRating) {
         id = mId;
         name = mName;

@@ -17,7 +17,10 @@ public class FileIO {
             while (scanner.hasNextLine()) {
                 buffer.append(scanner.nextLine() + "\n");
             }
-            content = buffer.toString();
+
+            // remove the last "\n"
+            if (buffer.length() != 0)
+                content = buffer.substring(0, buffer.length() - 1);
         } catch (Exception e) {
             e.printStackTrace();
         }
