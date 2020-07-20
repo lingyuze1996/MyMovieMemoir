@@ -22,11 +22,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.data.User;
+import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.utility.DateFormat;
@@ -59,17 +64,27 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private Button buttonSubmit;
 
     // information
-
+    private UserViewModel userViewModel;
+    private CinemaViewModel cinemaViewModel;
     private String watchingDate;
     private String watchingTime;
-    private Cinema cinema;
+    private Cinema watchingCinema;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
 
-        //new TaskGetMaxMemoirId().execute();
+        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+        cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
+        cinemaViewModel.getCinema().observe(getViewLifecycleOwner(), new Observer<Cinema>() {
+            @Override
+            public void onChanged(Cinema cinema) {
+                watchingCinema = cinema;
+                tvCinema.setText(cinema.toString());
+                tvCinema.setVisibility(View.VISIBLE);
+            }
+        });
 
         // Get movie information from movie view fragment
         SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
@@ -156,8 +171,6 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 FragmentTransaction transaction = fm.beginTransaction();
 
                 CinemaChooseFragment fragment = new CinemaChooseFragment();
-                fragment.setTargetFragment(this, 0);
-
                 transaction.add(R.id.content_frame, fragment);
                 transaction.hide(this);
                 transaction.addToBackStack(null);
@@ -174,15 +187,9 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 String comment = etAddComment.getText().toString();
                 float rating = ratingBar.getRating();
 
-                Memoir memoir = new Memoir(new User("testuser"),
-                        new Cinema("test", "test", "test", "test", "test"),
-                        new Movie("test"),
-                        watchingDate + " " + watchingTime, rating, comment);
-
-                //SharedPreferences sharedPersonInfo = getContext().
-                //        getSharedPreferences("Info", Context.MODE_PRIVATE);
-
-                //int personId = sharedPersonInfo.getInt("id", 0);
+                Memoir memoir = new Memoir(userViewModel.getUser().getValue(), watchingCinema,
+                        new Movie("test"), watchingDate + " " + watchingTime,
+                        rating, comment);
 
                 // post memoir into server database
                 new TaskPostNewMemoir().execute(memoir);
@@ -192,15 +199,6 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
                 break;
         }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            tvCinema.setText(data.getStringExtra("cinemaChosen"));
-            tvCinema.setVisibility(View.VISIBLE);
-        }
-
     }
 
     private void replaceFragment(Fragment next) {

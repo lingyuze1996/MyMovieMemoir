@@ -4,7 +4,7 @@ public class Memoir {
     private User user;
     private Cinema cinema;
     private Movie movie;
-    private String watchDateTime;
+    private String memoirTime;
     private float rating;
     private String comment;
 
@@ -12,7 +12,7 @@ public class Memoir {
         this.user = user;
         this.cinema = cinema;
         this.movie = movie;
-        this.watchDateTime = watchDateTime;
+        this.memoirTime = watchDateTime;
         this.rating = rating;
         this.comment = comment;
     }

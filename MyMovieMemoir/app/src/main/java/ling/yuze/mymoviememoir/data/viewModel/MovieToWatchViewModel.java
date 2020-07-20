@@ -1,7 +1,6 @@
-package ling.yuze.mymoviememoir.data.viewmodel;
+package ling.yuze.mymoviememoir.data.viewModel;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,6 +1,5 @@
 package ling.yuze.mymoviememoir.network;
 
-import com.amplifyframework.core.Amplify;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -55,6 +54,37 @@ public class AWS extends NetworkConnection{
         }
 
         return success;
+    }
+
+    public User getUserInfo(String username) {
+        User user = new User(username);
+
+        final String path = "user/" + username;
+        setUrl(path);
+
+        try {
+            String response = httpGet();
+
+            JSONArray jsonArray = new JSONArray(response);
+
+            if (jsonArray.length() != 1)
+                return user;
+
+            JSONObject userJSON = jsonArray.getJSONObject(0);
+            user.setUserId(userJSON.getString("userId"));
+            user.setFirstName(userJSON.getString("firstName"));
+            user.setSurname(userJSON.getString("surname"));
+            user.setGender(userJSON.getString("gender"));
+            user.setDob(userJSON.getString("dob"));
+            user.setAddress(userJSON.getString("address"));
+            user.setState(userJSON.getString("state"));
+            user.setPostcode(userJSON.getString("postcode"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+
     }
 
     public List<Cinema> getCinemas(String state, String region) {

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,16 +22,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterWatchlist;
-import ling.yuze.mymoviememoir.data.MemoirItem;
-import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.data.room.database.MovieToWatchDatabase;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
-import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
 import ling.yuze.mymoviememoir.utility.FileIO;
 

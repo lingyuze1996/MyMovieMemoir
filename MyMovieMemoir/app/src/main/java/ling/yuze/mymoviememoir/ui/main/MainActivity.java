@@ -21,7 +21,10 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
+import ling.yuze.mymoviememoir.data.User;
+import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
+import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.fragment.HomeFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MapFragment;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private SharedPreferences shared;
     private MovieToWatchViewModel viewModel;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewModel = new ViewModelProvider(this).get(MovieToWatchViewModel.class);
         viewModel.initializeVars(getApplication());
 
+        // initialize user view model to share user's information within main activity
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
         // get username passed from login page
         String username = getIntent().getStringExtra("username");
 
         // retrieve personal information details
-        new TaskGetInfo().execute(username);
+        new TaskGetUserInfo().execute(username);
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav_view);
@@ -125,6 +132,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    private class TaskGetUserInfo extends AsyncTask<String, Void, User> {
+        @Override
+        protected User doInBackground(String... params) {
+            AWS aws = new AWS();
+            return aws.getUserInfo(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            userViewModel.setUser(user);
+
+            Toast.makeText(getBaseContext(), "Welcome, " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
+            TextView tv = findViewById(R.id.nav_header_text);
+            String name = user.getFirstName() + " " + user.getSurname();
+            tv.setText(name);
+
+            //automatically redirect to home page after passing the information
+            replaceFragment(new HomeFragment());
+
+        }
+    }
+
     private class TaskGetInfo extends AsyncTask<String, Void, Object[]> {
         @Override
         protected Object[] doInBackground(String... params) {
@@ -140,9 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(Object[] info) {
             if (!info[0].equals("")) {
-                Toast.makeText(getBaseContext(), "Welcome, " + info[0] + "!", Toast.LENGTH_LONG).show();
-                TextView tv = findViewById(R.id.nav_header_text);
-                tv.setText(info[0] + " " + info[1]);
+
 
                 // share personal information among all the fragments under main activity
                 shared = getBaseContext().getSharedPreferences("Info", MODE_PRIVATE);
@@ -152,8 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 editor.putString("lastName", (String) info[1]);
                 editor.apply();
 
-                //automatically redirect to home page after passing the information
-                replaceFragment(new HomeFragment());
+
             }
         }
     }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
-    private int id;
+    private Integer id;
     private String name;
     private String releaseDate;
-    private float rating;
+    private Float rating;
     private String overview;
     private String imagePath;
     private List<String> genres;

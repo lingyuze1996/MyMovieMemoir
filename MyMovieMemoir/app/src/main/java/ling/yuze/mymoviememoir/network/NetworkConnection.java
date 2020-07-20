@@ -1,6 +1,8 @@
 package ling.yuze.mymoviememoir.network;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -39,9 +41,6 @@ public class NetworkConnection {
         Request request = builder.post(body).build();
         Response response = client.newCall(request).execute();
         responseCode = response.code();
-
-        String s = response.body().string();
-
         return responseCode;
     }
 

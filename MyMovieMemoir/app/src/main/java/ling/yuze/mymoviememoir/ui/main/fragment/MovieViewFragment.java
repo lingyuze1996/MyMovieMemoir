@@ -18,16 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.adapter.ListAdapterWatchlist;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
-import ling.yuze.mymoviememoir.data.viewmodel.MovieToWatchViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.FileIO;

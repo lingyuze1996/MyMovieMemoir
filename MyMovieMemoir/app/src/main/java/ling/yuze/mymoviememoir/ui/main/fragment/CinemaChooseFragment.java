@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ import java.util.List;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.CinemaChooseRecyclerAdapter;
 import ling.yuze.mymoviememoir.data.Cinema;
+import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 
 public class CinemaChooseFragment extends Fragment {
@@ -92,15 +94,10 @@ public class CinemaChooseFragment extends Fragment {
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getTargetFragment() == null)
-                    return;
-                Intent intent = new Intent();
-                intent.putExtra("cinemaChosen", "some cinema");
-                getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
-
-                FragmentManager fm = getFragmentManager();
-                fm.popBackStack();
-
+                CinemaViewModel cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
+                cinemaViewModel.setCinema(new Cinema("1", "Hoyts Chadstone", "Chadstone SC",
+                        "VIC", "Melbourne East"));
+                getFragmentManager().popBackStack();
             }
         });
 

@@ -54,4 +54,12 @@ public class Cinema {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer buffer = new StringBuffer(name);
+        buffer.append(" ");
+        buffer.append(state);
+        return buffer.toString();
+    }
 }
