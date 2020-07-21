@@ -12,4 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
-*.twitter4j-core-4.0.7.*
+*twitter4j-core-4.0.7
+*/google_maps_api.xml
+*secrets.xml
+*google_maps_api.xml
