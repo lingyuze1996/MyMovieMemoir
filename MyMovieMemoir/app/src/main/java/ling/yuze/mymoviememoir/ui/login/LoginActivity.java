@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -16,15 +17,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.data.User;
+import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.Encryption;
 import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.MainActivity;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername;
     private EditText etPassword;
     private Button btSignIn;
     private TextView tvSignUp;
+    private String username;
+    private String password;
+    private AWS aws;
+    private Handler mHandler = new Handler();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -76,16 +84,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.btSignIn:
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-
-                // encrypt password to hash
-                String passwordHash = Encryption.md5_encryption(password);
-
-                // Check whether password hash matches
-                new TaskGetPassword().execute(username, passwordHash);
-
+                username = etUsername.getText().toString();
+                password = etPassword.getText().toString();
+                loginProgress();
                 break;
+
+//                // encrypt password to hash
+//////                String passwordHash = Encryption.md5_encryption(password);
+//////
+//////                // Check whether password hash matches
+//////                new TaskGetPassword().execute(username, passwordHash);
+//////
+//                break;
+
+
             case R.id.tv_sign_up:
                 // redirect to sign up screen
                 Intent intent = new Intent(this, SignUpActivity.class);
@@ -93,31 +105,72 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private class TaskGetPassword extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            RestService rs = new RestService();
-            String credentials = rs.getCredentialsByUsername(params[0]);
-            String passwordRecord = rs.getPasswordByUsername(credentials);
-            if (passwordRecord.equals(params[1])) {
-                return params[0]; // password hash matches
-            }
-            return ""; // password hash not match
-        }
 
-        @Override
-        protected void onPostExecute(String s) {
-            // password doesn't match username
-            if (s.equals(""))
-                Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+    private void loginProgress(){
+        aws = new AWS();
+        final User user = new User(username,password);
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        String ret ="";
+                        try {
+                            ret = aws.userSignIn(user);
 
-            // password matches username, proceed
-            else {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                intent.putExtra("username", s);
-                startActivity(intent);
-            }
-        }
+
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        if (ret =="success"){
+                            ///take actions after the post
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                    intent.putExtra("username", username);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                }
+        ).start();
+
+
+
+
     }
+//    private class TaskGetPassword extends AsyncTask<String, Void, String> {
+//        @Override
+//        protected String doInBackground(String... params) {
+//            RestService rs = new RestService();
+//            String credentials = rs.getCredentialsByUsername(params[0]);
+//            String passwordRecord = rs.getPasswordByUsername(credentials);
+//            if (passwordRecord.equals(params[1])) {
+//                return params[0]; // password hash matches
+//            }
+//            return ""; // password hash not match
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            // password doesn't match username
+//            if (s.equals(""))
+//                Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+//
+//            // password matches username, proceed
+//            else {
+//                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//                intent.putExtra("username", s);
+//                startActivity(intent);
+//            }
+//        }
+//    }
 
 }

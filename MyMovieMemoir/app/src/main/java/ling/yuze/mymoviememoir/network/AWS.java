@@ -39,6 +39,23 @@ public class AWS extends NetworkConnection{
         return success;
     }
 
+    public String userSignIn(User user) {
+        String ret = "Invalid";
+        final String path = "signin";
+        setUrl(path);
+        String request = new Gson().toJson(user);
+        try {
+            int responseCode = httpPost(request);
+            if (responseCode == 200) {
+                ret = "success";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
     public boolean postMemoir(Memoir memoir) {
         boolean success = false;
         final String path = "memoir";

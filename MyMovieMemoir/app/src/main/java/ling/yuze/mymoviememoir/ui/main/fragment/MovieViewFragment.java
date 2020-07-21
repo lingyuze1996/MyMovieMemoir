@@ -156,7 +156,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
             ArrayList<List<String>> list = new ArrayList<>();
 
             SearchMovieDB search = new SearchMovieDB();
-            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
+            search.setAPIKey(getString(R.string.movie_db_api_key));
             List<String> castList = search.searchCast(movieId);
             List<String> countryList = search.searchCountries(movieId);
             List<String> directorList = search.searchDirector(movieId);

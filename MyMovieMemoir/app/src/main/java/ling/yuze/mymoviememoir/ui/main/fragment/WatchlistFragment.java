@@ -107,7 +107,7 @@ public class WatchlistFragment extends Fragment {
         @Override
         protected Void doInBackground(Object... params) {
             SearchMovieDB search = new SearchMovieDB();
-            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
+            search.setAPIKey(getString(R.string.movie_db_api_key));
 
             // first find movies with corresponding movie name
             List<Object[]> movieList = search.searchBasics((String) params[0]);
