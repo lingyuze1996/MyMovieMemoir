@@ -22,6 +22,11 @@ public class User {
         this.state = state;
         this.postcode = postcode;
     }
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+
+    }
 
     public User(String username) {
         this.username = username;

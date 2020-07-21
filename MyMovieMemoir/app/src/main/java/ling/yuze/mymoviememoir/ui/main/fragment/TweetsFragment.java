@@ -67,7 +67,16 @@ public class TweetsFragment extends Fragment {
         @Override
         protected List<String> doInBackground(String... strings) {
             String keywords = strings[0] + " movie";
-            SearchTwitter.setAPIKeys(FileIO.readFile(getContext(), R.raw.twitter_api_keys).split("\n"));
+//            CONSUMER_KEY = keys[0];
+//            CONSUMER_SECRET = keys[1];
+//            ACCESS_TOKEN = keys[2];
+//            ACCESS_SECRET = keys[3];
+            String key = getString(R.string.twitter_api_key);
+            String apiSecret = getString(R.string.twitter_api_secret_key);
+            String token = getString(R.string.twitter_access_token);
+            String tokenSecret = getString(R.string.twitter_access_token_secret);
+            String[] twitterKeys = {key, apiSecret, token, tokenSecret};
+            SearchTwitter.setAPIKeys(twitterKeys);
             List<String> tweetsList = SearchTwitter.search(keywords);
             return tweetsList;
         }

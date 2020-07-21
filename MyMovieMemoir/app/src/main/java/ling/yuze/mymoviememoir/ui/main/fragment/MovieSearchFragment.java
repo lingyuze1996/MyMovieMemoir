@@ -94,7 +94,7 @@ public class MovieSearchFragment extends Fragment {
         @Override
         protected List<Object[]> doInBackground(String... strings) {
             SearchMovieDB search = new SearchMovieDB();
-            search.setAPIKey(FileIO.readFile(getContext(), R.raw.moviedb_api_key));
+            search.setAPIKey(getString(R.string.movie_db_api_key));
             List<Object[]> basics = search.searchBasics(strings[0]);
             return basics;
         }
