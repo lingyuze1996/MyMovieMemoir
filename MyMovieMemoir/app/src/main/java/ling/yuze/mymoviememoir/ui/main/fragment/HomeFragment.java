@@ -36,10 +36,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // get person id
-        //SharedPreferences shared = getActivity().getSharedPreferences("Info", Context.MODE_PRIVATE);
-        //id = shared.getInt("id", 0);
-
         tvDate = v.findViewById(R.id.tv_home_date);
         Calendar c = Calendar.getInstance();
         String currentDate =

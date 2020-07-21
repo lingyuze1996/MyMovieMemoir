@@ -77,9 +77,12 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
+        cinemaViewModel.setCinema(null);
         cinemaViewModel.getCinema().observe(getViewLifecycleOwner(), new Observer<Cinema>() {
             @Override
             public void onChanged(Cinema cinema) {
+                if (cinema == null)
+                    return;
                 watchingCinema = cinema;
                 tvCinema.setText(cinema.toString());
                 tvCinema.setVisibility(View.VISIBLE);
