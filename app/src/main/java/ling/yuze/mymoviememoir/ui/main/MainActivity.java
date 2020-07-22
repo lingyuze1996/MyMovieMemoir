@@ -10,22 +10,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
-
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
-import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.ui.main.fragment.HomeFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MapFragment;
 import ling.yuze.mymoviememoir.ui.main.fragment.MovieMemoirFragment;
@@ -39,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    private SharedPreferences shared;
     private MovieToWatchViewModel viewModel;
     private UserViewModel userViewModel;
 
@@ -88,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // don't replace if on the same fragment
             if (nextFragment.equals(currentFragment))
                 return;
-        } catch (NullPointerException e) {}
+        } catch (NullPointerException e) {e.printStackTrace();}
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.content_frame, next);
@@ -151,36 +145,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //automatically redirect to home page after passing the information
             replaceFragment(new HomeFragment());
 
-        }
-    }
-
-    private class TaskGetInfo extends AsyncTask<String, Void, Object[]> {
-        @Override
-        protected Object[] doInBackground(String... params) {
-            RestService rs = new RestService();
-            String credentials = rs.getCredentialsByUsername(params[0]);
-            String firstName = rs.getFirstNameFromCredentials(credentials);
-            String lastName = rs.getLastNameFromCredentials(credentials);
-            Integer id = rs.getIdFromCredentials(credentials);
-            Object[] info = {firstName, lastName, id};
-            return info;
-        }
-
-        @Override
-        protected void onPostExecute(Object[] info) {
-            if (!info[0].equals("")) {
-
-
-                // share personal information among all the fragments under main activity
-                shared = getBaseContext().getSharedPreferences("Info", MODE_PRIVATE);
-                SharedPreferences.Editor editor = shared.edit();
-                editor.putInt("id", (int) info[2]);
-                editor.putString("firstName", (String) info[0]);
-                editor.putString("lastName", (String) info[1]);
-                editor.apply();
-
-
-            }
         }
     }
 }

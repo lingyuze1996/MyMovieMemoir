@@ -36,7 +36,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.network.RestService;
 
 public class ReportFragment extends Fragment implements View.OnClickListener {
     private int id;
@@ -66,7 +65,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getSelectedItem().toString();
                 int year = Integer.parseInt(selected);
-                new TaskGetMoviesPerMonth().execute(year);
+                //new TaskGetMoviesPerMonth().execute(year);
             }
 
             @Override
@@ -87,16 +86,16 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 startDate = year + "-" + (month + 1) + "-" + dayOfMonth;
-                if (endDate != null)
-                    new TaskGetMoviesPerSuburb().execute(startDate, endDate);
+                //if (endDate != null)
+                //    new TaskGetMoviesPerSuburb().execute(startDate, endDate);
             }
         });
         calendarEnd.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 endDate = year + "-" + (month + 1) + "-" + dayOfMonth;
-                if (startDate != null)
-                    new TaskGetMoviesPerSuburb().execute(startDate, endDate);
+                //if (startDate != null)
+                //    new TaskGetMoviesPerSuburb().execute(startDate, endDate);
             }
         });
 
@@ -234,6 +233,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /*
     private class TaskGetMoviesPerSuburb extends AsyncTask<String, Void, HashMap<String, Integer>> {
         @Override
         protected HashMap<String, Integer> doInBackground(String... params) {
@@ -264,4 +264,5 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
             initializeBarChart(getBarChartData(ints));
         }
     }
+    */
 }

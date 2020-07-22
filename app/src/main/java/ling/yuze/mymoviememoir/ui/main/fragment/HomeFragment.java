@@ -1,7 +1,5 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +19,6 @@ import java.util.List;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.HomeRecyclerAdapter;
 import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.network.RestService;
 
 public class HomeFragment extends Fragment {
 
@@ -55,19 +52,4 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private class TaskFindTopFiveRecentMovies extends AsyncTask<Void, Void, List<Object[]>> {
-        @Override
-        protected List doInBackground(Void... voids) {
-            RestService rs = new RestService();
-            List<Object[]> list = rs.getTopFiveRecentMovies(id);
-            return list;
-        }
-
-        @Override
-        protected void onPostExecute(List<Object[]> list) {
-            for (Object[] item : list) {
-                adapter.addMovie(new Movie((String) item[0], (String) item[2], (float) ((double) item[1])));
-            }
-        }
-    }
 }

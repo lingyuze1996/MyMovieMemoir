@@ -2,14 +2,9 @@ package ling.yuze.mymoviememoir.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,14 +14,13 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-import com.google.gson.Gson;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.Validation;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etFirstName;
     private EditText etLastName;
     private RadioGroup radioGroup;
@@ -41,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     private Button btSignUp;
 
     private String firstName;
-    private String lastName;
+    private String surname;
     private String gender;
     private String dob;
     private String address;
@@ -50,7 +44,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
     private String username;
     private String password;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,12 +96,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         });
 
         etUsername = findViewById(R.id.etRegisterUsername);
-
         etPassword = findViewById(R.id.etRegisterPassword);
         etCheckPassword = findViewById(R.id.etCheckPassword);
 
-        etPassword.setOnTouchListener(this);
-        etCheckPassword.setOnTouchListener(this);
         btSignUp = findViewById(R.id.btSignUp);
         btSignUp.setOnClickListener(this);
     }
@@ -150,8 +140,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
                 }
 
                 // check whether user's last name is empty
-                lastName = etLastName.getText().toString().trim();
-                if (lastName.equals("")) {
+                surname = etLastName.getText().toString().trim();
+                if (surname.equals("")) {
                     Toast.makeText(this, R.string.error_last_name_empty, Toast.LENGTH_LONG)
                             .show();
                     break;
@@ -205,46 +195,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnTouchLis
         }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (v.getId()) {
-            case R.id.etRegisterPassword:
-                alterPasswordVisibility(etPassword, event);
-                break;
-            case R.id.etCheckPassword:
-                alterPasswordVisibility(etCheckPassword, event);
-                break;
-        }
-        return false;
-    }
-
-    // switch password hide/show
-    private void alterPasswordVisibility(EditText et, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            Drawable drawable_right = et.getCompoundDrawables()[2];
-            if (drawable_right != null) {
-                if (event.getRawX() >= (et.getRight() - drawable_right.getBounds().width())) {
-                    if (drawable_right.getConstantState().equals
-                            (getResources().getDrawable(R.drawable.ic_visibility, null).getConstantState())) {
-                        et.setCompoundDrawablesWithIntrinsicBounds(null, null,
-                                getResources().getDrawable(R.drawable.ic_visibility_off, null), null);
-                        et.setTransformationMethod(PasswordTransformationMethod.getInstance());;
-                    }
-                    else {
-                        et.setCompoundDrawablesWithIntrinsicBounds(null, null,
-                                getResources().getDrawable(R.drawable.ic_visibility, null), null);
-                        et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    }
-                }
-            }
-        }
-    }
-
     private class TaskSignUp extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Void... voids) {
             AWS aws = new AWS();
-            User user = new User(username, password, firstName, lastName, gender, dob,
+            User user = new User(username, password, firstName, surname, gender, dob,
                     address, state, postcode);
             return aws.userSignUp(user);
         }

@@ -7,7 +7,7 @@
     tools:context=".ui.login.LoginActivity">
 
     <EditText
-        android:id="@+id/etRegisterUsername"
+        android:id="@+id/etLoginUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -32,10 +32,10 @@
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etRegisterUsername"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginUsername"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etRegisterUsername"
-        app:layout_constraintTop_toBottomOf="@+id/etRegisterUsername"
+        app:layout_constraintStart_toStartOf="@+id/etLoginUsername"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginUsername"
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
@@ -45,7 +45,7 @@
             android:background="@drawable/text_background"
             android:drawableEnd="@drawable/ic_visibility_off"
             android:gravity="start"
-            android:hint="@string/login_password_hint"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5.5dp"
@@ -137,9 +137,8 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/etRegisterUsername"
+        app:layout_constraintBottom_toTopOf="@+id/etLoginUsername"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.57" />

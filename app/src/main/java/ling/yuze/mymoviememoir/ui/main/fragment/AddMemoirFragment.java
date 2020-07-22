@@ -1,8 +1,6 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,13 +27,10 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
-import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.utility.DateFormat;
-import ling.yuze.mymoviememoir.utility.JsonParser;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
 

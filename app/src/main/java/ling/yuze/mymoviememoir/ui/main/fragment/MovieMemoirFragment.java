@@ -2,8 +2,6 @@ package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.DataSetObserver;
-import android.graphics.PathDashPathEffect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,12 +26,9 @@ import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterMemoir;
-import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.MemoirItem;
 import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.network.RestService;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
-import ling.yuze.mymoviememoir.utility.FileIO;
 
 import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
@@ -229,34 +223,6 @@ public class MovieMemoirFragment extends Fragment {
 
     }
 
-    private class TaskGetAllMemoirs extends AsyncTask<Void, Void, List<Object[]>> {
-        @Override
-        protected List<Object[]> doInBackground(Void... voids) {
-            RestService rs = new RestService();
-            return rs.getAllMemoirsByPerson(personId);
-        }
-
-        @Override
-        protected void onPostExecute(List<Object[]> memoirsList) {
-            for (Object[] memoir : memoirsList) {
-                String name = (String) memoir[0];
-                String release = (String) memoir[1];
-                String watching = (String) memoir[2];
-                String comment = (String) memoir[3];
-                String suburb = (String) memoir[4];
-                float rating = (float) ((double) memoir[5]);
-
-                MemoirItem item = new MemoirItem(name, release, watching, suburb, comment, rating);
-
-                new TaskGetMovieDetails().execute(name, release, item);
-
-                memoirs.add(item);
-                memoirsAll.add(item);
-            }
-
-            adapter.notifyDataSetChanged();
-        }
-    }
 
     private class TaskGetMovieDetails extends AsyncTask<Object, Void, Void> {
         @Override

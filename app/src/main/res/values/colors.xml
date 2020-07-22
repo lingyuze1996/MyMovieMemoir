@@ -8,6 +8,7 @@
     <color name="colorYellow">#FFD700</color>
     <color name="colorPink">#FFC0CB</color>
     <color name="colorLight">#FFFFE0</color>
-    <color name="colorBlue">#00BFFF</color>
+    <color name="colorBlue">#377AFF</color>
     <color name="colorRed">#C81D26</color>
+    <color name="colorGrey">#919191</color>
 </resources>

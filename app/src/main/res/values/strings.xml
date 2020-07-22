@@ -7,14 +7,14 @@
     <string name="menu_report">Reports</string>
     <string name="menu_map">Map</string>
     <string name="login_username_hint">Username</string>
-    <string name="login_password_hint">Password</string>
+    <string name="password_hint">Password</string>
     <string name="button_sign_in">Sign In</string>
     <string name="button_sign_up">Sign Up</string>
     <string name="text_view_no_account">Don\'t have an account?</string>
     <string name="text_view_sign_up">Sign up.</string>
     <string name="error_sign_in">Username/Password not match!\nPlease try again!</string>
     <string name="register_firstName">First Name</string>
-    <string name="register_lastName">Last Name</string>
+    <string name="register_surname">Surname</string>
     <string name="register_gender">Gender</string>
     <string name="register_male">Male</string>
     <string name="register_female">Female</string>
@@ -51,8 +51,7 @@
         <item>2020</item>
     </string-array>
     <string name="register_username">Email as Username</string>
-    <string name="register_password">Set password:</string>
-    <string name="register_passwordCheck">Enter password again:</string>
+    <string name="password_confirm_hint">Confirm Password</string>
     <string name="success_delete">Delete successfully!</string>
     <string name="success_add_cinema">Add cinema successfully!</string>
     <string name="success_add_memoir">Add to memoir successfully!</string>

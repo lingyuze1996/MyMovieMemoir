@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         etPassword = findViewById(R.id.etLoginPassword);
-        etUsername = findViewById(R.id.etRegisterUsername);
+        etUsername = findViewById(R.id.etLoginUsername);
         btSignIn = findViewById(R.id.btSignIn);
         tvSignUp = findViewById(R.id.tv_sign_up);
 
@@ -104,8 +104,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         String ret ="";
                         try {
                             ret = aws.userSignIn(user);
-
-
                         }
                         catch (Exception e){
                             e.printStackTrace();

@@ -19,20 +19,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.w3c.dom.Document;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.network.RestService;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     private int id;
@@ -68,8 +60,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         @Override
         protected List<Object[]> doInBackground(Void... voids) {
             List<Object[]> cinemaList = new ArrayList<>();
-            RestService rs = new RestService();
-            cinemaList = rs.getAllCinemas();
+            //RestService rs = new RestService();
+            //cinemaList = rs.getAllCinemas();
             return cinemaList;
         }
 
@@ -102,6 +94,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         @Override
         protected Double[] doInBackground(Void... voids) {
             Double[] coordinate = new Double[2];
+            /*
             RestService rs = new RestService();
             String address = rs.getAddressByPersonId(id);
             Geocoder geocoder = new Geocoder(getContext());
@@ -114,6 +107,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+             */
             return coordinate;
         }
 
