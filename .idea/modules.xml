@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FIT5046_Projects.iml" filepath="$PROJECT_DIR$/.idea/FIT5046_Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/My_Movie_Memoir.iml" filepath="$PROJECT_DIR$/.idea/modules/My_Movie_Memoir.iml" group="My_Movie_Memoir" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="My Movie Memoir/app" />
     </modules>
   </component>
 </project>

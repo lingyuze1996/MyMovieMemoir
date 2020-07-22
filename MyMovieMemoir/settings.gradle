@@ -1,2 +1,0 @@
-rootProject.name='My Movie Memoir'
-include ':app', ':twitter4j-core-4.0.7'
