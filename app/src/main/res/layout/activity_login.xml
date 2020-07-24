@@ -6,36 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
-    <EditText
-        android:id="@+id/etLoginUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_login_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="5.5dp"
-        android:background="@drawable/text_background"
-        android:hint="@string/login_username_hint"
-        android:inputType="textEmailAddress"
+        app:hintEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <EditText
+            android:id="@+id/etLoginUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_background"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:hint="@string/login_username_hint"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout10"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
+        app:hintEnabled="false"
+        app:passwordToggleTint="@color/password_toggle_color"
+        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etLoginUsername"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etLoginUsername"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginUsername"
+        app:layout_constraintEnd_toEndOf="@+id/text_layout_login_username"
+        app:layout_constraintStart_toStartOf="@+id/text_layout_login_username"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_login_username"
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
@@ -43,14 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/text_background"
-            android:drawableEnd="@drawable/ic_visibility_off"
-            android:gravity="start"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5.5dp"
-            />
-    </LinearLayout>
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btSignIn"
@@ -65,11 +67,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_login_password"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/linear_layout_login_signup_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -100,14 +102,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linear_layout_login_forget_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintVertical_bias="0.8"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout1"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
-        app:layout_constraintStart_toStartOf="@id/linearLayout1"
+        app:layout_constraintBottom_toTopOf="@id/linear_layout_login_signup_hint"
+        app:layout_constraintEnd_toEndOf="@+id/linear_layout_login_signup_hint"
+        app:layout_constraintStart_toStartOf="@id/linear_layout_login_signup_hint"
         app:layout_constraintTop_toBottomOf="@+id/btSignIn">
 
         <TextView
@@ -137,7 +139,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/etLoginUsername"
+        app:layout_constraintBottom_toTopOf="@+id/text_layout_login_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

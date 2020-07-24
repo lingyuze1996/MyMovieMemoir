@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -41,16 +43,20 @@ public class MovieMemoirFragment extends Fragment {
     private ArrayAdapter<String> genreAdapter;
     private HashSet<String> genreSet = new HashSet<>();
     private Spinner sort;
-    private int personId;
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.nav_menu, menu);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
-        SharedPreferences shared = getContext().getSharedPreferences("Info", Context.MODE_PRIVATE);
-        personId = shared.getInt("id", 0);
+        getActivity().setTitle("abcd");
 
         filter = v.findViewById(R.id.spinner_filter);
 

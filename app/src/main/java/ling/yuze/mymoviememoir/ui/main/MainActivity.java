@@ -10,12 +10,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
+
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
@@ -82,7 +86,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // don't replace if on the same fragment
             if (nextFragment.equals(currentFragment))
                 return;
-        } catch (NullPointerException e) {e.printStackTrace();}
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.content_frame, next);
@@ -100,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.menu_item_home:
                 replaceFragment(new HomeFragment());
                 break;

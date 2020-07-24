@@ -6,12 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ItemDetailsLookup;
-import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -21,35 +17,16 @@ import ling.yuze.mymoviememoir.data.Cinema;
 
 public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChooseRecyclerAdapter.CinemaViewHolder> {
 
-    public class CinemaViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCinemaName;
-        TextView tvCinemaAddress;
-
-        public CinemaViewHolder(View itemView) {
-            super(itemView);
-
-            tvCinemaName = itemView.findViewById(R.id.tv_rec_cinema_choose_name);
-            tvCinemaAddress = itemView.findViewById(R.id.tv_rec_cinema_choose_address);
-        }
-
-        public ItemDetailsLookup.ItemDetails<Long> getItemDetails() {
-            return new ItemDetailsLookup.ItemDetails<Long>() {
-                @Override
-                public int getPosition() {
-                    return getAdapterPosition();
-                }
-
-                @Override
-                public Long getSelectionKey() {
-                    return (long) getAdapterPosition();
-                }
-            };
-        }
-    }
-
+    private OnItemClickListener itemClickListener;
     private List<Cinema> cinemas;
+    private int positionSelected = RecyclerView.NO_POSITION;
+
     public CinemaChooseRecyclerAdapter(List<Cinema> cinemas) {
         this.cinemas = cinemas;
+    }
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -62,14 +39,52 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CinemaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CinemaViewHolder holder, final int position) {
         final Cinema cinema = cinemas.get(position);
         holder.tvCinemaName.setText(cinema.getName());
         holder.tvCinemaAddress.setText(cinema.getAddress());
+
+        final int currentPosition = holder.getAdapterPosition();
+        if (position == positionSelected)
+            holder.itemView.setBackgroundColor(Color.parseColor("#b2ebf2"));
+        else
+            holder.itemView.setBackgroundResource(R.drawable.text_background);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (itemClickListener != null && currentPosition != RecyclerView.NO_POSITION) {
+
+                    // Perform event defined by the fragment/activity
+                    itemClickListener.onItemClick(cinemas.get(position));
+
+                    // Set distinct color for item selected
+                    if (positionSelected != RecyclerView.NO_POSITION)
+                        notifyItemChanged(positionSelected);
+                    positionSelected = currentPosition;
+                    notifyItemChanged(positionSelected);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return cinemas.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Cinema cinema);
+    }
+
+    class CinemaViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvCinemaName;
+        private TextView tvCinemaAddress;
+
+        public CinemaViewHolder(View itemView) {
+            super(itemView);
+            tvCinemaName = itemView.findViewById(R.id.tv_rec_cinema_choose_name);
+            tvCinemaAddress = itemView.findViewById(R.id.tv_rec_cinema_choose_address);
+        }
     }
 }

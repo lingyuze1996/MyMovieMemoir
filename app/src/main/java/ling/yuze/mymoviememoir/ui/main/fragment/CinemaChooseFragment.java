@@ -1,11 +1,8 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,13 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.selection.ItemDetailsLookup;
-import androidx.recyclerview.selection.OnItemActivatedListener;
-import androidx.recyclerview.selection.SelectionTracker;
-import androidx.recyclerview.selection.StableIdKeyProvider;
-import androidx.recyclerview.selection.StorageStrategy;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +24,6 @@ import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.CinemaChooseRecyclerAdapter;
-import ling.yuze.mymoviememoir.adapter.RecyclerItemDetailsLookup;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
@@ -42,13 +32,10 @@ public class CinemaChooseFragment extends Fragment {
     private Spinner spinnerState;
     private Spinner spinnerRegion;
 
-    private Button buttonSearch;
-    private Button buttonConfirm;
-
     private List<String> regions;
-    private ArrayAdapter adapterRegion;
+    private ArrayAdapter<String> adapterRegion;
 
-    private List<Cinema> cinemas;
+    private List<Cinema> cinemas = new ArrayList<>();
     private CinemaChooseRecyclerAdapter adapterCinemas;
 
     private CinemaViewModel cinemaViewModel;
@@ -66,16 +53,29 @@ public class CinemaChooseFragment extends Fragment {
         spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = parent.getSelectedItem().toString();
-                new TaskGetCinemaRegions().execute(selected);
+                String state = parent.getSelectedItem().toString();
+                new TaskGetCinemaRegions().execute(state);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         // spinner for cinema region
         spinnerRegion = v.findViewById(R.id.spinner_cinema_region);
+        spinnerRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String region = parent.getSelectedItem().toString();
+                String state = spinnerState.getSelectedItem().toString();
+                new TaskGetCinemas().execute(state, region);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         regions = new ArrayList<>();
         regions.add("All");
@@ -83,45 +83,25 @@ public class CinemaChooseFragment extends Fragment {
         adapterRegion = new ArrayAdapter<>(getContext(), R.layout.spinner_item, regions);
         spinnerRegion.setAdapter(adapterRegion);
 
-        // button for cinema search
-        buttonSearch = v.findViewById(R.id.bt_search_cinemas);
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String state = spinnerState.getSelectedItem().toString();
-                String region = spinnerRegion.getSelectedItem().toString();
-                new TaskGetCinemas().execute(state, region);
-            }
-        });
-
         // recycler view for cinemas list
         RecyclerView recyclerView = v.findViewById(R.id.cinemas_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
-        cinemas = new ArrayList<>();
         adapterCinemas = new CinemaChooseRecyclerAdapter(cinemas);
-        recyclerView.setAdapter(adapterCinemas);
-
-        SelectionTracker<Long> selectionTracker = new SelectionTracker.Builder<>(
-                "selection-id",
-                recyclerView,
-                new StableIdKeyProvider(recyclerView),
-                new RecyclerItemDetailsLookup(recyclerView),
-                StorageStrategy.createLongStorage()
-        ).withOnItemActivatedListener(new OnItemActivatedListener<Long>() {
+        adapterCinemas.setItemClickListener(new CinemaChooseRecyclerAdapter.OnItemClickListener() {
             @Override
-            public boolean onItemActivated(@NonNull ItemDetailsLookup.ItemDetails<Long> item, @NonNull MotionEvent e) {
-                cinemaViewModel.setCinema(cinemas.get(item.getPosition()));
-                getFragmentManager().popBackStack();
-                return false;
+            public void onItemClick(Cinema cinema) {
+                cinemaViewModel.setCinema(cinema);
+                Toast.makeText(getContext(), cinema.getName() + " Selected!", Toast.LENGTH_LONG).show();
             }
-        }).build();
+        });
 
+        recyclerView.setAdapter(adapterCinemas);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         // button for cinema selection
-        buttonConfirm = v.findViewById(R.id.bt_confirm_cinema);
+        Button buttonConfirm = v.findViewById(R.id.bt_confirm_cinema);
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +111,7 @@ public class CinemaChooseFragment extends Fragment {
 
         return v;
     }
+
     private class TaskGetCinemas extends AsyncTask<String, Void, List<Cinema>> {
         @Override
         protected List<Cinema> doInBackground(String... strings) {
