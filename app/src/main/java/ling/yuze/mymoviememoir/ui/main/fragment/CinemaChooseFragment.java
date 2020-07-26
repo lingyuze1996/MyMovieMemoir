@@ -105,7 +105,11 @@ public class CinemaChooseFragment extends Fragment {
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().popBackStack();
+                if (cinemaViewModel.getCinema().getValue() == null) {
+                    Toast.makeText(getContext(), R.string.error_cinema_empty, Toast.LENGTH_LONG).show();
+                }
+                else
+                    getFragmentManager().popBackStack();
             }
         });
 
@@ -143,6 +147,9 @@ public class CinemaChooseFragment extends Fragment {
             regions.addAll(regionsList);
             adapterRegion.notifyDataSetChanged();
             spinnerRegion.setSelection(0);
+            new TaskGetCinemas().execute(
+                    spinnerState.getSelectedItem().toString(),
+                    spinnerRegion.getSelectedItem().toString());
         }
     }
 }

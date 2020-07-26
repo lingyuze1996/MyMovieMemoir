@@ -10,13 +10,11 @@
         android:id="@+id/scrollRegister"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_margin="32dp"
         app:layout_constraintBottom_toTopOf="@+id/btSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_create_account">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayoutRegister"
@@ -237,7 +235,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#377AFF"
+        android:backgroundTint="@color/colorBlue"
         android:text="@string/button_sign_up"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -246,20 +244,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94" />
-
-    <TextView
-        android:id="@+id/tv_create_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="32dp"
-        android:text="@string/create_account"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btSignUp"
-        app:layout_constraintEnd_toEndOf="@id/btSignUp"
-        app:layout_constraintStart_toStartOf="@+id/btSignUp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

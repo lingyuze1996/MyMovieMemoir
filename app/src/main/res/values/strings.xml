@@ -67,11 +67,10 @@
     <string name="error_date_empty">Watching date empty!\nPlease try again!</string>
     <string name="error_address_empty">Address empty!\nPlease try again!</string>
     <string name="error_postcode_empty">Postcode empty!\nPlease try again!</string>
-    <string name="error_cinema_empty">Cinema name empty!\nPlease try again!</string>
-    <string name="error_cinema_exist">Cinema added already exists!\nPlease make choice!</string>
     <string name="error_password_length">Password length less than 8!\nPlease try again!</string>
     <string name="error_postcode_format">Postcode not a four digit number!\nPlease try again!</string>
     <string name="error_movie_exist">This movie already exists in the watchlist!\nNo need to add!</string>
+    <string name="error_cinema_empty">Cinema not selected!\nPlease try again!</string>
     <string name="error">Error!</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
