@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
@@ -45,9 +46,11 @@ public class AWS extends NetworkConnection{
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            int responseCode = httpPost(request);
+            Map<String, Object> retData = httpPostGetToken(request);
+            int responseCode = Integer.parseInt(retData.get("statusCode").toString());
+            String token = retData.get("token").toString();
             if (responseCode == 200) {
-                ret = "success";
+                ret = "success" + "|" + token;
             }
         } catch (Exception e) {
             e.printStackTrace();
