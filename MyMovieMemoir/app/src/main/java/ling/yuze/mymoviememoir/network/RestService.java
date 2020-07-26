@@ -49,13 +49,6 @@ public class RestService extends NetworkConnection {
         return lastName;
     }
 
-    public String getPasswordByUsername(String credentialsJson) {
-        String passwordHash = "";
-        Object valueObject = JsonParser.getJsonValue(credentialsJson, "passwordHash");
-        if (valueObject != null)
-            passwordHash = (String) valueObject;
-        return passwordHash;
-    }
 
     public String getCredentialsByUsername(String username) {
         String response = "";
