@@ -1,57 +1,470 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9be56d42-0a92-4530-9263-70abb58c6ba0" name="Default Changelist" comment="">
+    <list default="true" id="af673d8d-c60c-4eaa-8b7c-580b26f340c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/color/password_toggle_color.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FIT5046_Projects.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/androidTest/java/ling/yuze/mymoviememoir/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/ling/yuze/mymoviememoir/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/CinemaChooseRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/CinemaChooseRecyclerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/HomeRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/HomeRecyclerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterMemoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterMemoir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterTweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterTweet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterWatchlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterWatchlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/adapter/RecyclerItemDetailsLookup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Cinema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/MemoirItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/MemoirItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/Tweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Tweet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/room/dao/MovieToWatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/room/dao/MovieToWatchDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/room/database/MovieToWatchDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/room/database/MovieToWatchDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/room/entity/MovieToWatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/room/entity/MovieToWatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/room/repository/MovieToWatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/room/repository/MovieToWatchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/CinemaViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/CinemaViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MovieToWatchViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MovieToWatchViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MovieViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MovieViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/UserViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/UserViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/ImageDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/ImageDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/RestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/SearchMovieDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/SearchMovieDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/network/SearchTwitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/SearchTwitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieViewFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieViewFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/ReportFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/ReportFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/SettingsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/TweetsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/TweetsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/DateFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/DateFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/FileIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/SentimentAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/SentimentAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/java/ling/yuze/mymoviememoir/utility/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/homepage_background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/homepage_background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_cloud_off.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_cloud_off.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_collections.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_collections.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_date_range.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_date_range.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_live_tv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_live_tv.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_location.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_location.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_report.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_sentiment_negative.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sentiment_negative.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_sentiment_neutral.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sentiment_neutral.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_sentiment_positive.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sentiment_positive.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_time_range.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_time_range.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_visibility.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_visibility.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/ic_visibility_off.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_visibility_off.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/drawable/text_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/text_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/activity_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_add_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_choose_cinema.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_cinema.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_report.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_tweets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tweets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/fragment_watchlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_watchlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/list_view_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_view_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/list_view_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_view_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/list_view_tweets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_view_tweets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/list_view_watchlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_view_watchlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/nav_header.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/recycler_cinema_choose.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_cinema_choose.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/recycler_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/layout/spinner_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/spinner_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/menu/nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/raw/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/raw/negative_words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/negative_words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/raw/positive_words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/positive_words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/app/src/test/java/ling/yuze/mymoviememoir/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/ling/yuze/mymoviememoir/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyMovieMemoir/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MyMovieMemoir/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/Ass1 Report final.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Cinema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Cinema_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Credentials.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Credentials_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Memoir.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Memoir_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/Person_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/AbstractFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/ApplicationConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/CinemaFacadeREST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/CredentialsFacadeREST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/MemoirFacadeREST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/memoir/service/PersonFacadeREST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/classes/resouces.res" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/glassfish-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/WEB-INF/glassfish-web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/app.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/cc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/cg.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/collapse.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/css_master-all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/expand.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/gfv3ee6.dpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/background_border_bottom.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/bg_gradient.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/level1_deselect.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/level1_selected-1lvl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/masthead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/masthead_link_enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/masthead_link_roll.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/pbdis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/pbena.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/pbmou.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/pbsel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/pname.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/primary-enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/primary-roll.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/secondary-enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/tbsel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/images/tbuns.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/item.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/og.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/test-resbeans.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/test-resbeans.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/build/web/test-resbeans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/dist/MemoirREST.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/ant-deploy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/nbproject/rest-build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/conf/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/conf/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/Cinema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/Credentials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/Memoir.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/service/AbstractFacade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/service/CinemaFacadeREST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/service/CredentialsFacadeREST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/service/MemoirFacadeREST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/src/java/memoir/service/PersonFacadeREST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/WEB-INF/glassfish-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/app.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/cc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/cg.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/collapse.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/css_master-all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/expand.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/background_border_bottom.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/bg_gradient.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/level1_deselect.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/level1_selected-1lvl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/masthead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/masthead_link_enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/masthead_link_roll.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/pbdis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/pbena.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/pbmou.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/pbsel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/pname.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/primary-enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/primary-roll.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/secondary-enabled.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/tbsel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/images/tbuns.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/item.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/og.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/test-resbeans.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/test-resbeans.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/MemoirREST/web/test-resbeans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/Memoir_Database_ERD.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/Memoir_Insert.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTful Web Service/Memoir_Schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_XL_API_R" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1cUNWtpNt7Hsiq4TPNgb0W706W0" />
+  <component name="ProjectId" id="1f1m62NfezcSiqljCgj0StpoUc1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MyMovieMemoir" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="Android App.My Movie Memoir-app">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="My Movie Memoir-app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="My Movie Memoir-app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9be56d42-0a92-4530-9263-70abb58c6ba0" name="Default Changelist" comment="" />
-      <created>1590579246234</created>
+      <changelist id="af673d8d-c60c-4eaa-8b7c-580b26f340c0" name="Default Changelist" comment="" />
+      <created>1595393794297</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1590579246234</updated>
+      <updated>1595393794297</updated>
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1595292933711">
+    <state x="245" y="200" key="#PSD" timestamp="1595763410373">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="245" y="200" key="#PSD/0.23.1440.877@0.23.1440.877" timestamp="1595763410373" />
+    <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1595575974917">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595292933711" />
+    <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595575974917" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595417143545">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1595417143545" />
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog" timestamp="1595415611338">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1595415611338" />
+    <state x="537" y="194" key="AndroidCreateXmlResourceDialog" timestamp="1595566557392">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="537" y="194" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1595566557392" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1595584380195">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595584380195" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1595507643187">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595507643187" />
+    <state x="383" y="249" key="com.intellij.ide.util.TipDialog" timestamp="1595763482165">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595565904900" />
+    <state x="383" y="249" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1595763482165" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595585667888">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595585667888" />
   </component>
 </project>
