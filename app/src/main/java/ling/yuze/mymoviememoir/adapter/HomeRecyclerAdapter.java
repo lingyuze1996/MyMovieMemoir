@@ -39,10 +39,6 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     public HomeRecyclerAdapter(List<Movie> mMovies) {
         movies = mMovies;
     }
-    public void addMovie(Movie newMovie) {
-        movies.add(newMovie);
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override

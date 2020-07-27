@@ -29,7 +29,6 @@ import ling.yuze.mymoviememoir.adapter.ListAdapterWatchlist;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
-import ling.yuze.mymoviememoir.utility.FileIO;
 
 public class WatchlistFragment extends Fragment {
     private ListView listView;
@@ -110,7 +109,7 @@ public class WatchlistFragment extends Fragment {
             search.setAPIKey(getString(R.string.movie_db_api_key));
 
             // first find movies with corresponding movie name
-            List<Object[]> movieList = search.searchBasics((String) params[0]);
+            List<Object[]> movieList = search.searchByQuery((String) params[0]);
             if (movieList == null) return null;
 
             // find the movie with corresponding release date
