@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private MovieToWatchViewModel viewModel;
     private UserViewModel userViewModel;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // get username passed from login page
         String username = getIntent().getStringExtra("username");
-
+        //get the auth token
+        token = getIntent().getStringExtra("token");
+        saveToken();
         // retrieve personal information details
         new TaskGetUserInfo().execute(username);
 
@@ -130,6 +135,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
         return true;
+    }
+
+    private void saveToken(){
+
+        if(token != null) {
+            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("token", token);
+            editor.commit();
+        }
     }
 
     private class TaskGetUserInfo extends AsyncTask<String, Void, User> {

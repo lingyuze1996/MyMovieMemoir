@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="af673d8d-c60c-4eaa-8b7c-580b26f340c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,38 +212,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595584380195" />
-    <state width="1398" height="188" key="GridCell.Tab.0.bottom" timestamp="1595769843919">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1595770057231">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595769843919" />
-    <state width="1398" height="188" key="GridCell.Tab.0.center" timestamp="1595769843919">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
+    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1595770057230">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1595769843919" />
-    <state width="1398" height="188" key="GridCell.Tab.0.left" timestamp="1595769843918">
+    <state width="1398" height="285" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1595770057230" />
+    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1595770057229">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1595769843918" />
-    <state width="1398" height="188" key="GridCell.Tab.0.right" timestamp="1595769843919">
+    <state width="1398" height="285" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1595770057229" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1595770057230">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1595769843919" />
-    <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1595769837380">
+    <state width="1398" height="285" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1595770057230" />
+    <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1595770057232">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595769837380" />
-    <state width="1398" height="285" key="GridCell.Tab.1.center" timestamp="1595769837378">
+    <state width="1398" height="285" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595770057232" />
+    <state width="1398" height="285" key="GridCell.Tab.1.center" timestamp="1595770057231">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1595769837378" />
-    <state width="1398" height="285" key="GridCell.Tab.1.left" timestamp="1595769837377">
+    <state width="1398" height="285" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
+    <state width="1398" height="285" key="GridCell.Tab.1.left" timestamp="1595770057231">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1595769837377" />
-    <state width="1398" height="285" key="GridCell.Tab.1.right" timestamp="1595769837379">
+    <state width="1398" height="285" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
+    <state width="1398" height="285" key="GridCell.Tab.1.right" timestamp="1595770057231">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1595769837379" />
+    <state width="1398" height="285" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1595507643187">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -281,6 +279,16 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java</url>
           <line>52</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
