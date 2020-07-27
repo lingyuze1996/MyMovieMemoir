@@ -182,6 +182,18 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                     break;
                 }
 
+                if (watchingTime == null) {
+                    Toast.makeText(getContext(), R.string.error_date_empty, Toast.LENGTH_LONG)
+                            .show();
+                    break;
+                }
+
+                if (tvCinema.getText().toString().length() == 0) {
+                    Toast.makeText(getContext(), R.string.error_cinema_empty, Toast.LENGTH_LONG)
+                            .show();
+                    break;
+                }
+
                 String comment = etAddComment.getText().toString();
                 float rating = ratingBar.getRating();
 

@@ -1,39 +1,88 @@
 package ling.yuze.mymoviememoir.network;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ling.yuze.mymoviememoir.data.Movie;
+
 
 public class SearchMovieDB extends NetworkConnection {
     private String API_KEY;
-    private String BASE_URL;
-    private final String BASE_URL_DETAIL = "https://api.themoviedb.org/3/movie/";
-    private String TAIL_URL_DETAIL;
+    private String BASE_URL_QUERY;
+    private final String BASE_URL = "https://api.themoviedb.org/3/movie/";
+    private String TAIL_URL;
 
     public void setAPIKey(String key) {
         API_KEY = key;
-        BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=";
-        TAIL_URL_DETAIL = "?api_key=" + API_KEY;
+        BASE_URL_QUERY = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=";
+        TAIL_URL = "?api_key=" + API_KEY;
     }
 
     public SearchMovieDB() {super();}
+
+    /**
+     * Url Setting: Search for a list of movies with a query String
+     * @param query String: the query String
+     */
+    public void setQueryUrl(String query) {
+        super.setUrl(BASE_URL_QUERY + query);
+    }
+
+    /**
+     * Url Setting: Search for a list of movies from a specified aspect
+     * @param aspect String: the key aspect of movie searching
+     */
     @Override
-    public void setUrl(String path) {
-        super.setUrl(BASE_URL + path);
+    public void setUrl(String aspect) {
+        super.setUrl(BASE_URL + aspect + TAIL_URL);
     }
 
-    public void setUrl(int id, String key) {
-        super.setUrl(BASE_URL_DETAIL + id + key + TAIL_URL_DETAIL);
+    /**
+     * Url setting: Search for a specified aspect of a movie
+     * @param id Integer: the id of the movie
+     * @param aspect String: the key aspect of the movie
+     */
+    public void setUrl(int id, String aspect) {
+        super.setUrl(BASE_URL + id + "/" + aspect + TAIL_URL);
     }
 
-    public List<Object[]> searchBasics(String content) {
+    /**
+     * Extract basic movie information from the response json provided by the api
+     * @param response String: response json from the api
+     * @return List<Movie>: a list of Movie objects
+     */
+    public List<Movie> extractBasics(String response) {
+        List<Movie> movies = new ArrayList<>();
+        try {
+            JSONArray moviesJSON = new JSONObject(response).getJSONArray("results");
+            for (int i = 0; i < moviesJSON.length(); i++) {
+                JSONObject movieJSON = moviesJSON.getJSONObject(i);
+                int id = movieJSON.getInt("id");
+                String title = movieJSON.getString("title");
+                String releaseDate = movieJSON.getString("release_date");
+                String imagePath = movieJSON.getString("poster_path");
+                float publicRating = (float) movieJSON.getDouble("vote_average");
+                String overview = movieJSON.getString("overview");
+
+                Movie movie = new Movie(id, title, releaseDate, imagePath, overview, publicRating);
+                movies.add(movie);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return movies;
+    }
+
+    public List<Object[]> searchByQuery(String query) {
         List<Object[]> basics = new ArrayList<>();
-        final String path = content.replace(" ", "+");
-        setUrl(path);
+        final String path = query.replace(" ", "+");
+        setQueryUrl(path);
         try {
             String response = httpGet();
             JSONObject jsonResponse = new JSONObject(response);
@@ -59,8 +108,21 @@ public class SearchMovieDB extends NetworkConnection {
         return basics;
     }
 
+    public List<Movie> searchPopular() {
+        setUrl("popular");
+        List<Movie> movies = null;
+
+        try {
+            String response = httpGet();
+            movies = extractBasics(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
     public List<String> searchCast(int id) {
-        setUrl(id, "/credits");
+        setUrl(id, "credits");
 
         List<String> list = new ArrayList<>();
 
@@ -102,7 +164,7 @@ public class SearchMovieDB extends NetworkConnection {
     }
 
     public List<String> searchDirector(int id) {
-        setUrl(id, "/credits");
+        setUrl(id, "credits");
 
         List<String> list = new ArrayList<>();
 
