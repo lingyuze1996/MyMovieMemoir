@@ -1,7 +1,7 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +19,7 @@ import java.util.List;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.HomeRecyclerAdapter;
 import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.network.SearchMovieDB;
 
 public class HomeFragment extends Fragment {
 
@@ -26,7 +27,8 @@ public class HomeFragment extends Fragment {
     private TextView tvDate;
     private RecyclerView recyclerView;
     private HomeRecyclerAdapter adapter;
-    private List<Movie> movies;
+    private List<Movie> movieList;
+    private Handler handler = new Handler();
 
     @Nullable
     @Override
@@ -40,16 +42,36 @@ public class HomeFragment extends Fragment {
         tvDate.setText(currentDate); // display current date
 
         recyclerView = v.findViewById(R.id.home_recycler);
-        movies = Movie.createMovieList();
-        adapter = new HomeRecyclerAdapter(movies);
+        movieList = Movie.createMovieList();
+        adapter = new HomeRecyclerAdapter(movieList);
         recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        // retrieve top five recent movies
-        //new TaskFindTopFiveRecentMovies().execute();
+        // retrieve trending movies
+        retrieveTrendingMovies();
 
         return v;
+    }
+
+    private void retrieveTrendingMovies() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SearchMovieDB search = new SearchMovieDB();
+                search.setAPIKey(getString(R.string.movie_db_api_key));
+                final List<Movie> movies = search.searchPopular();
+                if (movies != null) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            movieList.addAll(movies);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
 }

@@ -237,7 +237,7 @@ public class MovieMemoirFragment extends Fragment {
             search.setAPIKey(getString(R.string.movie_db_api_key));
 
             // first find movies with corresponding movie name
-            List<Object[]> movieList = search.searchBasics((String) params[0]);
+            List<Object[]> movieList = search.searchByQuery((String) params[0]);
             if (movieList == null) return null;
 
             // find the movie with corresponding release date

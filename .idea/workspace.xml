@@ -9,9 +9,24 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af673d8d-c60c-4eaa-8b7c-580b26f340c0" name="Default Changelist" comment="">
+    <list default="true" id="260d75e3-fc19-4839-8dc9-db67579b3d55" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/HomeRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/HomeRecyclerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/SearchMovieDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/SearchMovieDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +49,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="valueResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -51,67 +66,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RecylcerViewSelection" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Android App.My Movie Memoir-app">
+  <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="My Movie Memoir-app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="My Movie Memoir-app" />
-      <option name="DEPLOY" value="true" />
-      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
-      <option name="DEPLOY_AS_INSTANT" value="false" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -187,108 +148,87 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="245" y="200" key="#PSD" timestamp="1595763410373">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="245" y="200" key="#PSD/0.23.1440.877@0.23.1440.877" timestamp="1595763410373" />
     <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1595575974917">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595575974917" />
+    <state x="290" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595802669060">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="290" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1595802669060" />
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595417143545">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1595417143545" />
-    <state x="277" y="166" key="AndroidCreateResourceFileDialog" timestamp="1595767540543">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1595415611338" />
-    <state x="277" y="166" key="AndroidCreateResourceFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1595767540543" />
-    <state x="537" y="194" key="AndroidCreateXmlResourceDialog" timestamp="1595566557392">
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog" timestamp="1595415611338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="537" y="194" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1595566557392" />
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1595415611338" />
+    <state x="537" y="194" key="AndroidCreateXmlResourceDialog" timestamp="1595592878093">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="537" y="194" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1595592878093" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1595584380195">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595584380195" />
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1595770057231">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.0.bottom" timestamp="1595826299467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
-    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1595770057230">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
+    <state width="1306" height="219" key="GridCell.Tab.0.center" timestamp="1595826299467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1595770057230" />
-    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1595770057229">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
+    <state width="1306" height="219" key="GridCell.Tab.0.left" timestamp="1595826299467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1595770057229" />
-    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1595770057230">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
+    <state width="1306" height="219" key="GridCell.Tab.0.right" timestamp="1595826299467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1595770057230" />
-    <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1595770057232">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
+    <state width="1306" height="219" key="GridCell.Tab.1.bottom" timestamp="1595826299468">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595770057232" />
-    <state width="1398" height="285" key="GridCell.Tab.1.center" timestamp="1595770057231">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
+    <state width="1306" height="219" key="GridCell.Tab.1.center" timestamp="1595826299468">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
-    <state width="1398" height="285" key="GridCell.Tab.1.left" timestamp="1595770057231">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
+    <state width="1306" height="219" key="GridCell.Tab.1.left" timestamp="1595826299467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
-    <state width="1398" height="285" key="GridCell.Tab.1.right" timestamp="1595770057231">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1306" height="219" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
+    <state width="1306" height="219" key="GridCell.Tab.1.right" timestamp="1595826299468">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1595770057231" />
+    <state width="1306" height="219" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1595507643187">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595507643187" />
-    <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1595768151635">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="720" height="450" key="XDebugger.FullValuePopup/0.23.1440.877@0.23.1440.877" timestamp="1595768151635" />
-    <state x="383" y="249" key="com.intellij.ide.util.TipDialog" timestamp="1595763482165">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595565904900" />
-    <state x="383" y="249" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1595763482165" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595585667888">
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1595826351705">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595585667888" />
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595826351705" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595592768679">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595592768679" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java</url>
-          <line>71</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java</url>
+          <line>68</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
