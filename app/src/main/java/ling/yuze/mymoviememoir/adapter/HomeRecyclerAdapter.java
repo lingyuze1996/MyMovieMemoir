@@ -45,7 +45,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View moviesView = inflater.inflate(R.layout.recycler_home, parent, false);
+        View moviesView = inflater.inflate(R.layout.recycler_item_home, parent, false);
         ViewHolder viewHolder = new ViewHolder(moviesView);
         return viewHolder;
     }

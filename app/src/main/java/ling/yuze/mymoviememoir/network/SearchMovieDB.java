@@ -43,6 +43,14 @@ public class SearchMovieDB extends NetworkConnection {
     }
 
     /**
+     * Url setting: Search for detailed information of a movie
+     * @param id Integer: the id of the movie
+     */
+    public void setUrl(int id) {
+        super.setUrl(BASE_URL + id + TAIL_URL);
+    }
+
+    /**
      * Url setting: Search for a specified aspect of a movie
      * @param id Integer: the id of the movie
      * @param aspect String: the key aspect of the movie
@@ -79,33 +87,18 @@ public class SearchMovieDB extends NetworkConnection {
         return movies;
     }
 
-    public List<Object[]> searchByQuery(String query) {
-        List<Object[]> basics = new ArrayList<>();
+    public List<Movie> searchByQuery(String query) {
+        List<Movie> movies = null;
         final String path = query.replace(" ", "+");
         setQueryUrl(path);
         try {
             String response = httpGet();
-            JSONObject jsonResponse = new JSONObject(response);
-            JSONArray infos = jsonResponse.getJSONArray("results");
-
-            if (infos.length() == 0) return null;
-
-            for (int i = 0; i < infos.length(); i++) {
-                Object[] basic = new Object[6];
-                JSONObject info = infos.getJSONObject(i);
-                basic[0] = info.getInt("id");
-                basic[1] = info.getString("title");
-                basic[2] = info.getString("release_date");
-                basic[3] = info.getString("poster_path").substring(1);
-                basic[4] = info.getString("overview");
-                basic[5] = info.getDouble("vote_average");
-                basics.add(basic);
-            }
-        } catch (Exception e) {
+            movies = extractBasics(response);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return basics;
+        return movies;
     }
 
     public List<Movie> searchPopular() {
@@ -121,94 +114,70 @@ public class SearchMovieDB extends NetworkConnection {
         return movies;
     }
 
-    public List<String> searchCast(int id) {
-        setUrl(id, "credits");
+    public Movie getCredits(Movie movie) {
+        setUrl(movie.getId(), "credits");
 
-        List<String> list = new ArrayList<>();
+        List<String> cast = new ArrayList<>();
+        List<String> directors = new ArrayList<>();
 
         try {
             String response = httpGet();
-            JSONObject jsonInfo = new JSONObject(response);
-            JSONArray castJson = jsonInfo.getJSONArray("cast");
+            JSONObject responseJSON = new JSONObject(response);
+
+            JSONArray castJson = responseJSON.getJSONArray("cast");
             for (int i = 0; i < castJson.length() && i <= 5; i ++) {
                 String member = castJson.getJSONObject(i).getString("name");
-                list.add(member);
+                cast.add(member);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            return list;
-        }
-    }
 
-    public List<String> searchCountries(int id) {
-        setUrl(id, "");
-
-        List<String> list = new ArrayList<>();
-
-        try {
-            String response = httpGet();
-            JSONObject jsonInfo = new JSONObject(response);
-            JSONArray countryJson = jsonInfo.getJSONArray("production_countries");
-            for (int i = 0; i < countryJson.length(); i ++) {
-                String country = countryJson.getJSONObject(i).getString("name");
-                list.add(country);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            return list;
-        }
-    }
-
-    public List<String> searchDirector(int id) {
-        setUrl(id, "credits");
-
-        List<String> list = new ArrayList<>();
-
-        try {
-            String response = httpGet();
-            JSONObject jsonInfo = new JSONObject(response);
-            JSONArray crewJson = jsonInfo.getJSONArray("crew");
+            JSONArray crewJson = responseJSON.getJSONArray("crew");
             for (int i = 0; i < crewJson.length(); i ++) {
                 JSONObject memberJson = crewJson.getJSONObject(i);
                 String job = memberJson.getString("job");
                 if (job.equals("Director")) {
                     String director = memberJson.getString("name");
-                    list.add(director);
+                    directors.add(director);
                 }
             }
-        } catch (IOException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return list;
-        }
+
+        movie.setCast(cast);
+        movie.setDirectors(directors);
+
+        return movie;
     }
 
-    public List<String> searchGenres(int id) {
-        setUrl(id, "");
-
-        List<String> genreList = new ArrayList<>();
+    public Movie getDetails(Movie movie) {
+        setUrl(movie.getId());
+        List<String> countries = new ArrayList<>();
+        List<String> genres = new ArrayList<>();
 
         try {
             String response = httpGet();
-            JSONObject jsonInfo = new JSONObject(response);
-            JSONArray genreJson = jsonInfo.getJSONArray("genres");
-            for (int i = 0; i < genreJson.length(); i ++) {
-                String genre = genreJson.getJSONObject(i).getString("name");
-                genreList.add(genre);
+            JSONObject responseJSON = new JSONObject(response);
+
+            JSONArray countriesJson = responseJSON.getJSONArray("production_countries");
+            for (int i = 0; i < countriesJson.length(); i ++) {
+                String country = countriesJson.getJSONObject(i).getString("name");
+                countries.add(country);
             }
-        } catch (IOException e) {
+
+            JSONArray genresJson = responseJSON.getJSONArray("genres");
+            for (int i = 0; i < genresJson.length(); i ++) {
+                String genre = genresJson.getJSONObject(i).getString("name");
+                genres.add(genre);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            return genreList;
-        }
+
+        movie.setCountries(countries);
+        movie.setGenres(genres);
+
+        return movie;
     }
-
-
 
 }

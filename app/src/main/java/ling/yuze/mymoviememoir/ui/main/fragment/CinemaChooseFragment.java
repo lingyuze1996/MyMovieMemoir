@@ -85,7 +85,7 @@ public class CinemaChooseFragment extends Fragment {
 
         // recycler view for cinemas list
         RecyclerView recyclerView = v.findViewById(R.id.cinemas_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapterCinemas = new CinemaChooseRecyclerAdapter(cinemas);
         adapterCinemas.setItemClickListener(new CinemaChooseRecyclerAdapter.OnItemClickListener() {

@@ -1,65 +1,65 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.adapter.ListAdapterSearch;
+import ling.yuze.mymoviememoir.adapter.MovieSearchRecyclerAdapter;
+import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
 import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
 
 public class MovieSearchFragment extends Fragment {
     private LinearLayout resultHeading;
-    private ListView listView;
-    private ListAdapterSearch adapter;
+    private MovieSearchRecyclerAdapter adapter;
+    private SearchMovieDB search;
+    private Handler handler = new Handler();
     private List<Movie> movies;
+    private MovieViewModel movieViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search, container, false);
 
-        listView = v.findViewById(R.id.list_view_search);
+        // initialize movie view model
+        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
+
+        RecyclerView recyclerView = v.findViewById(R.id.movies_search_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         movies = Movie.createMovieList();
-        adapter = new ListAdapterSearch(getContext(), R.layout.list_view_search, movies);
+        adapter = new MovieSearchRecyclerAdapter(movies);
 
-        listView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // when the movie item is clicked, share the information and redirect to view screen
-                Movie movie = movies.get(position);
-                SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = shared.edit();
-                editor.putInt("id", movie.getId());
-                editor.putString("name", movie.getName());
-                editor.putString("releaseDate", movie.getReleaseDate());
-                editor.putString("overview", movie.getOverview());
-                editor.putString("imagePath", movie.getImagePath());
-                editor.putFloat("rating", movie.getRating());
-                editor.apply();
+            public void onItemClick(Object item) {
+                // when the movie item is clicked, pass the information to view model and redirect to view screen
+                Movie movie = (Movie) item;
+                movieViewModel.setMovie(movie);
 
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, new MovieViewFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -77,44 +77,34 @@ public class MovieSearchFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                new TaskSearchMovie().execute(query);
+                searchMoviesByQuery(query);
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
             }
         });
 
+        search = new SearchMovieDB();
+        search.setAPIKey(getString(R.string.movie_db_api_key));
         return v;
     }
 
-    private class TaskSearchMovie extends AsyncTask<String, Void, List<Object[]>> {
-        @Override
-        protected List<Object[]> doInBackground(String... strings) {
-            SearchMovieDB search = new SearchMovieDB();
-            search.setAPIKey(getString(R.string.movie_db_api_key));
-            List<Object[]> basics = search.searchByQuery(strings[0]);
-            return basics;
-        }
-
-        @Override
-        protected void onPostExecute(List<Object[]> list) {
-            if (list == null) return;
-
-            for (Object[] object : list) {
-                int id = (Integer) object[0];
-                String name = (String) object[1];
-                String date = (String) object[2];
-                String path = (String) object[3];
-                String overview = (String) object[4];
-                double rating = (Double) object[5];
-                Movie newMovie = new Movie(id, name, date, path, overview, (float) rating);
-                movies.add(newMovie);
+    private void searchMoviesByQuery(final String query) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                movies.addAll(search.searchByQuery(query));
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        resultHeading.setVisibility(View.VISIBLE);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
-
-            resultHeading.setVisibility(View.VISIBLE);
-            adapter.notifyDataSetChanged();
-        }
+        }).start();
     }
 }
