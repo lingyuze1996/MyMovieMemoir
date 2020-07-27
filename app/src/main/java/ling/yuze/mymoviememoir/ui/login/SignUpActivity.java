@@ -210,8 +210,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
             else {
                 Toast.makeText(getBaseContext(), R.string.success_sign_up, Toast.LENGTH_LONG).show();
-                // redirect to login screen
+
+                // pass username & password to login page for the new user
                 Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
+
+                // redirect to login screen
                 startActivity(intent);
             }
         }
