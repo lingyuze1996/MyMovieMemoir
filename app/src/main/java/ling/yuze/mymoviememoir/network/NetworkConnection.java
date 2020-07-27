@@ -40,12 +40,37 @@ public class NetworkConnection {
         return responseString;
     }
 
+    public String httpGetWithToken(String token) throws IOException {
+        String responseString;
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        builder.addHeader("Authorization", token);
+        Request request = builder.build();
+        Response response = client.newCall(request).execute();
+        responseString = response.body().string();
+
+        return responseString;
+    }
+
+
     public int httpPost(String jsonString) throws IOException {
         int responseCode;
 
         RequestBody body = RequestBody.create(jsonString, JSON);
         Request.Builder builder = new Request.Builder();
         builder.url(url);
+        Request request = builder.post(body).build();
+        Response response = client.newCall(request).execute();
+        responseCode = response.code();
+        return responseCode;
+    }
+    public int httpPostWithToken(String jsonString, String token) throws IOException {
+        int responseCode;
+
+        RequestBody body = RequestBody.create(jsonString, JSON);
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        builder.addHeader("Authorization", token);
         Request request = builder.post(body).build();
         Response response = client.newCall(request).execute();
         responseCode = response.code();

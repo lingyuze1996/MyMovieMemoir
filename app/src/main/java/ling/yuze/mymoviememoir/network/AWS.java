@@ -3,6 +3,7 @@ package ling.yuze.mymoviememoir.network;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -23,21 +24,23 @@ public class AWS extends NetworkConnection{
         super.setUrl(BASE_URL + path);
     }
 
-    public boolean userSignUp(User user) {
-        boolean success = false;
+    public String userSignUp(User user) {
+        String ret = "Invalid";
         final String path = "signup";
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            int responseCode = httpPost(request);
+            Map<String, Object> retData = httpPostGetToken(request);
+            int responseCode = Integer.parseInt(retData.get("statusCode").toString());
+            String token = retData.get("token").toString();
             if (responseCode == 200) {
-                success = true;
+                ret = "success" + "|" + token;
             }
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
-        return success;
+        return ret;
     }
 
     public String userSignIn(User user) {
