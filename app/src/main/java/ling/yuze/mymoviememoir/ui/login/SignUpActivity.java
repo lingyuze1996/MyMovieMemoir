@@ -201,9 +201,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             AWS aws = new AWS();
             User user = new User(username, password, firstName, surname, gender, dob,
                     address, state, postcode);
-            String[] ret;
-            ret = aws.userSignUp(user).split("|");
-            if (ret[0].equals("success")) {
+            String ret;
+            ret = aws.userSignUp(user);
+            if (ret.equals("success")) {
                 return true;
             }
             return false;

@@ -1,9 +1,12 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +30,11 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
+import ling.yuze.mymoviememoir.ui.main.MainActivity;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
@@ -65,10 +70,17 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     private String watchingTime;
     private Cinema watchingCinema;
 
+    //http post things
+    private String token;
+    private Handler mHandler = new Handler();
+    private AWS aws;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        token = prefs.getString("token", "tokenNotFound");
 
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
@@ -202,7 +214,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                         rating, comment);
 
                 // post memoir into server database
-                new TaskPostNewMemoir().execute(memoir);
+                postMemoirProgress(memoir);
                 Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
 
                 replaceFragment(new MovieMemoirFragment());
@@ -219,13 +231,40 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         transaction.commit();
     }
 
-    private class TaskPostNewMemoir extends AsyncTask<Memoir, Void, Void> {
-        @Override
-        protected Void doInBackground(Memoir... memoirs) {
-            AWS aws = new AWS();
-            Memoir memoir = memoirs[0];
-            aws.postMemoir(memoir);
-            return null;
-        }
+    private void postMemoirProgress(final Memoir memoir) {
+        aws = new AWS();
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            boolean success= aws.postMemoir(memoir, token);
+                            if (success) {
+                                ///take actions after the post
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getActivity(), "Successfully added memoir", Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+                            } else { mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(),"Adding memoir failed", Toast.LENGTH_LONG).show();
+
+                                }
+                            });
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        ).start();
+
     }
 }

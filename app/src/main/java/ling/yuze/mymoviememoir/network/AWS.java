@@ -30,13 +30,11 @@ public class AWS extends NetworkConnection{
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            Map<String, Object> retData = httpPostGetToken(request);
-            int responseCode = Integer.parseInt(retData.get("statusCode").toString());
-            String token = retData.get("token").toString();
+            int responseCode= httpPost(request);
             if (responseCode == 200) {
-                ret = "success" + "|" + token;
+                ret = "success";
             }
-        } catch (IOException | JSONException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -62,13 +60,13 @@ public class AWS extends NetworkConnection{
         return ret;
     }
 
-    public boolean postMemoir(Memoir memoir) {
+    public boolean postMemoir(Memoir memoir, String token) {
         boolean success = false;
         final String path = "memoir";
         setUrl(path);
         String request = new Gson().toJson(memoir);
         try {
-            int responseCode = httpPost(request);
+            int responseCode = httpPostWithToken(request,token);
             if (responseCode == 200) {
                 success = true;
             }

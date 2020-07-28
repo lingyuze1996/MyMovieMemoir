@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void run() {
                         try {
                             String[] ret;
-                            ret = aws.userSignIn(user).split("|");
+                            ret = aws.userSignIn(user).split("[|]");//to split | symbol, need to use [|]
                             if (ret[0].equals("success")) {
                                 ///take actions after the post
                                 final String token = ret[1];

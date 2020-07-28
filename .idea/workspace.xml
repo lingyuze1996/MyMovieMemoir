@@ -12,15 +12,17 @@
     <list default="true" id="260d75e3-fc19-4839-8dc9-db67579b3d55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_XL_API_R" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_XL_API_R_2" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,10 +58,61 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RecylcerViewSelection" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.My Movie Memoir-app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="My Movie Memoir-app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="My Movie Memoir-app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -121,7 +174,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="af673d8d-c60c-4eaa-8b7c-580b26f340c0" name="Default Changelist" comment="" />
+      <changelist id="260d75e3-fc19-4839-8dc9-db67579b3d55" name="Default Changelist" comment="" />
       <created>1595393794297</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -159,46 +212,71 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595584380195" />
-    <state width="1306" height="219" key="GridCell.Tab.0.bottom" timestamp="1595826299467">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1595944998074">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
-    <state width="1306" height="219" key="GridCell.Tab.0.center" timestamp="1595826299467">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595944998074" />
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595944686950" />
+    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1595944998073">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
-    <state width="1306" height="219" key="GridCell.Tab.0.left" timestamp="1595826299467">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595944998073" />
+    <state width="1398" height="302" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1595944686932" />
+    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1595944998072">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
-    <state width="1306" height="219" key="GridCell.Tab.0.right" timestamp="1595826299467">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595944998072" />
+    <state width="1398" height="302" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1595944686932" />
+    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1595944998073">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
-    <state width="1306" height="219" key="GridCell.Tab.1.bottom" timestamp="1595826299468">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595944998073" />
+    <state width="1398" height="302" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1595944686933" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1595945029941">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
-    <state width="1306" height="219" key="GridCell.Tab.1.center" timestamp="1595826299468">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595945029941" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595944710190" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1595945029940">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
-    <state width="1306" height="219" key="GridCell.Tab.1.left" timestamp="1595826299467">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595945029940" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1595944710189" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1595945029939">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595826299467" />
-    <state width="1306" height="219" key="GridCell.Tab.1.right" timestamp="1595826299468">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595945029939" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1595944710188" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1595945029940">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1306" height="219" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595826299468" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595945029940" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1595944710190" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1595507643187">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595507643187" />
-    <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1595826351705">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1595944922239">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="720" height="450" key="XDebugger.FullValuePopup/0.0.1440.900@0.0.1440.900" timestamp="1595944922239" />
+    <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595941318179">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1440.900@0.0.1440.900" timestamp="1595941318179" />
+    <state x="383" y="232" key="com.intellij.ide.util.TipDialog" timestamp="1595940788426">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595826351705" />
+    <state x="383" y="232" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1595940788426" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595592768679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -208,14 +286,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java</url>
+          <line>238</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/HomeFragment.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java</url>
+          <line>250</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
