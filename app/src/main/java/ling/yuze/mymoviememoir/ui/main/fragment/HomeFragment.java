@@ -23,9 +23,6 @@ import ling.yuze.mymoviememoir.network.SearchMovieDB;
 
 public class HomeFragment extends Fragment {
 
-    private int id;
-    private TextView tvDate;
-    private RecyclerView recyclerView;
     private HomeRecyclerAdapter adapter;
     private List<Movie> movieList;
     private Handler handler = new Handler();
@@ -35,13 +32,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        tvDate = v.findViewById(R.id.tv_home_date);
+        TextView tvDate = v.findViewById(R.id.tv_home_date);
         Calendar c = Calendar.getInstance();
         String currentDate =
                 c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH);
         tvDate.setText(currentDate); // display current date
 
-        recyclerView = v.findViewById(R.id.home_recycler);
+        RecyclerView recyclerView = v.findViewById(R.id.home_recycler);
         movieList = Movie.createMovieList();
         adapter = new HomeRecyclerAdapter(movieList);
         recyclerView.setAdapter(adapter);

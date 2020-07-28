@@ -11,8 +11,13 @@ public class Movie {
     private String overview;
     private String imagePath;
     private List<String> genres;
+    private List<String> cast;
+    private List<String> countries;
+    private List<String> directors;
+    private boolean inWatchlist = false;
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public Movie(String name) {
         this.name = name;
@@ -33,15 +38,54 @@ public class Movie {
         rating = mRating;
     }
 
-    public int getId() { return id; }
-    public String getName() {return name;}
-    public String getReleaseDate() {return releaseDate;}
-    public float getRating() {return rating;}
-    public String getImagePath() {return imagePath;}
-    public String getOverview() { return overview; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getReleaseYear() {
+        if (releaseDate != null && !releaseDate.isEmpty())
+            return releaseDate.substring(0, 4);
+        return null;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public List<String> getCountries() {
+        return countries;
+    }
 
     public List<String> getGenres() {
         return genres;
+    }
+
+    public List<String> getCast() {
+        return cast;
+    }
+
+    public List<String> getDirectors() {
+        return directors;
+    }
+
+    public boolean isInWatchlist() {
+        return inWatchlist;
     }
 
     public void setOverview(String overview) {
@@ -72,8 +116,24 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
+    public void setCountries(List<String> countries) {
+        this.countries = countries;
+    }
+
+    public void setCast(List<String> cast) {
+        this.cast = cast;
+    }
+
+    public void setDirectors(List<String> directors) {
+        this.directors = directors;
+    }
+
     public static List<Movie> createMovieList() {
         List<Movie> movieList = new ArrayList<>();
         return movieList;
+    }
+
+    public void setInWatchlist(boolean inWatchlist) {
+        this.inWatchlist = inWatchlist;
     }
 }

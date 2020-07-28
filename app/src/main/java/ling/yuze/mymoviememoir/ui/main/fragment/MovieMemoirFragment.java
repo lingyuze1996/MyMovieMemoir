@@ -230,6 +230,7 @@ public class MovieMemoirFragment extends Fragment {
     }
 
 
+    /*
     private class TaskGetMovieDetails extends AsyncTask<Object, Void, Void> {
         @Override
         protected Void doInBackground(Object... params) {
@@ -283,4 +284,6 @@ public class MovieMemoirFragment extends Fragment {
             filter.setAdapter(genreAdapter);
         }
     }
+
+     */
 }

@@ -2,10 +2,12 @@ package ling.yuze.mymoviememoir.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.icu.text.LocaleDisplayNames;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,7 +36,7 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
     public CinemaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View cinemasView = inflater.inflate(R.layout.recycler_cinema_choose, parent, false);
+        View cinemasView = inflater.inflate(R.layout.recycler_item_cinema_choose, parent, false);
         return new CinemaViewHolder(cinemasView);
     }
 
@@ -57,6 +59,8 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
 
                     // Perform event defined by the fragment/activity
                     itemClickListener.onItemClick(cinemas.get(position));
+
+                    Toast.makeText(v.getContext(), position + currentPosition + positionSelected, Toast.LENGTH_LONG).show();
 
                     // Set distinct color for item selected
                     if (positionSelected != RecyclerView.NO_POSITION)

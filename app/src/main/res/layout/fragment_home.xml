@@ -14,7 +14,7 @@
         android:text="@string/default_date"
         android:layout_gravity="left"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="98dp"
+        android:layout_marginStart="98dp"
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
@@ -75,5 +75,5 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="150dp"
         android:scrollbars="vertical"
-        tools:visibility="visible" />
+        tools:listitem="@layout/recycler_item_home" />
 </LinearLayout>

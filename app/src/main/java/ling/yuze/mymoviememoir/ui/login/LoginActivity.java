@@ -30,8 +30,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etPassword = findViewById(R.id.etLoginPassword);
         etUsername = findViewById(R.id.etLoginUsername);
+        etPassword = findViewById(R.id.etLoginPassword);
+
+        etUsername.setText(getIntent().getStringExtra("username"));
+        etPassword.setText(getIntent().getStringExtra("password"));
 
         Button btSignIn = findViewById(R.id.btSignIn);
         TextView tvSignUp = findViewById(R.id.tv_sign_up);
@@ -86,6 +89,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
+                        }
+
+                        if (ret.equals("success")) {
+                            ///take actions after the post
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                    intent.putExtra("username", username);
+                                    startActivity(intent);
+                                }
+                            });
+                        } else {
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
 
 
