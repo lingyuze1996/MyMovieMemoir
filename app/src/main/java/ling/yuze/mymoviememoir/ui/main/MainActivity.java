@@ -11,8 +11,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -40,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private MovieToWatchViewModel viewModel;
     private UserViewModel userViewModel;
+    private String token;
+    private AWS aws;
+    private Handler mHandler = new Handler();
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +64,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // get username passed from login page
         String username = getIntent().getStringExtra("username");
-
+        //get the auth token
+        token = getIntent().getStringExtra("token");
+        saveToken();
         // retrieve personal information details
-        new TaskGetUserInfo().execute(username);
+        getUserInfoProgress(username);
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav_view);
@@ -132,25 +143,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private class TaskGetUserInfo extends AsyncTask<String, Void, User> {
-        @Override
-        protected User doInBackground(String... params) {
-            AWS aws = new AWS();
-            return aws.getUserInfo(params[0]);
+    private void saveToken(){
+
+        if(token != null) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("token", token);
+            editor.commit();
         }
+    }
 
-        @Override
-        protected void onPostExecute(User user) {
-            userViewModel.setUser(user);
 
-            Toast.makeText(getBaseContext(), "Welcome, " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
-            TextView tv = findViewById(R.id.nav_header_text);
-            String name = user.getFirstName() + " " + user.getSurname();
-            tv.setText(name);
+    private void getUserInfoProgress(final String username) {
+        aws = new AWS();
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            user = aws.getUserInfo(username);
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        userViewModel.setUser(user);
+                                        Toast.makeText(getBaseContext(), "Welcome, " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
+                                        TextView tv = findViewById(R.id.nav_header_text);
+                                        String name = user.getFirstName() + " " + user.getSurname();
+                                        tv.setText(name);
 
-            //automatically redirect to home page after passing the information
-            replaceFragment(new HomeFragment());
+                                        //automatically redirect to home page after passing the information
+                                        replaceFragment(new HomeFragment());
 
-        }
+                                    }
+                                });
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }
+        ).start();
+
     }
 }
