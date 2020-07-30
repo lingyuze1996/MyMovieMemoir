@@ -1,40 +1,30 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.adapter.ListAdapterMemoir;
 import ling.yuze.mymoviememoir.adapter.MemoirRecyclerAdapter;
 import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
-
-import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
 public class MovieMemoirFragment extends Fragment {
     private List<Memoir> memoirs;

@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.data.MemoirItem;
 import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;

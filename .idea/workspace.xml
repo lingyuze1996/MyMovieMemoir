@@ -5,24 +5,24 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7b784660-b01e-4a6e-8d32-6117524fb3c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterMemoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterMemoir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/MemoirItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterMemoir.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterWatchlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterWatchlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/DateFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/utility/DateFormat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_memoir.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_view_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_memoir.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="c6ff7c1a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -60,6 +60,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1596112644505" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -74,8 +82,8 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyMovieMemoir-app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="MyMovieMemoir-app" />
+    <configuration name="AndroidStudioProjects-MyMovieMemoir-app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="AndroidStudioProjects-MyMovieMemoir-app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -198,30 +206,39 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1596074600577" />
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595947866467">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="208" y="134" key="#PSD" timestamp="1596113195025">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="208" y="134" key="#PSD/0.23.1366.745@0.23.1366.745" timestamp="1596113195025" />
+    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596116543353">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1595947866467" />
+    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1596116543353" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1596079322845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596079322845" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1595947983906">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="662" height="145" key="GridCell.Tab.0.bottom" timestamp="1596114816869">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1595947983906">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="662" height="145" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596114816869" />
+    <state width="662" height="145" key="GridCell.Tab.0.center" timestamp="1596114816868">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1595947983905">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="662" height="145" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1596114816868" />
+    <state width="662" height="145" key="GridCell.Tab.0.left" timestamp="1596114816868">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595947983905" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1595947983906">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="662" height="145" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1596114816868" />
+    <state width="662" height="145" key="GridCell.Tab.0.right" timestamp="1596114816868">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
+    <state width="662" height="145" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1596114816868" />
     <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1595947983908">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -238,11 +255,20 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state x="378" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1596074550359">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="184" y="34" key="SettingsEditor" timestamp="1596113558601">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="184" y="34" key="SettingsEditor/0.23.1366.745@0.23.1366.745" timestamp="1596113558601" />
+    <state x="100" y="123" width="1166" height="545" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1596115276302">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="100" y="123" width="1166" height="545" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1366.745@0.23.1366.745" timestamp="1596115276302" />
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1596114725808">
+      <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="378" y="228" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1596074550359" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1595948002209" />
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1596114725808" />
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596082284068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
