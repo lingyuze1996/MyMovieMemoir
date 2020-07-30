@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/ls_memoir_image"
+        android:id="@+id/rec_memoir_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
@@ -26,7 +26,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tv_ls_memoir_movie_name"
+                android:id="@+id/tv_rec_memoir_movie_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
@@ -34,7 +34,7 @@
                 tools:text="Titanic" />
 
             <TextView
-                android:id="@+id/tv_ls_memoir_release_year"
+                android:id="@+id/tv_rec_memoir_movie_release"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="10dp"
@@ -50,23 +50,25 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_ls_memoir_watching_date"
+                android:id="@+id/tv_rec_memoir_date"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|start"
                 android:textSize="10dp"
                 android:padding="2dp"
-                tools:text="Watched on 2020-01-06" />
+                tools:text="Watched on: 2020-01-06" />
 
             <TextView
-                android:id="@+id/tv_ls_memoir_watching_suburb"
+                android:id="@+id/tv_rec_memoir_cinema"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="start|center_vertical"
                 android:layout_marginLeft="8dp"
                 android:textSize="10dp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:padding="2dp"
-                tools:text="3163" />
+                tools:text="Hoyts Chadstone" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,7 +76,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_ls_memoir_comment_heading"
+                android:id="@+id/tv_rec_memoir_comment_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
@@ -83,7 +85,7 @@
                 android:text="@string/comment_heading" />
 
             <TextView
-                android:id="@+id/tv_ls_memoir_comment"
+                android:id="@+id/tv_rec_memoir_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -100,10 +102,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:layout_weight="1.2">
+                android:layout_weight="1.1">
 
                 <TextView
-                    android:id="@+id/tv_ls_memoir_rating"
+                    android:id="@+id/tv_rec_memoir_rating_my"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|start"
@@ -112,7 +114,7 @@
                     android:text="@string/my_rating_heading" />
 
                 <RatingBar
-                    android:id="@+id/ratingBar_my"
+                    android:id="@+id/ratingBar_memoir_my"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +130,7 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/tv_ls_memoir_rating_public"
+                    android:id="@+id/tv_rec_memoir_rating_public"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -137,7 +139,7 @@
                     android:text="@string/public_rating_heading" />
 
                 <RatingBar
-                    android:id="@+id/ratingBar_public"
+                    android:id="@+id/ratingBar_memoir_public"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

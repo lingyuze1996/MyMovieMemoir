@@ -3,6 +3,10 @@ package ling.yuze.mymoviememoir.utility;
 import java.util.Calendar;
 
 public class DateFormat {
+    public static String timestampToDate(String timestamp) {
+        return timestamp.split(" ")[0];
+    }
+
     public static String toDateString(int year, int month, int day) {
         StringBuffer buffer = new StringBuffer();
 

@@ -39,7 +39,7 @@ public class ListAdapterMemoir extends ArrayAdapter<MemoirItem> {
         TextView tvWatching = v.findViewById(R.id.tv_ls_memoir_watching_date);
         TextView tvPostcode = v.findViewById(R.id.tv_ls_memoir_watching_suburb);
         TextView tvComment = v.findViewById(R.id.tv_ls_memoir_comment);
-        RatingBar myRating = v.findViewById(R.id.ratingBar_my);
+        RatingBar myRating = v.findViewById(R.id.ratingBar_memoir_my);
         RatingBar publicRating = v.findViewById(R.id.ratingBar_public);
 
         tvMovieName.setText(memoir.getMovie().getName());

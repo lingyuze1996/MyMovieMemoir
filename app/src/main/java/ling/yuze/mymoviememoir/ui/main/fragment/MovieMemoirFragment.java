@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -19,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,23 +29,27 @@ import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterMemoir;
-import ling.yuze.mymoviememoir.data.MemoirItem;
+import ling.yuze.mymoviememoir.adapter.MemoirRecyclerAdapter;
+import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
+import ling.yuze.mymoviememoir.data.Memoir;
+import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 
 import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
 public class MovieMemoirFragment extends Fragment {
-    private List<MemoirItem> memoirs;
-    private List<MemoirItem> memoirsAll;
-    private ListView listView;
-    private ListAdapterMemoir adapter;
-    private Spinner filter;
+    private List<Memoir> memoirs;
+    private List<Memoir> memoirsAll;
+    private RecyclerView recyclerView;
+    private MemoirRecyclerAdapter recyclerAdapter;
+    private MovieViewModel movieViewModel;
+    private Spinner spinnerGenreFilter;
     private ArrayAdapter<String> genreAdapter;
     private HashSet<String> genreSet = new HashSet<>();
-    private Spinner sort;
+    private Spinner spinnerSort;
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.nav_menu, menu);
+        //inflater.inflate(R.menu.nav_menu, menu);
     }
 
     @Nullable
@@ -54,53 +59,55 @@ public class MovieMemoirFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
-        getActivity().setTitle("abcd");
+        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
 
-        filter = v.findViewById(R.id.spinner_filter);
+        /*
+        spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
 
-        filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerGenreFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = filter.getSelectedItem().toString();
+                String selected = spinnerGenreFilter.getSelectedItem().toString();
 
                 new TaskFilterGenre().execute(selected);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
-        });
+        });*/
 
-        sort = v.findViewById(R.id.spinner_sort);
+        spinnerSort = v.findViewById(R.id.spinner_memoir_sort);
 
-        sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*
+        spinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = sort.getSelectedItem().toString();
+                String selected = spinnerSort.getSelectedItem().toString();
                 // sort the list based on different options and notify the adapter to refresh
                 switch (selected) {
                     case "my rating ↓":
                         sortMyRatingDescending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "my rating ↑":
                         sortMyRatingAscending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "public rating ↓":
                         sortPublicRatingDescending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "public rating ↑":
                         sortPublicRatingAscending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "watching date ↓":
                         sortWatchingDateDescending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "watching date ↑":
                         sortWatchingDateAscending();
-                        adapter.notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                 }
             }
@@ -109,33 +116,25 @@ public class MovieMemoirFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        listView = v.findViewById(R.id.list_view_memoir);
-        memoirs = MemoirItem.createList(); // store memoir items for display in the list
-        memoirsAll = MemoirItem.createList(); // store all memoir items
-        adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
+         */
 
-        listView.setAdapter(adapter);
+
+        recyclerView = v.findViewById(R.id.memoirs_recycler);
+        memoirs = new ArrayList<>(); // store memoir items for display
+        memoirsAll = new ArrayList<>(); // store all memoir items
+        recyclerAdapter = new MemoirRecyclerAdapter(memoirs);
+
+        recyclerView.setAdapter(recyclerAdapter);
 
         //new TaskGetAllMemoirs().execute(); // Some problems here
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(Object item) {
+                final Memoir memoir = (Memoir) item;
+                movieViewModel.setMovie(memoir.getMovie());
 
-                // redirect to view screen when memoir item is clicked
-                MemoirItem memoir = memoirs.get(position);
-                SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = shared.edit();
-                editor.putInt("id", memoir.getMovie().getId());
-                editor.putString("name", memoir.getMovie().getName());
-                editor.putString("releaseDate", memoir.getMovie().getReleaseDate());
-                editor.putString("overview", memoir.getMovie().getOverview());
-                editor.putString("imagePath", memoir.getMovie().getImagePath());
-                editor.putFloat("rating", memoir.getMovie().getPublicRating());
-                editor.apply();
-
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, new MovieViewFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -146,7 +145,7 @@ public class MovieMemoirFragment extends Fragment {
         return v;
     }
 
-    private void sortMyRatingDescending() {
+    /*private void sortMyRatingDescending() {
         Collections.sort(memoirs, new Comparator<MemoirItem>() {
             @Override
             public int compare(MemoirItem o1, MemoirItem o2) {
@@ -221,14 +220,14 @@ public class MovieMemoirFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new ListAdapterMemoir(getContext(), R.layout.list_view_memoir, memoirs);
+            adapter = new ListAdapterMemoir(getContext(), R.layout.recycler_item_memoir, memoirs);
             listView.setAdapter(adapter);
         }
 
     }
 
 
-    /*
+
     private class TaskGetMovieDetails extends AsyncTask<Object, Void, Void> {
         @Override
         protected Void doInBackground(Object... params) {

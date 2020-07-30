@@ -21,6 +21,7 @@ public class NetworkConnection {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
     private String url;
+
     public NetworkConnection() {
         client = new OkHttpClient();
     }
@@ -64,6 +65,7 @@ public class NetworkConnection {
         responseCode = response.code();
         return responseCode;
     }
+
     public int httpPostWithToken(String jsonString, String token) throws IOException {
         int responseCode;
 
@@ -80,7 +82,7 @@ public class NetworkConnection {
     public Map<String, Object> httpPostGetToken(String jsonString) throws IOException, JSONException {
         int responseCode;
 
-        Map<String, Object> ret=new HashMap<String, Object>();
+        Map<String, Object> ret = new HashMap<String, Object>();
 
 
         RequestBody body = RequestBody.create(jsonString, JSON);
@@ -89,10 +91,10 @@ public class NetworkConnection {
         Request request = builder.post(body).build();
         Response response = client.newCall(request).execute();
         responseCode = response.code();
-        ret.put("statusCode",responseCode);
+        ret.put("statusCode", responseCode);
         String retJson = response.body().string();
         JSONObject retObj = (JSONObject) new JSONObject(retJson);
-        String token =retObj.getString("token");
+        String token = retObj.getString("token");
 
         ret.put("token", token);
         return ret;

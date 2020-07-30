@@ -25,24 +25,24 @@
                 android:textColor="#000000"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/spinner_sort"
+                app:layout_constraintEnd_toStartOf="@id/spinner_memoir_sort"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 android:text="@string/filter_genre" />
 
             <Spinner
-                android:id="@+id/spinner_filter"
+                android:id="@+id/spinner_genre_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/spinner_sort"
+                app:layout_constraintEnd_toStartOf="@id/spinner_memoir_sort"
                 app:layout_constraintStart_toEndOf="@id/tv_memoir_genre"
                 app:layout_constraintHorizontal_bias="0.05"
                 android:layout_gravity="center" />
 
             <Spinner
-                android:id="@+id/spinner_sort"
+                android:id="@+id/spinner_memoir_sort"
                 android:entries="@array/memoir_sort_array"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,8 +56,8 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/list_view_memoir"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/memoirs_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
