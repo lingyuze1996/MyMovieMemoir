@@ -29,8 +29,6 @@ import java.util.List;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.ListAdapterMemoir;
 import ling.yuze.mymoviememoir.data.MemoirItem;
-import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.network.SearchMovieDB;
 
 import static ling.yuze.mymoviememoir.utility.DateFormat.compareDate;
 
@@ -133,7 +131,7 @@ public class MovieMemoirFragment extends Fragment {
                 editor.putString("releaseDate", memoir.getMovie().getReleaseDate());
                 editor.putString("overview", memoir.getMovie().getOverview());
                 editor.putString("imagePath", memoir.getMovie().getImagePath());
-                editor.putFloat("rating", memoir.getMovie().getRating());
+                editor.putFloat("rating", memoir.getMovie().getPublicRating());
                 editor.apply();
 
                 FragmentManager fm = getFragmentManager();
@@ -170,7 +168,7 @@ public class MovieMemoirFragment extends Fragment {
         Collections.sort(memoirs, new Comparator<MemoirItem>() {
             @Override
             public int compare(MemoirItem o1, MemoirItem o2) {
-                return Float.compare(o1.getMovie().getRating(), o2.getMovie().getRating()) * (-1);
+                return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating()) * (-1);
             }
         });
     }
@@ -179,7 +177,7 @@ public class MovieMemoirFragment extends Fragment {
         Collections.sort(memoirs, new Comparator<MemoirItem>() {
             @Override
             public int compare(MemoirItem o1, MemoirItem o2) {
-                return Float.compare(o1.getMovie().getRating(), o2.getMovie().getRating());
+                return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating());
             }
         });
     }

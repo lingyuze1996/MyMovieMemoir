@@ -12,15 +12,13 @@ import ling.yuze.mymoviememoir.data.Movie;
 
 
 public class SearchMovieDB extends NetworkConnection {
-    private String API_KEY;
     private String BASE_URL_QUERY;
     private final String BASE_URL = "https://api.themoviedb.org/3/movie/";
     private String TAIL_URL;
 
     public void setAPIKey(String key) {
-        API_KEY = key;
-        BASE_URL_QUERY = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=";
-        TAIL_URL = "?api_key=" + API_KEY;
+        BASE_URL_QUERY = "https://api.themoviedb.org/3/search/movie?api_key=" + key + "&query=";
+        TAIL_URL = "?api_key=" + key;
     }
 
     public SearchMovieDB() {super();}

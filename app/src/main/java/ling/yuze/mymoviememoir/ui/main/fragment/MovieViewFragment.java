@@ -80,7 +80,7 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
 
         tvOverview.setText(movie.getOverview());
         setImage(image, movie.getImagePath());
-        ratingBar.setRating(Math.round(movie.getRating()) / 2.0f);
+        ratingBar.setRating(Math.round(movie.getPublicRating()) / 2.0f);
 
         // retrieve detailed movie information
         getMovieInformation();

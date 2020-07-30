@@ -7,7 +7,7 @@ public class Movie {
     private Integer id;
     private String name;
     private String releaseDate;
-    private Float rating;
+    private Float publicRating;
     private String overview;
     private String imagePath;
     private List<String> genres;
@@ -29,13 +29,13 @@ public class Movie {
         releaseDate = mReleaseDate;
         imagePath = mImagePath;
         overview = mOverview;
-        rating = mRating;
+        publicRating = mRating;
     }
 
     public Movie(String mName, String mReleaseDate, float mRating) {
         name = mName;
         releaseDate = mReleaseDate;
-        rating = mRating;
+        publicRating = mRating;
     }
 
     public int getId() {
@@ -56,8 +56,8 @@ public class Movie {
         return null;
     }
 
-    public float getRating() {
-        return rating;
+    public float getPublicRating() {
+        return publicRating;
     }
 
     public String getImagePath() {
@@ -108,8 +108,8 @@ public class Movie {
         this.name = name;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
+    public void setPublicRating(float publicRating) {
+        this.publicRating = publicRating;
     }
 
     public void setReleaseDate(String releaseDate) {

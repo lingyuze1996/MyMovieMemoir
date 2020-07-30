@@ -55,7 +55,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         final Movie movie = movies.get(position);
         holder.tvMovieName.setText(movie.getName());
         holder.tvReleaseDate.setText(movie.getReleaseDate());
-        holder.tvRating.setText("" + movie.getRating());
+        holder.tvRating.setText("" + movie.getPublicRating());
 
     }
 }

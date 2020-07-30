@@ -2,12 +2,10 @@ package ling.yuze.mymoviememoir.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.icu.text.LocaleDisplayNames;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +29,10 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
         this.itemClickListener = itemClickListener;
     }
 
+    public void setPositionSelected(int positionSelected) {
+        this.positionSelected = positionSelected;
+    }
+
     @NonNull
     @Override
     public CinemaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,7 +48,6 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
         holder.tvCinemaName.setText(cinema.getName());
         holder.tvCinemaAddress.setText(cinema.getAddress());
 
-        final int currentPosition = holder.getAdapterPosition();
         if (position == positionSelected)
             holder.itemView.setBackgroundColor(Color.parseColor("#b2ebf2"));
         else
@@ -55,17 +56,15 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemClickListener != null && currentPosition != RecyclerView.NO_POSITION) {
+                if (itemClickListener != null && position != RecyclerView.NO_POSITION) {
 
                     // Perform event defined by the fragment/activity
                     itemClickListener.onItemClick(cinemas.get(position));
 
-                    Toast.makeText(v.getContext(), position + currentPosition + positionSelected, Toast.LENGTH_LONG).show();
-
                     // Set distinct color for item selected
                     if (positionSelected != RecyclerView.NO_POSITION)
                         notifyItemChanged(positionSelected);
-                    positionSelected = currentPosition;
+                    positionSelected = position;
                     notifyItemChanged(positionSelected);
                 }
             }
@@ -75,10 +74,6 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
     @Override
     public int getItemCount() {
         return cinemas.size();
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(Cinema cinema);
     }
 
     class CinemaViewHolder extends RecyclerView.ViewHolder {

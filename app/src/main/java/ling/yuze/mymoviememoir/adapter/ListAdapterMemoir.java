@@ -49,7 +49,7 @@ public class ListAdapterMemoir extends ArrayAdapter<MemoirItem> {
         tvPostcode.setText("At suburb: " + memoir.getSuburb());
         tvComment.setText(memoir.getComment());
         myRating.setRating(memoir.getMyRating());
-        publicRating.setRating(Math.round(memoir.getMovie().getRating()) / 2.0f);
+        publicRating.setRating(Math.round(memoir.getMovie().getPublicRating()) / 2.0f);
 
 
         return v;

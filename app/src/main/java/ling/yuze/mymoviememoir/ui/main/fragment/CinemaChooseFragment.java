@@ -24,6 +24,7 @@ import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.CinemaChooseRecyclerAdapter;
+import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
@@ -54,6 +55,7 @@ public class CinemaChooseFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String state = parent.getSelectedItem().toString();
+                clearCinemaSelection();
                 new TaskGetCinemaRegions().execute(state);
             }
 
@@ -69,6 +71,7 @@ public class CinemaChooseFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String region = parent.getSelectedItem().toString();
                 String state = spinnerState.getSelectedItem().toString();
+                clearCinemaSelection();
                 new TaskGetCinemas().execute(state, region);
             }
 
@@ -88,9 +91,10 @@ public class CinemaChooseFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapterCinemas = new CinemaChooseRecyclerAdapter(cinemas);
-        adapterCinemas.setItemClickListener(new CinemaChooseRecyclerAdapter.OnItemClickListener() {
+        adapterCinemas.setItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(Cinema cinema) {
+            public void onItemClick(Object item) {
+                Cinema cinema = (Cinema) item;
                 cinemaViewModel.setCinema(cinema);
                 Toast.makeText(getContext(), cinema.getName() + " Selected!", Toast.LENGTH_LONG).show();
             }
@@ -151,5 +155,10 @@ public class CinemaChooseFragment extends Fragment {
                     spinnerState.getSelectedItem().toString(),
                     spinnerRegion.getSelectedItem().toString());
         }
+    }
+
+    private void clearCinemaSelection() {
+        adapterCinemas.setPositionSelected(RecyclerView.NO_POSITION);
+        cinemaViewModel.setCinema(null);
     }
 }

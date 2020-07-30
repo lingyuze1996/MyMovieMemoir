@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.DateFormat;
@@ -58,8 +60,13 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
     private Button buttonSubmit;
 
-    // information
+    private Movie movie;
+
+    private Handler handler = new Handler();
+
+
     private UserViewModel userViewModel;
+    private MovieViewModel movieViewModel;
     private CinemaViewModel cinemaViewModel;
     private String watchingDate;
     private String watchingTime;
@@ -71,6 +78,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
 
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
         cinemaViewModel.setCinema(null);
         cinemaViewModel.getCinema().observe(getViewLifecycleOwner(), new Observer<Cinema>() {
@@ -84,22 +92,18 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        // Get movie information from movie view fragment
-        SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
-
-        String name = shared.getString("name", "Unknown");
-        String releaseDate = shared.getString("releaseDate", "Unknown");
-        String imagePath = shared.getString("imagePath", "");
+        // Get movie information from movie view model
+        movie = movieViewModel.getMovie().getValue();
 
         // initialize widgets
         tvMovieName = v.findViewById(R.id.tv_add_name);
-        tvMovieName.setText(name);
+        tvMovieName.setText(movie.getName());
 
         movieImage = v.findViewById(R.id.image_add_poster);
-        setImage(movieImage, imagePath);
+        setImage(movieImage, movie.getImagePath());
 
         tvRelease = v.findViewById(R.id.tv_add_release);
-        tvRelease.setText(releaseDate);
+        tvRelease.setText(movie.getReleaseDate());
 
         calendarImage = v.findViewById(R.id.imageWatchingDate);
         calendarImage.setOnClickListener(this);
@@ -198,14 +202,10 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 float rating = ratingBar.getRating();
 
                 Memoir memoir = new Memoir(userViewModel.getUser().getValue(), watchingCinema,
-                        new Movie("test"), watchingDate + " " + watchingTime,
-                        rating, comment);
+                        movie, watchingDate + " " + watchingTime, rating, comment);
 
                 // post memoir into server database
-                new TaskPostNewMemoir().execute(memoir);
-                Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
-
-                replaceFragment(new MovieMemoirFragment());
+                postMemoir(memoir);
 
                 break;
         }
@@ -219,13 +219,25 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         transaction.commit();
     }
 
-    private class TaskPostNewMemoir extends AsyncTask<Memoir, Void, Void> {
-        @Override
-        protected Void doInBackground(Memoir... memoirs) {
-            AWS aws = new AWS();
-            Memoir memoir = memoirs[0];
-            aws.postMemoir(memoir);
-            return null;
-        }
+    private void postMemoir(final Memoir memoir) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AWS aws = new AWS();
+                final boolean success = aws.postMemoir(memoir);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (success) {
+                            Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
+                            replaceFragment(new MovieMemoirFragment());
+                        }
+                        else
+                            Toast.makeText(getContext(), R.string.error, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }).start();
+
     }
 }
