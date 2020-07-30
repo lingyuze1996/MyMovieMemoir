@@ -3,11 +3,13 @@ package ling.yuze.mymoviememoir.network;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
@@ -22,21 +24,21 @@ public class AWS extends NetworkConnection{
         super.setUrl(BASE_URL + path);
     }
 
-    public boolean userSignUp(User user) {
-        boolean success = false;
+    public String userSignUp(User user) {
+        String ret = "Invalid";
         final String path = "signup";
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            int responseCode = httpPost(request);
+            int responseCode= httpPost(request);
             if (responseCode == 200) {
-                success = true;
+                ret = "success";
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return success;
+        return ret;
     }
 
     public String userSignIn(User user) {
@@ -45,9 +47,11 @@ public class AWS extends NetworkConnection{
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            int responseCode = httpPost(request);
+            Map<String, Object> retData = httpPostGetToken(request);
+            int responseCode = Integer.parseInt(retData.get("statusCode").toString());
+            String token = retData.get("token").toString();
             if (responseCode == 200) {
-                ret = "success";
+                ret = "success" + "|" + token;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,13 +60,13 @@ public class AWS extends NetworkConnection{
         return ret;
     }
 
-    public boolean postMemoir(Memoir memoir) {
+    public boolean postMemoir(Memoir memoir, String token) {
         boolean success = false;
         final String path = "memoir";
         setUrl(path);
         String request = new Gson().toJson(memoir);
         try {
-            int responseCode = httpPost(request);
+            int responseCode = httpPostWithToken(request,token);
             if (responseCode == 200) {
                 success = true;
             }

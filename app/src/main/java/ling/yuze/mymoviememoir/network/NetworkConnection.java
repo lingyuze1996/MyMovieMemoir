@@ -1,8 +1,15 @@
 package ling.yuze.mymoviememoir.network;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -33,8 +40,22 @@ public class NetworkConnection {
         return responseString;
     }
 
-    public int httpPost(String jsonString) throws IOException{
+    public String httpGetWithToken(String token) throws IOException {
+        String responseString;
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        builder.addHeader("Authorization", token);
+        Request request = builder.build();
+        Response response = client.newCall(request).execute();
+        responseString = response.body().string();
+
+        return responseString;
+    }
+
+
+    public int httpPost(String jsonString) throws IOException {
         int responseCode;
+
         RequestBody body = RequestBody.create(jsonString, JSON);
         Request.Builder builder = new Request.Builder();
         builder.url(url);
@@ -43,7 +64,38 @@ public class NetworkConnection {
         responseCode = response.code();
         return responseCode;
     }
+    public int httpPostWithToken(String jsonString, String token) throws IOException {
+        int responseCode;
+
+        RequestBody body = RequestBody.create(jsonString, JSON);
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        builder.addHeader("Authorization", token);
+        Request request = builder.post(body).build();
+        Response response = client.newCall(request).execute();
+        responseCode = response.code();
+        return responseCode;
+    }
+
+    public Map<String, Object> httpPostGetToken(String jsonString) throws IOException, JSONException {
+        int responseCode;
+
+        Map<String, Object> ret=new HashMap<String, Object>();
 
 
+        RequestBody body = RequestBody.create(jsonString, JSON);
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        Request request = builder.post(body).build();
+        Response response = client.newCall(request).execute();
+        responseCode = response.code();
+        ret.put("statusCode",responseCode);
+        String retJson = response.body().string();
+        JSONObject retObj = (JSONObject) new JSONObject(retJson);
+        String token =retObj.getString("token");
+
+        ret.put("token", token);
+        return ret;
+    }
 
 }

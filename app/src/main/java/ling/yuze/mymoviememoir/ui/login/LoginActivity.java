@@ -67,30 +67,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Runnable() {
                     @Override
                     public void run() {
-                        String ret = "";
                         try {
-                            ret = aws.userSignIn(user);
+                            String[] ret;
+                            ret = aws.userSignIn(user).split("[|]");//to split | symbol, need to use [|]
+                            if (ret[0].equals("success")) {
+                                ///take actions after the post
+                                final String token = ret[1];
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                        intent.putExtra("username", username);
+                                        intent.putExtra("token", token);
+                                        startActivity(intent);
+
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if (ret.equals("success")) {
-                            ///take actions after the post
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                                    intent.putExtra("username", username);
-                                    startActivity(intent);
-                                }
-                            });
-                        } else {
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
+
 
                     }
                 }

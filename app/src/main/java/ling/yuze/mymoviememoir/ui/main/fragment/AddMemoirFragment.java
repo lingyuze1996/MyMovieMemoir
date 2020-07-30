@@ -1,10 +1,12 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +30,11 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
-import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
+import ling.yuze.mymoviememoir.ui.main.MainActivity;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
@@ -60,25 +63,26 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
     private Button buttonSubmit;
 
-    private Movie movie;
-
-    private Handler handler = new Handler();
-
-
+    // information
     private UserViewModel userViewModel;
-    private MovieViewModel movieViewModel;
     private CinemaViewModel cinemaViewModel;
     private String watchingDate;
     private String watchingTime;
     private Cinema watchingCinema;
 
+    //http post things
+    private String token;
+    private Handler mHandler = new Handler();
+    private AWS aws;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        token = prefs.getString("token", "tokenNotFound");
 
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
-        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
         cinemaViewModel.setCinema(null);
         cinemaViewModel.getCinema().observe(getViewLifecycleOwner(), new Observer<Cinema>() {
@@ -92,18 +96,22 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        // Get movie information from movie view model
-        movie = movieViewModel.getMovie().getValue();
+        // Get movie information from movie view fragment
+        SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
+
+        String name = shared.getString("name", "Unknown");
+        String releaseDate = shared.getString("releaseDate", "Unknown");
+        String imagePath = shared.getString("imagePath", "");
 
         // initialize widgets
         tvMovieName = v.findViewById(R.id.tv_add_name);
-        tvMovieName.setText(movie.getName());
+        tvMovieName.setText(name);
 
         movieImage = v.findViewById(R.id.image_add_poster);
-        setImage(movieImage, movie.getImagePath());
+        setImage(movieImage, imagePath);
 
         tvRelease = v.findViewById(R.id.tv_add_release);
-        tvRelease.setText(movie.getReleaseDate());
+        tvRelease.setText(releaseDate);
 
         calendarImage = v.findViewById(R.id.imageWatchingDate);
         calendarImage.setOnClickListener(this);
@@ -202,10 +210,14 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 float rating = ratingBar.getRating();
 
                 Memoir memoir = new Memoir(userViewModel.getUser().getValue(), watchingCinema,
-                        movie, watchingDate + " " + watchingTime, rating, comment);
+                        new Movie("test"), watchingDate + " " + watchingTime,
+                        rating, comment);
 
                 // post memoir into server database
-                postMemoir(memoir);
+                postMemoirProgress(memoir);
+                Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
+
+                replaceFragment(new MovieMemoirFragment());
 
                 break;
         }
@@ -219,25 +231,40 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         transaction.commit();
     }
 
-    private void postMemoir(final Memoir memoir) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                AWS aws = new AWS();
-                final boolean success = aws.postMemoir(memoir);
-                handler.post(new Runnable() {
+    private void postMemoirProgress(final Memoir memoir) {
+        aws = new AWS();
+        new Thread(
+                new Runnable() {
                     @Override
                     public void run() {
-                        if (success) {
-                            Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
-                            replaceFragment(new MovieMemoirFragment());
+                        try {
+                            boolean success= aws.postMemoir(memoir, token);
+                            if (success) {
+                                ///take actions after the post
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getActivity(), "Successfully added memoir", Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+                            } else { mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(),"Adding memoir failed", Toast.LENGTH_LONG).show();
+
+                                }
+                            });
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        else
-                            Toast.makeText(getContext(), R.string.error, Toast.LENGTH_LONG).show();
+
+
                     }
-                });
-            }
-        }).start();
+                }
+        ).start();
 
     }
 }
