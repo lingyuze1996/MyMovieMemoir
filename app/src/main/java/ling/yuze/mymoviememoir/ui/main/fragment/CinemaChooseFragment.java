@@ -1,7 +1,7 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +40,8 @@ public class CinemaChooseFragment extends Fragment {
     private CinemaChooseRecyclerAdapter adapterCinemas;
 
     private CinemaViewModel cinemaViewModel;
+    private Handler mHandler = new Handler();
+    private AWS aws = new AWS();
 
     @Nullable
     @Override
@@ -56,7 +58,7 @@ public class CinemaChooseFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String state = parent.getSelectedItem().toString();
                 clearCinemaSelection();
-                new TaskGetCinemaRegions().execute(state);
+                new Thread(new GetCinemaRegions(state)).start();
             }
 
             @Override
@@ -72,7 +74,7 @@ public class CinemaChooseFragment extends Fragment {
                 String region = parent.getSelectedItem().toString();
                 String state = spinnerState.getSelectedItem().toString();
                 clearCinemaSelection();
-                new TaskGetCinemas().execute(state, region);
+                new Thread(new GetCinemas(state, region)).start();
             }
 
             @Override
@@ -120,40 +122,54 @@ public class CinemaChooseFragment extends Fragment {
         return v;
     }
 
-    private class TaskGetCinemas extends AsyncTask<String, Void, List<Cinema>> {
-        @Override
-        protected List<Cinema> doInBackground(String... strings) {
-            AWS search = new AWS();
-            List<Cinema> cinemas = search.getCinemas(strings[0], strings[1]);
-            return cinemas;
+
+
+    private class GetCinemas implements Runnable {
+        private String mState;
+        private String mRegion;
+
+        public GetCinemas(String state, String region) {
+            mState = state;
+            mRegion = region;
         }
 
         @Override
-        protected void onPostExecute(List<Cinema> cinemasList) {
-            cinemas.clear();
-            cinemas.addAll(cinemasList);
-            adapterCinemas.notifyDataSetChanged();
+        public void run() {
+            AWS search = new AWS();
+            final List<Cinema> cinemaList = search.getCinemas(mState, mRegion);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    cinemas.clear();
+                    cinemas.addAll(cinemaList);
+                    adapterCinemas.notifyDataSetChanged();
+                }
+            });
         }
     }
 
-    private class TaskGetCinemaRegions extends AsyncTask<String, Void, List<String>> {
-        @Override
-        protected List<String> doInBackground(String... strings) {
-            AWS search = new AWS();
-            List<String> regions = search.getCinemaRegionsByState(strings[0]);
-            return regions;
+    private class GetCinemaRegions implements Runnable {
+        private String mState;
+
+        public GetCinemaRegions(String state) {
+            mState = state;
         }
 
         @Override
-        protected void onPostExecute(List<String> regionsList) {
-            regions.clear();
-            regions.add("All");
-            regions.addAll(regionsList);
-            adapterRegion.notifyDataSetChanged();
-            spinnerRegion.setSelection(0);
-            new TaskGetCinemas().execute(
-                    spinnerState.getSelectedItem().toString(),
-                    spinnerRegion.getSelectedItem().toString());
+        public void run() {
+            final List<String> regionsList = aws.getCinemaRegionsByState(mState);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    regions.clear();
+                    regions.add("All");
+                    regions.addAll(regionsList);
+                    adapterRegion.notifyDataSetChanged();
+                    spinnerRegion.setSelection(0);
+                    new Thread(new GetCinemas(spinnerState.getSelectedItem().toString(),
+                            spinnerRegion.getSelectedItem().toString())).start();
+                }
+            });
         }
     }
 
