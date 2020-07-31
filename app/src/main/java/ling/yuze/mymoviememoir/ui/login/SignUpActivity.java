@@ -2,9 +2,11 @@ package ling.yuze.mymoviememoir.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.network.AWS;
@@ -43,6 +46,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private String state;
     private String username;
     private String password;
+
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +97,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         etUsername = findViewById(R.id.etRegisterUsername);
@@ -183,7 +189,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
                 // try sign up
-                new TaskSignUp().execute();
+                new Thread(new SignUp()).start();
                 break;
 
             case R.id.imageDate:
@@ -195,35 +201,40 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private class TaskSignUp extends AsyncTask<Void, Void, Boolean> {
+    private class SignUp implements Runnable {
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        public void run() {
             AWS aws = new AWS();
             User user = new User(username, password, firstName, surname, gender, dob,
                     address, state, postcode);
             String ret;
             ret = aws.userSignUp(user);
             if (ret.equals("success")) {
-                return true;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getBaseContext(), R.string.success_sign_up, Toast.LENGTH_LONG).show();
+
+                        // pass username & password to login page for the new user
+                        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
+
+                        // redirect to login screen
+                        startActivity(intent);
+                    }
+                });
+            } else {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-            return false;
         }
 
-        @Override
-        protected void onPostExecute(Boolean success) {
-            if (!success)
-                Toast.makeText(getBaseContext(), R.string.error_username, Toast.LENGTH_LONG).show();
-            else {
-                Toast.makeText(getBaseContext(), R.string.success_sign_up, Toast.LENGTH_LONG).show();
-
-                // pass username & password to login page for the new user
-                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("password", password);
-
-                // redirect to login screen
-                startActivity(intent);
-            }
-        }
     }
+
+
 }

@@ -68,11 +68,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void run() {
                         try {
-                            String[] ret;
-                            ret = aws.userSignIn(user).split("[|]");//to split | symbol, need to use [|]
-                            if (ret[0].equals("success")) {
+                            final String token = aws.userSignIn(user);
+                            if (token != null) {
                                 ///take actions after the post
-                                final String token = ret[1];
                                 mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
@@ -84,14 +82,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     }
                                 });
                             } else {
-                                Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getBaseContext(), R.string.error_sign_in, Toast.LENGTH_LONG).show();
+                                    }
+                                });
 
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }
         ).start();

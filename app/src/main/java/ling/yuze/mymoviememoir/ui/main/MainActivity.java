@@ -143,13 +143,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void saveToken(){
+    private void saveToken() {
 
-        if(token != null) {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (token != null) {
+            SharedPreferences prefs = this.getSharedPreferences("auth", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("token", token);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -162,20 +162,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void run() {
                         try {
                             user = aws.getUserInfo(username);
-                                mHandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        userViewModel.setUser(user);
-                                        Toast.makeText(getBaseContext(), "Welcome, " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
-                                        TextView tv = findViewById(R.id.nav_header_text);
-                                        String name = user.getFirstName() + " " + user.getSurname();
-                                        tv.setText(name);
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    userViewModel.setUser(user);
+                                    Toast.makeText(getBaseContext(), "Welcome, " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
+                                    TextView tv = findViewById(R.id.nav_header_text);
+                                    String name = user.getFirstName() + " " + user.getSurname();
+                                    tv.setText(name);
 
-                                        //automatically redirect to home page after passing the information
-                                        replaceFragment(new HomeFragment());
+                                    //automatically redirect to home page after passing the information
+                                    replaceFragment(new HomeFragment());
 
-                                    }
-                                });
+                                }
+                            });
 
                         } catch (Exception e) {
                             e.printStackTrace();

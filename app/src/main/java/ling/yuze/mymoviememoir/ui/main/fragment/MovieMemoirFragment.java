@@ -1,6 +1,9 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +28,7 @@ import ling.yuze.mymoviememoir.adapter.MemoirRecyclerAdapter;
 import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
+import ling.yuze.mymoviememoir.network.AWS;
 
 public class MovieMemoirFragment extends Fragment {
     private List<Memoir> memoirs;
@@ -36,6 +40,9 @@ public class MovieMemoirFragment extends Fragment {
     private ArrayAdapter<String> genreAdapter;
     private HashSet<String> genreSet = new HashSet<>();
     private Spinner spinnerSort;
+    private String token;
+    private AWS aws = new AWS();
+    private Handler handler = new Handler();
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -50,6 +57,10 @@ public class MovieMemoirFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
         movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
+
+        SharedPreferences shared = getContext().getSharedPreferences("auth", Context.MODE_PRIVATE);
+
+        token = shared.getString("token", null);
 
         /*
         spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
@@ -135,6 +146,15 @@ public class MovieMemoirFragment extends Fragment {
         return v;
     }
 
+    private class GetMemoirs implements Runnable {
+        @Override
+        public void run() {
+            //aws.postMemoir()
+        }
+    }
+
+}
+
     /*private void sortMyRatingDescending() {
         Collections.sort(memoirs, new Comparator<MemoirItem>() {
             @Override
@@ -214,63 +234,4 @@ public class MovieMemoirFragment extends Fragment {
             listView.setAdapter(adapter);
         }
 
-    }
-
-
-
-    private class TaskGetMovieDetails extends AsyncTask<Object, Void, Void> {
-        @Override
-        protected Void doInBackground(Object... params) {
-            SearchMovieDB search = new SearchMovieDB();
-            search.setAPIKey(getString(R.string.movie_db_api_key));
-
-            // first find movies with corresponding movie name
-            List<Object[]> movieList = search.searchByQuery((String) params[0]);
-            if (movieList == null) return null;
-
-            // find the movie with corresponding release date
-            Object[] theMovie = new Object[6];
-            for (Object[] movie : movieList) {
-                String date = (String) movie[2];
-                if (date.equals((String) params[1])) {
-                    theMovie = movie;
-                    break;
-                }
-            }
-
-            String path = (String) theMovie[3];
-            String overview = (String) theMovie[4];
-            float rating = (float) ((double) theMovie[5]);
-
-            int id = (Integer) theMovie[0];
-            List<String> genres = search.searchGenres(id);
-            genreSet.addAll(genres);
-
-            MemoirItem memoir = (MemoirItem) params[2];
-
-            Movie movie = memoir.getMovie();
-            movie.setId(id);
-            movie.setImagePath(path);
-            movie.setGenres(genres);
-            movie.setRating(rating);
-            movie.setOverview(overview);
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            sortWatchingDateDescending();
-            adapter.notifyDataSetChanged();
-
-            List<String> genres = new ArrayList<>();
-            genres.add("All");
-            genres.addAll(genreSet);
-
-            genreAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, genres);
-            filter.setAdapter(genreAdapter);
-        }
-    }
-
-     */
-}
+    }*/

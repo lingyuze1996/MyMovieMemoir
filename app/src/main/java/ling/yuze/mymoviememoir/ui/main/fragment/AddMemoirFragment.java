@@ -1,9 +1,7 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -30,11 +28,9 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.data.User;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
-import ling.yuze.mymoviememoir.ui.main.MainActivity;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
@@ -238,7 +234,8 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                     @Override
                     public void run() {
                         try {
-                            boolean success= aws.postMemoir(memoir, token);
+                            //
+                            boolean success= aws.postMemoir(memoir);
                             if (success) {
                                 ///take actions after the post
                                 mHandler.post(new Runnable() {

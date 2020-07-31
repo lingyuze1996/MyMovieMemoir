@@ -1,9 +1,9 @@
 package ling.yuze.mymoviememoir.network;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -14,14 +14,54 @@ import java.util.Map;
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.User;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
-public class AWS extends NetworkConnection{
-    private static final String BASE_URL = "https://j0wq6141yh.execute-api.ap-southeast-2.amazonaws.com/beta/";
-    public AWS() {super();}
+public class AWS extends NetworkConnection {
+    private final String BASE_URL = "https://j0wq6141yh.execute-api.ap-southeast-2.amazonaws.com/prod/";
+    private String token;
+
+    public AWS() {
+        super();
+    }
+
+    @Override
+    public String httpGet() throws IOException {
+        String responseString;
+        Request.Builder builder = new Request.Builder();
+        builder.url(getUrl());
+        if (token != null)
+            builder.addHeader("Authorization", token);
+        Request request = builder.build();
+        Response response = getClient().newCall(request).execute();
+        responseString = response.body().string();
+
+        return responseString;
+    }
+
+    @Override
+    public String httpPost(String jsonString) throws IOException {
+        String responseString;
+
+        RequestBody body = RequestBody.create(jsonString, JSON);
+        Request.Builder builder = new Request.Builder();
+        builder.url(getUrl());
+        if (token != null)
+            builder.addHeader("Authorization", token);
+        Request request = builder.post(body).build();
+        Response response = getClient().newCall(request).execute();
+        responseString = response.body().toString();
+        return responseString;
+    }
 
     @Override
     public void setUrl(String path) {
         super.setUrl(BASE_URL + path);
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String userSignUp(User user) {
@@ -30,8 +70,8 @@ public class AWS extends NetworkConnection{
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            int responseCode= httpPost(request);
-            if (responseCode == 200) {
+            String response = httpPost(request);
+            if (response.isEmpty()) {
                 ret = "success";
             }
         } catch (IOException e) {
@@ -42,32 +82,30 @@ public class AWS extends NetworkConnection{
     }
 
     public String userSignIn(User user) {
-        String ret = "Invalid";
+        String userToken;
         final String path = "signin";
         setUrl(path);
         String request = new Gson().toJson(user);
         try {
-            Map<String, Object> retData = httpPostGetToken(request);
-            int responseCode = Integer.parseInt(retData.get("statusCode").toString());
-            String token = retData.get("token").toString();
-            if (responseCode == 200) {
-                ret = "success" + "|" + token;
-            }
+            String response = httpPost(request);
+            JSONObject responseJSON = new JSONObject(response);
+            userToken = responseJSON.getString("token");
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
-        return ret;
+        return userToken;
     }
 
-    public boolean postMemoir(Memoir memoir, String token) {
+    public boolean postMemoir(Memoir memoir) {
         boolean success = false;
         final String path = "memoir";
         setUrl(path);
         String request = new Gson().toJson(memoir);
         try {
-            int responseCode = httpPostWithToken(request,token);
-            if (responseCode == 200) {
+            String response = httpPost(request);
+            if (response.isEmpty()) {
                 success = true;
             }
         } catch (IOException e) {
@@ -76,6 +114,8 @@ public class AWS extends NetworkConnection{
 
         return success;
     }
+
+    //public List<Memoir> getUserMemoirs(String UserId)
 
     public User getUserInfo(String username) {
         User user = new User(username);
@@ -102,6 +142,7 @@ public class AWS extends NetworkConnection{
             user.setPostcode(userJSON.getString("postcode"));
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
         return user;
@@ -127,8 +168,9 @@ public class AWS extends NetworkConnection{
                 Cinema cinema = new Cinema(id, name, address, state, region);
                 cinemas.add(cinema);
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
         return cinemas;
@@ -152,6 +194,7 @@ public class AWS extends NetworkConnection{
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
         return regions;
