@@ -9,7 +9,7 @@ You can also check how twitter reacted to the movie with our service.
 
 Me and Yuze have completed the FIT5046 final pratical assignment @Monash University. We were asked to build an andorid app with external APIs such as Google Maps and MovieDB.
 We wanted to polish and deploy our Android app during this winter break (in Australia), to be able to proudly add this project to our resume also learn about Severless architecture and working knowledge of relevant AWS services.
-We have decided to use Yuze's client side Android app. Yuncheng is responsible for building and configuring the infrastructure of deployment of the server side with AWS.Yuze has been the main drive force of the development and refinement.
+We have decided to use Yuze's client side Android app. Yuncheng is responsible for building and configuring the infrastructure of deployment of the server side with AWS. Yuze has been the main drive force of the development and refinement.
 
 
 ### Architecture
