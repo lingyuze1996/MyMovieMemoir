@@ -13,9 +13,8 @@ We have decided to use Yuze's client side Android app. Yuncheng is responsible f
 
 
 ### Architecture
-We would either use AWS serverless architecture
 
-AWS server-less architecture contains:
+AWS Serverless architecture contains:
 
 1. Database: Amazon DynamoDB
 2. AWS Lambda: runs code virtually without using server, which will replace the controller layer
