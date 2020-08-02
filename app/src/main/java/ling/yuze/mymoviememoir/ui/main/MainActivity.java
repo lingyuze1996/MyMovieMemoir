@@ -64,9 +64,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // get username passed from login page
         String username = getIntent().getStringExtra("username");
-        //get the auth token
+
+        //get the auth token and share the token within the activity
         token = getIntent().getStringExtra("token");
         saveToken();
+
+        aws = new AWS();
+        aws.setToken(token);
+
         // retrieve personal information details
         getUserInfoProgress(username);
 
@@ -155,13 +160,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void getUserInfoProgress(final String username) {
-        aws = new AWS();
         new Thread(
                 new Runnable() {
                     @Override
                     public void run() {
                         try {
                             user = aws.getUserInfo(username);
+
+                            if (user == null)
+                                return;
+
                             mHandler.post(new Runnable() {
                                 @Override
                                 public void run() {

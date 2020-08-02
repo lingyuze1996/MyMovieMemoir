@@ -1,7 +1,7 @@
 package ling.yuze.mymoviememoir.network;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
@@ -51,7 +50,7 @@ public class AWS extends NetworkConnection {
             builder.addHeader("Authorization", token);
         Request request = builder.post(body).build();
         Response response = getClient().newCall(request).execute();
-        responseString = response.body().toString();
+        responseString = response.body().string();
         return responseString;
     }
 
@@ -115,10 +114,34 @@ public class AWS extends NetworkConnection {
         return success;
     }
 
-    //public List<Memoir> getUserMemoirs(String UserId)
+    public List<Memoir> getUserMemoirs(String username) {
+        List<Memoir> memoirs = new ArrayList<>();
+
+        final String path = "memoir/" + username;
+        setUrl(path);
+
+        try {
+            String response = httpGet();
+
+            JSONArray memoirsJSON = new JSONArray(response);
+
+            for (int i = 0; i < memoirsJSON.length(); i++) {
+                JSONObject memoirJSON = memoirsJSON.getJSONObject(i);
+
+                Memoir memoir = new Gson().fromJson(memoirJSON.toString(), Memoir.class);
+
+                memoirs.add(memoir);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return memoirs;
+    }
 
     public User getUserInfo(String username) {
-        User user = new User(username);
+        User user;
 
         final String path = "user/" + username;
         setUrl(path);
@@ -129,17 +152,10 @@ public class AWS extends NetworkConnection {
             JSONArray jsonArray = new JSONArray(response);
 
             if (jsonArray.length() != 1)
-                return user;
+                return null;
 
             JSONObject userJSON = jsonArray.getJSONObject(0);
-            user.setUserId(userJSON.getString("userId"));
-            user.setFirstName(userJSON.getString("firstName"));
-            user.setSurname(userJSON.getString("surname"));
-            user.setGender(userJSON.getString("gender"));
-            user.setDob(userJSON.getString("dob"));
-            user.setAddress(userJSON.getString("address"));
-            user.setState(userJSON.getString("state"));
-            user.setPostcode(userJSON.getString("postcode"));
+            user = new Gson().fromJson(userJSON.toString(), User.class);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -162,10 +178,7 @@ public class AWS extends NetworkConnection {
 
             for (int i = 0; i < cinemasJSON.length(); i++) {
                 JSONObject cinemaJSON = cinemasJSON.getJSONObject(i);
-                String id = cinemaJSON.getString("cinemaId");
-                String name = cinemaJSON.getString("name");
-                String address = cinemaJSON.getString("address");
-                Cinema cinema = new Cinema(id, name, address, state, region);
+                Cinema cinema = new Gson().fromJson(cinemaJSON.toString(), Cinema.class);
                 cinemas.add(cinema);
             }
         } catch (Exception e) {

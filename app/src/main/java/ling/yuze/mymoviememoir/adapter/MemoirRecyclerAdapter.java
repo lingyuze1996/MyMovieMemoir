@@ -59,7 +59,7 @@ public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAd
 
         holder.tvComment.setText(memoir.getComment());
 
-        holder.ratingMy.setRating(memoir.getRating());
+        holder.ratingMy.setRating(memoir.getMemoirRating());
 
         holder.ratingPublic.setRating(Math.round(memoir.getMovie().getPublicRating()) / 2.0f);
 

@@ -1,7 +1,6 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -27,21 +27,23 @@ import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.adapter.MemoirRecyclerAdapter;
 import ling.yuze.mymoviememoir.adapter.OnItemClickListener;
 import ling.yuze.mymoviememoir.data.Memoir;
+import ling.yuze.mymoviememoir.data.viewModel.MemoirViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 
 public class MovieMemoirFragment extends Fragment {
     private List<Memoir> memoirs;
-    private List<Memoir> memoirsAll;
     private RecyclerView recyclerView;
     private MemoirRecyclerAdapter recyclerAdapter;
     private MovieViewModel movieViewModel;
+    private UserViewModel userViewModel;
+    private MemoirViewModel memoirViewModel;
     private Spinner spinnerGenreFilter;
     private ArrayAdapter<String> genreAdapter;
     private HashSet<String> genreSet = new HashSet<>();
     private Spinner spinnerSort;
-    private String token;
-    private AWS aws = new AWS();
+    private AWS aws;
     private Handler handler = new Handler();
 
     @Override
@@ -56,11 +58,17 @@ public class MovieMemoirFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
+        // Initialize view models
+        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
+        memoirViewModel = new ViewModelProvider(getActivity()).get(MemoirViewModel.class);
 
-        SharedPreferences shared = getContext().getSharedPreferences("auth", Context.MODE_PRIVATE);
+        // Retrieve token information
+        String token = getContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
+                .getString("token", null);
 
-        token = shared.getString("token", null);
+        aws = new AWS();
+        aws.setToken(token);
 
         /*
         spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
@@ -119,15 +127,14 @@ public class MovieMemoirFragment extends Fragment {
 
          */
 
-
         recyclerView = v.findViewById(R.id.memoirs_recycler);
         memoirs = new ArrayList<>(); // store memoir items for display
-        memoirsAll = new ArrayList<>(); // store all memoir items
         recyclerAdapter = new MemoirRecyclerAdapter(memoirs);
 
         recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
-        //new TaskGetAllMemoirs().execute(); // Some problems here
+        new Thread(new GetMemoirs()).start();
 
         recyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -149,8 +156,24 @@ public class MovieMemoirFragment extends Fragment {
     private class GetMemoirs implements Runnable {
         @Override
         public void run() {
-            //aws.postMemoir()
+            String username = userViewModel.getUser().getValue().getUsername();
+            List<Memoir> memoirList = aws.getUserMemoirs(username);
+
+            setMemoirs(memoirList);
+            memoirViewModel.setMemoirs(memoirList);
+            
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    recyclerAdapter.notifyDataSetChanged();
+                }
+            });
         }
+    }
+
+    private void setMemoirs(List<Memoir> memoirList) {
+        memoirs.clear();
+        memoirs.addAll(memoirList);
     }
 
 }

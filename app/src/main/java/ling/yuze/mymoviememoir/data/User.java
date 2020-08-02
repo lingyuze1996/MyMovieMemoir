@@ -1,5 +1,10 @@
 package ling.yuze.mymoviememoir.data;
 
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
 public class User {
     private String userId;
     private String username;
@@ -113,6 +118,16 @@ public class User {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
+
+    public static User fromString(String userString) {
+        return new Gson().fromJson(userString, User.class);
     }
 }
 

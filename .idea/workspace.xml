@@ -11,12 +11,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7b784660-b01e-4a6e-8d32-6117524fb3c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/NetworkConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/login/SignUpActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,74 +64,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="memory.settings.postsync.last.time.stamp" value="1596200967853" />
+    <property name="memory.settings.postsync.do.not.ask.for.project" value="true" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1596336476601" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="memory.settings" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ling.yuze.mymoviememoir.data.viewModel" />
       <recent name="ling.yuze.mymoviememoir.adapter" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AndroidStudioProjects-MyMovieMemoir-app" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="AndroidStudioProjects-MyMovieMemoir-app" />
-      <option name="DEPLOY" value="true" />
-      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
-      <option name="DEPLOY_AS_INSTANT" value="false" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -212,60 +165,64 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="208" y="134" key="#PSD/0.23.1366.745@0.23.1366.745" timestamp="1596113195025" />
-    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596116543353">
+    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596254344115">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1595947866467" />
-    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1596116543353" />
-    <state x="488" y="98" key="#com.intellij.ide.util.MemberChooser" timestamp="1596157169046">
+    <state x="175" y="65" width="1071" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1596254344115" />
+    <state x="488" y="98" key="#com.intellij.ide.util.MemberChooser" timestamp="1596256149079">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596079322845" />
-    <state x="488" y="98" key="#com.intellij.ide.util.MemberChooser/0.23.1366.745@0.23.1366.745" timestamp="1596157169046" />
-    <state width="1324" height="232" key="GridCell.Tab.0.bottom" timestamp="1596207541868">
+    <state x="488" y="98" key="#com.intellij.ide.util.MemberChooser/0.23.1366.745@0.23.1366.745" timestamp="1596256149079" />
+    <state x="267" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596340382213">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="267" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1366.745@0.23.1366.745" timestamp="1596340382213" />
+    <state width="1324" height="232" key="GridCell.Tab.0.bottom" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596207541868" />
-    <state width="1324" height="232" key="GridCell.Tab.0.center" timestamp="1596207541867">
+    <state width="1324" height="232" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.0.center" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1596207541867" />
-    <state width="1324" height="232" key="GridCell.Tab.0.left" timestamp="1596207541867">
+    <state width="1324" height="232" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.0.left" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595947983905" />
-    <state width="1324" height="232" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1596207541867" />
-    <state width="1324" height="232" key="GridCell.Tab.0.right" timestamp="1596207541867">
+    <state width="1324" height="232" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.0.right" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1596207541867" />
-    <state width="1324" height="232" key="GridCell.Tab.1.bottom" timestamp="1596207541868">
+    <state width="1324" height="232" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.1.bottom" timestamp="1596289897354">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595947983908" />
-    <state width="1324" height="232" key="GridCell.Tab.1.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596207541868" />
-    <state width="1324" height="232" key="GridCell.Tab.1.center" timestamp="1596207541868">
+    <state width="1324" height="232" key="GridCell.Tab.1.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596289897354" />
+    <state width="1324" height="232" key="GridCell.Tab.1.center" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.center/0.23.1366.745@0.23.1366.745" timestamp="1596207541868" />
-    <state width="1324" height="232" key="GridCell.Tab.1.left" timestamp="1596207541868">
+    <state width="1324" height="232" key="GridCell.Tab.1.center/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.1.left" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.left/0.23.1366.745@0.23.1366.745" timestamp="1596207541868" />
-    <state width="1324" height="232" key="GridCell.Tab.1.right" timestamp="1596207541868">
+    <state width="1324" height="232" key="GridCell.Tab.1.left/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state width="1324" height="232" key="GridCell.Tab.1.right" timestamp="1596289897353">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.right/0.23.1366.745@0.23.1366.745" timestamp="1596207541868" />
-    <state x="184" y="34" key="SettingsEditor" timestamp="1596113558601">
+    <state width="1324" height="232" key="GridCell.Tab.1.right/0.23.1366.745@0.23.1366.745" timestamp="1596289897353" />
+    <state x="184" y="34" key="SettingsEditor" timestamp="1596337159825">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="184" y="34" key="SettingsEditor/0.23.1366.745@0.23.1366.745" timestamp="1596113558601" />
+    <state x="184" y="34" key="SettingsEditor/0.23.1366.745@0.23.1366.745" timestamp="1596337159825" />
     <state width="683" height="372" key="XDebugger.FullValuePopup" timestamp="1596185074573">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
@@ -274,12 +231,12 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="100" y="123" width="1166" height="545" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1366.745@0.23.1366.745" timestamp="1596115276302" />
-    <state x="378" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1596204170356">
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1596336473360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="378" y="228" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1596074550359" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1595948002209" />
-    <state x="378" y="256" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1596204170356" />
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1596336473360" />
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596082284068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

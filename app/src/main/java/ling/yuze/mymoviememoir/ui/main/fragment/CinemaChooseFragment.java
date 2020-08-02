@@ -1,5 +1,6 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -41,12 +42,19 @@ public class CinemaChooseFragment extends Fragment {
 
     private CinemaViewModel cinemaViewModel;
     private Handler mHandler = new Handler();
-    private AWS aws = new AWS();
+    private AWS aws;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_choose_cinema, container, false);
+
+        // Retrieve token information
+        String token = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE)
+                .getString("token", null);
+
+        aws = new AWS();
+        aws.setToken(token);
 
         // initialize cinema view model
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
@@ -135,8 +143,7 @@ public class CinemaChooseFragment extends Fragment {
 
         @Override
         public void run() {
-            AWS search = new AWS();
-            final List<Cinema> cinemaList = search.getCinemas(mState, mRegion);
+            final List<Cinema> cinemaList = aws.getCinemas(mState, mRegion);
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {

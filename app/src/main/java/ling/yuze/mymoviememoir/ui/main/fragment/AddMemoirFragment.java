@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,6 +29,7 @@ import ling.yuze.mymoviememoir.data.Cinema;
 import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.data.Movie;
 import ling.yuze.mymoviememoir.data.viewModel.CinemaViewModel;
+import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 import ling.yuze.mymoviememoir.utility.DateFormat;
@@ -62,12 +63,12 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     // information
     private UserViewModel userViewModel;
     private CinemaViewModel cinemaViewModel;
+    private MovieViewModel movieViewModel;
+    private Movie movie;
     private String watchingDate;
     private String watchingTime;
     private Cinema watchingCinema;
 
-    //http post things
-    private String token;
     private Handler mHandler = new Handler();
     private AWS aws;
 
@@ -75,8 +76,14 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_memoir, container, false);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        token = prefs.getString("token", "tokenNotFound");
+
+        // Retrieve token information
+
+        String token = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE)
+                .getString("token", null);
+
+        aws = new AWS();
+        aws.setToken(token);
 
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         cinemaViewModel = new ViewModelProvider(getActivity()).get(CinemaViewModel.class);
@@ -93,21 +100,18 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
         });
 
         // Get movie information from movie view fragment
-        SharedPreferences shared = getContext().getSharedPreferences("movie", Context.MODE_PRIVATE);
-
-        String name = shared.getString("name", "Unknown");
-        String releaseDate = shared.getString("releaseDate", "Unknown");
-        String imagePath = shared.getString("imagePath", "");
+        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
+        movie = movieViewModel.getMovie().getValue();
 
         // initialize widgets
         tvMovieName = v.findViewById(R.id.tv_add_name);
-        tvMovieName.setText(name);
+        tvMovieName.setText(movie.getName());
 
         movieImage = v.findViewById(R.id.image_add_poster);
-        setImage(movieImage, imagePath);
+        setImage(movieImage, movie.getImagePath());
 
         tvRelease = v.findViewById(R.id.tv_add_release);
-        tvRelease.setText(releaseDate);
+        tvRelease.setText(movie.getReleaseDate());
 
         calendarImage = v.findViewById(R.id.imageWatchingDate);
         calendarImage.setOnClickListener(this);
@@ -157,7 +161,7 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.imageWatchingDate:
                 if (calendar.getVisibility() == View.GONE)
                     calendar.setVisibility(View.VISIBLE);
@@ -206,14 +210,10 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
                 float rating = ratingBar.getRating();
 
                 Memoir memoir = new Memoir(userViewModel.getUser().getValue(), watchingCinema,
-                        new Movie("test"), watchingDate + " " + watchingTime,
-                        rating, comment);
+                        movie, watchingDate + " " + watchingTime, rating, comment);
 
                 // post memoir into server database
                 postMemoirProgress(memoir);
-                Toast.makeText(getContext(), R.string.success_add_memoir, Toast.LENGTH_LONG).show();
-
-                replaceFragment(new MovieMemoirFragment());
 
                 break;
         }
@@ -228,30 +228,29 @@ public class AddMemoirFragment extends Fragment implements View.OnClickListener 
     }
 
     private void postMemoirProgress(final Memoir memoir) {
-        aws = new AWS();
         new Thread(
                 new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            //
-                            boolean success= aws.postMemoir(memoir);
+                            boolean success = aws.postMemoir(memoir);
                             if (success) {
                                 ///take actions after the post
                                 mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getActivity(), "Successfully added memoir", Toast.LENGTH_LONG).show();
+                                        replaceFragment(new MovieMemoirFragment());
+                                    }
+                                });
+                            } else {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getActivity(), "Adding memoir failed", Toast.LENGTH_LONG).show();
 
                                     }
                                 });
-                            } else { mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getActivity(),"Adding memoir failed", Toast.LENGTH_LONG).show();
-
-                                }
-                            });
 
                             }
                         } catch (Exception e) {

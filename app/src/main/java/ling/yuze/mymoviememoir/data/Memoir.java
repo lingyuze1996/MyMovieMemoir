@@ -5,15 +5,15 @@ public class Memoir {
     private Cinema cinema;
     private Movie movie;
     private String memoirTime;
-    private float rating;
+    private float memoirRating;
     private String comment;
 
-    public Memoir(User user, Cinema cinema, Movie movie, String watchDateTime, float rating, String comment) {
+    public Memoir(User user, Cinema cinema, Movie movie, String watchDateTime, float memoirRating, String comment) {
         this.user = user;
         this.cinema = cinema;
         this.movie = movie;
         this.memoirTime = watchDateTime;
-        this.rating = rating;
+        this.memoirRating = memoirRating;
         this.comment = comment;
     }
 
@@ -33,8 +33,8 @@ public class Memoir {
         this.memoirTime = memoirTime;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
+    public void setMemoirRating(float memoirRating) {
+        this.memoirRating = memoirRating;
     }
 
     public void setComment(String comment) {
@@ -57,8 +57,8 @@ public class Memoir {
         return memoirTime;
     }
 
-    public float getRating() {
-        return rating;
+    public float getMemoirRating() {
+        return memoirRating;
     }
 
     public String getComment() {
