@@ -21,3 +21,4 @@ AWS Serverless architecture contains:
 3. Amazon API Gateway: Allows us to create endpoints without a server.
 4. Amazon Cognito: Handles authentication of the APIs. User can be created in the user pool.
 
+![Image of serverless architecture](https://github.com/lingyuze1996/MyMovieMemoir/blob/master/MyMovieMemoirArchitecture.png)
