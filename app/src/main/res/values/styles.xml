@@ -13,6 +13,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Widget.AppCompat.RatingBar.Small.my" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/colorYellow</item>
+        <item name="android:secondaryProgressTint">#ffffff</item>
+    </style>
+
+    <style name="Widget.AppCompat.RatingBar.Indicator.my" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="android:progressTint">@color/colorYellow</item>
+        <item name="android:secondaryProgressTint">#ffffff</item>
+    </style>
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light">
     </style>
 

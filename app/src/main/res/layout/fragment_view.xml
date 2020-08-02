@@ -83,11 +83,11 @@
 
                         <RatingBar
                             android:id="@+id/view_ratingBar"
-                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            style="@style/Widget.AppCompat.RatingBar.Small.my"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
-                            android:progressTint="@color/colorYellow"
+                            tools:rating="3.5"
                             android:numStars="5"
                             android:stepSize="0.5" />
                     </LinearLayout>

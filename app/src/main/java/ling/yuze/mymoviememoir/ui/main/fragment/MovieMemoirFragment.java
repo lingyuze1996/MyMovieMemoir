@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +43,7 @@ public class MovieMemoirFragment extends Fragment {
     private MemoirViewModel memoirViewModel;
     private Spinner spinnerGenreFilter;
     private ArrayAdapter<String> genreAdapter;
-    private HashSet<String> genreSet = new HashSet<>();
+    private List<String> genres = new ArrayList<>();
     private Spinner spinnerSort;
     private AWS aws;
     private Handler handler = new Handler();
@@ -58,11 +60,6 @@ public class MovieMemoirFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
-        // Initialize view models
-        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
-        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
-        memoirViewModel = new ViewModelProvider(getActivity()).get(MemoirViewModel.class);
-
         // Retrieve token information
         String token = getContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
                 .getString("token", null);
@@ -70,20 +67,40 @@ public class MovieMemoirFragment extends Fragment {
         aws = new AWS();
         aws.setToken(token);
 
-        /*
+        // Initialize genre filter and its adapter
         spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
+
+        genreAdapter = new ArrayAdapter<>(v.getContext(), R.layout.spinner_item, genres);
+        spinnerGenreFilter.setAdapter(genreAdapter);
+
+        // Initialize view models
+        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+        movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
+        memoirViewModel = new ViewModelProvider(getActivity()).get(MemoirViewModel.class);
+
+        memoirViewModel.getMemoirs().observe(this.getActivity(), new Observer<List<Memoir>>() {
+            @Override
+            public void onChanged(List<Memoir> memoirList) {
+                ArrayList<String> genreList = new ArrayList<>(extractGenres(memoirList));
+                //memoirViewModel.setGenres(genreList);
+                genres.clear();
+                genres.add("All");
+                genres.addAll(genreList);
+                genreAdapter.notifyDataSetChanged();
+            }
+        });
 
         spinnerGenreFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = spinnerGenreFilter.getSelectedItem().toString();
+                String genre = parent.getSelectedItem().toString();
 
-                new TaskFilterGenre().execute(selected);
+                filterByGenre(genre);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
-        });*/
+        });
 
         spinnerSort = v.findViewById(R.id.spinner_memoir_sort);
 
@@ -157,14 +174,15 @@ public class MovieMemoirFragment extends Fragment {
         @Override
         public void run() {
             String username = userViewModel.getUser().getValue().getUsername();
-            List<Memoir> memoirList = aws.getUserMemoirs(username);
+            final List<Memoir> memoirList = aws.getUserMemoirs(username);
 
             setMemoirs(memoirList);
-            memoirViewModel.setMemoirs(memoirList);
-            
+
+
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+                    memoirViewModel.setMemoirs(memoirList);
                     recyclerAdapter.notifyDataSetChanged();
                 }
             });
@@ -174,6 +192,31 @@ public class MovieMemoirFragment extends Fragment {
     private void setMemoirs(List<Memoir> memoirList) {
         memoirs.clear();
         memoirs.addAll(memoirList);
+    }
+
+    private HashSet<String> extractGenres(List<Memoir> memoirList) {
+        HashSet<String> genres = new HashSet<>();
+        for (Memoir memoir : memoirList) {
+            genres.addAll(memoir.getMovie().getGenres());
+        }
+        return genres;
+    }
+
+    private void filterByGenre(String genre) {
+        if (genre.toLowerCase().equals("all")) {
+            setMemoirs(memoirViewModel.getMemoirs().getValue());
+        }
+
+        else {
+            memoirs.clear();
+            for (Memoir memoir: memoirViewModel.getMemoirs().getValue()) {
+                if (memoir.getMovie().getGenres().contains(genre))
+                    memoirs.add(memoir);
+            }
+
+        }
+        recyclerAdapter.notifyDataSetChanged();
+
     }
 
 }

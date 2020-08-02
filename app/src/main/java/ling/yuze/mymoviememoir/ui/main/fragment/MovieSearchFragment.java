@@ -96,6 +96,7 @@ public class MovieSearchFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                movies.clear();
                 movies.addAll(search.searchByQuery(query));
                 handler.post(new Runnable() {
                     @Override

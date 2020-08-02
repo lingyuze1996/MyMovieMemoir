@@ -11,14 +11,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7b784660-b01e-4a6e-8d32-6117524fb3c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/Memoir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/network/AWS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/AddMemoirFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/CinemaChooseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MemoirViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/data/viewModel/MemoirViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_memoir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_memoir.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
