@@ -7,12 +7,9 @@ You can also check how twitter reacted to the movie with our service.
 
 ### Motivation
 
-As we have completed the FIT5046 @Monash University assignment, we shall polish and deploy our Android app to be able to proudly add this project to our resume.
-We have decided to use Yuze's client side Android app. Yuncheng is responsible for building the infrastructure of deployment of the server side with AWS serverless 
-architecture.
-
-The RestService in the repo is the Java web application Yuze has built for the first assessable part of the porject during the semester.
-We are going to use the same database schema and test data after migrating it to cloud.
+Me and Yuze have completed the FIT5046 final pratical assignment @Monash University. We were asked to build an andorid app with external APIs such as Google Maps and MovieDB.
+We wanted to polish and deploy our Android app during this winter break (in Australia), to be able to proudly add this project to our resume also learn about Severless architecture and working knowledge of relevant AWS services.
+We have decided to use Yuze's client side Android app. Yuncheng is responsible for building and configuring the infrastructure of deployment of the server side with AWS serverless  architecture.
 
 
 ### Architecture
