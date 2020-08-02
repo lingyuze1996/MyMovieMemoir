@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -34,16 +36,19 @@ import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
 import ling.yuze.mymoviememoir.network.AWS;
 
+
 public class MovieMemoirFragment extends Fragment {
-    private List<Memoir> memoirs;
-    private RecyclerView recyclerView;
+
     private MemoirRecyclerAdapter recyclerAdapter;
     private MovieViewModel movieViewModel;
     private UserViewModel userViewModel;
     private MemoirViewModel memoirViewModel;
-    private Spinner spinnerGenreFilter;
     private ArrayAdapter<String> genreAdapter;
+    private ArrayAdapter<String> sortOptionAdapter;
+    private List<Memoir> memoirs = new ArrayList<>();
     private List<String> genres = new ArrayList<>();
+    private List<String> sortOptions = new ArrayList<>();
+    private Spinner spinnerGenreFilter;
     private Spinner spinnerSort;
     private AWS aws;
     private Handler handler = new Handler();
@@ -67,12 +72,6 @@ public class MovieMemoirFragment extends Fragment {
         aws = new AWS();
         aws.setToken(token);
 
-        // Initialize genre filter and its adapter
-        spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
-
-        genreAdapter = new ArrayAdapter<>(v.getContext(), R.layout.spinner_item, genres);
-        spinnerGenreFilter.setAdapter(genreAdapter);
-
         // Initialize view models
         userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
@@ -82,13 +81,18 @@ public class MovieMemoirFragment extends Fragment {
             @Override
             public void onChanged(List<Memoir> memoirList) {
                 ArrayList<String> genreList = new ArrayList<>(extractGenres(memoirList));
-                //memoirViewModel.setGenres(genreList);
                 genres.clear();
                 genres.add("All");
                 genres.addAll(genreList);
                 genreAdapter.notifyDataSetChanged();
             }
         });
+
+        // Initialize genre filter and its adapter
+        spinnerGenreFilter = v.findViewById(R.id.spinner_genre_filter);
+
+        genreAdapter = new ArrayAdapter<>(v.getContext(), R.layout.spinner_item, genres);
+        spinnerGenreFilter.setAdapter(genreAdapter);
 
         spinnerGenreFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,53 +103,55 @@ public class MovieMemoirFragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
+
+        // Initialize genre filter and its adapter
         spinnerSort = v.findViewById(R.id.spinner_memoir_sort);
 
-        /*
+        generateSortOptions();
+        sortOptionAdapter = new ArrayAdapter<>(v.getContext(), R.layout.spinner_item, sortOptions);
+        spinnerSort.setAdapter(sortOptionAdapter);
+
         spinnerSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = spinnerSort.getSelectedItem().toString();
+                String sortOption = parent.getSelectedItem().toString();
+
                 // sort the list based on different options and notify the adapter to refresh
-                switch (selected) {
-                    case "my rating ↓":
+                switch (sortOption) {
+                    case "My Rating: High - Low":
                         sortMyRatingDescending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
-                    case "my rating ↑":
+                    case "My Rating: Low - High":
                         sortMyRatingAscending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
-                    case "public rating ↓":
+                    case "Public Rating: High - Low":
                         sortPublicRatingDescending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
-                    case "public rating ↑":
+                    case "Public Rating: Low - High":
                         sortPublicRatingAscending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
-                    case "watching date ↓":
+                    case "New - Old":
                         sortWatchingDateDescending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
-                    case "watching date ↑":
+                    case "Old - New":
                         sortWatchingDateAscending();
-                        recyclerAdapter.notifyDataSetChanged();
                         break;
                 }
+
+                recyclerAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
-         */
 
-        recyclerView = v.findViewById(R.id.memoirs_recycler);
-        memoirs = new ArrayList<>(); // store memoir items for display
+        RecyclerView recyclerView = v.findViewById(R.id.memoirs_recycler);
         recyclerAdapter = new MemoirRecyclerAdapter(memoirs);
 
         recyclerView.setAdapter(recyclerAdapter);
@@ -205,11 +211,9 @@ public class MovieMemoirFragment extends Fragment {
     private void filterByGenre(String genre) {
         if (genre.toLowerCase().equals("all")) {
             setMemoirs(memoirViewModel.getMemoirs().getValue());
-        }
-
-        else {
+        } else {
             memoirs.clear();
-            for (Memoir memoir: memoirViewModel.getMemoirs().getValue()) {
+            for (Memoir memoir : memoirViewModel.getMemoirs().getValue()) {
                 if (memoir.getMovie().getGenres().contains(genre))
                     memoirs.add(memoir);
             }
@@ -219,85 +223,70 @@ public class MovieMemoirFragment extends Fragment {
 
     }
 
-}
+    private void generateSortOptions() {
+        sortOptions.add("New - Old");
+        sortOptions.add("Old - New");
+        sortOptions.add("My Rating: High - Low");
+        sortOptions.add("My Rating: Low - High");
+        sortOptions.add("Public Rating: High - Low");
+        sortOptions.add("Public Rating: Low - High");
+    }
 
-    /*private void sortMyRatingDescending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+
+    private void sortMyRatingDescending() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
-                return Float.compare(o1.getMyRating(), o2.getMyRating()) * (-1);
+            public int compare(Memoir o1, Memoir o2) {
+                return Float.compare(o1.getMemoirRating(), o2.getMemoirRating()) * (-1);
             }
         });
+
     }
 
     private void sortMyRatingAscending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
-                return Float.compare(o1.getMyRating(), o2.getMyRating());
+            public int compare(Memoir o1, Memoir o2) {
+                return Float.compare(o1.getMemoirRating(), o2.getMemoirRating());
             }
         });
     }
 
     private void sortPublicRatingDescending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
+            public int compare(Memoir o1, Memoir o2) {
                 return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating()) * (-1);
             }
         });
     }
 
     private void sortPublicRatingAscending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
+            public int compare(Memoir o1, Memoir o2) {
                 return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating());
             }
         });
     }
 
     private void sortWatchingDateAscending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
-                return compareDate(o1.getWatching(), o2.getWatching());
+            public int compare(Memoir o1, Memoir o2) {
+                return o1.getMemoirTime().compareTo(o2.getMemoirTime());
             }
         });
     }
 
     private void sortWatchingDateDescending() {
-        Collections.sort(memoirs, new Comparator<MemoirItem>() {
+        Collections.sort(memoirs, new Comparator<Memoir>() {
             @Override
-            public int compare(MemoirItem o1, MemoirItem o2) {
-                return compareDate(o1.getWatching(), o2.getWatching()) * (-1);
+            public int compare(Memoir o1, Memoir o2) {
+                return o1.getMemoirTime().compareTo(o2.getMemoirTime()) * (-1);
             }
         });
     }
 
-    private class TaskFilterGenre extends AsyncTask<String, Void, Void> {
-        @Override
-        protected Void doInBackground(String... strings) {
-            String selected = strings[0];
-            if (selected.equals("All")) {
-                memoirs = memoirsAll;
-                return null;
-            }
 
-            List<MemoirItem> filteredMemoirs = new ArrayList<>();
-            for (MemoirItem memoir : memoirsAll) {
-                if (memoir.getMovie().getGenres().contains(selected)) {
-                    filteredMemoirs.add(memoir);
-                }
-            }
-            memoirs = filteredMemoirs;
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            adapter = new ListAdapterMemoir(getContext(), R.layout.recycler_item_memoir, memoirs);
-            listView.setAdapter(adapter);
-        }
-
-    }*/
+}

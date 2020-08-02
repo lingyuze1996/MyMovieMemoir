@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.data.Memoir;
-import ling.yuze.mymoviememoir.data.Movie;
 
 public class MemoirViewModel extends ViewModel {
     private MutableLiveData<List<Memoir>> memoirs;

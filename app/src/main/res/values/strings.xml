@@ -33,15 +33,6 @@
         <item>VIC</item>
     </string-array>
 
-    <string-array name="memoir_sort_array">
-        <item>watching date ↓</item>
-        <item>watching date ↑</item>
-        <item>my rating ↓</item>
-        <item>my rating ↑</item>
-        <item>public rating ↓</item>
-        <item>public rating ↑</item>
-    </string-array>
-
     <string-array name="year_spinner_array">
         <item>2015</item>
         <item>2016</item>
@@ -118,7 +109,7 @@
     <string name="comment_heading">"Comment: "</string>
     <string name="my_rating_heading">My Rating:</string>
     <string name="public_rating_heading">Public Rating:</string>
-    <string name="filter_genre">"Genre: "</string>
+    <string name="filter_genre">"Genre"</string>
     <string name="watchlist_added_heading">Added Time</string>
     <string name="delete">Delete</string>
     <string name="view">View</string>
