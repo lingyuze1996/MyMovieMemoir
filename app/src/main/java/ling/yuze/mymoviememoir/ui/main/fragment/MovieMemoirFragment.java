@@ -63,6 +63,8 @@ public class MovieMemoirFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
+        //getActivity().getActionBar().setTitle(getActivity().getTitle());
+
         View v = inflater.inflate(R.layout.fragment_memoir, container, false);
 
         // Retrieve token information
@@ -121,28 +123,7 @@ public class MovieMemoirFragment extends Fragment {
                 String sortOption = parent.getSelectedItem().toString();
 
                 // sort the list based on different options and notify the adapter to refresh
-                switch (sortOption) {
-                    case "My Rating: High - Low":
-                        sortMyRatingDescending();
-                        break;
-                    case "My Rating: Low - High":
-                        sortMyRatingAscending();
-                        break;
-                    case "Public Rating: High - Low":
-                        sortPublicRatingDescending();
-                        break;
-                    case "Public Rating: Low - High":
-                        sortPublicRatingAscending();
-                        break;
-                    case "New - Old":
-                        sortWatchingDateDescending();
-                        break;
-                    case "Old - New":
-                        sortWatchingDateAscending();
-                        break;
-                }
-
-                recyclerAdapter.notifyDataSetChanged();
+                sortMemoirs(sortOption);
             }
 
             @Override
@@ -219,7 +200,8 @@ public class MovieMemoirFragment extends Fragment {
             }
 
         }
-        recyclerAdapter.notifyDataSetChanged();
+
+        sortMemoirs(spinnerSort.getSelectedItem().toString());
 
     }
 
@@ -230,6 +212,31 @@ public class MovieMemoirFragment extends Fragment {
         sortOptions.add("My Rating: Low - High");
         sortOptions.add("Public Rating: High - Low");
         sortOptions.add("Public Rating: Low - High");
+    }
+
+    private void sortMemoirs(String sortOption) {
+        switch (sortOption) {
+            case "My Rating: High - Low":
+                sortMyRatingDescending();
+                break;
+            case "My Rating: Low - High":
+                sortMyRatingAscending();
+                break;
+            case "Public Rating: High - Low":
+                sortPublicRatingDescending();
+                break;
+            case "Public Rating: Low - High":
+                sortPublicRatingAscending();
+                break;
+            case "New - Old":
+                sortWatchingDateDescending();
+                break;
+            case "Old - New":
+                sortWatchingDateAscending();
+                break;
+        }
+
+        recyclerAdapter.notifyDataSetChanged();
     }
 
 

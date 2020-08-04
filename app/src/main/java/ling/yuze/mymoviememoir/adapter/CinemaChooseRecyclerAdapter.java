@@ -38,8 +38,8 @@ public class CinemaChooseRecyclerAdapter extends RecyclerView.Adapter<CinemaChoo
     public CinemaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View cinemasView = inflater.inflate(R.layout.recycler_item_cinema_choose, parent, false);
-        return new CinemaViewHolder(cinemasView);
+        View cinemaView = inflater.inflate(R.layout.recycler_item_cinema_choose, parent, false);
+        return new CinemaViewHolder(cinemaView);
     }
 
     @Override

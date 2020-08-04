@@ -2,7 +2,6 @@ package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,7 +123,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
 
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(getResources().getColor(R.color.colorGreen, null));
-        colors.add(getResources().getColor(R.color.colorYellow, null));
+        colors.add(getResources().getColor(R.color.colorStar, null));
         colors.add(getResources().getColor(R.color.colorBlue, null));
         colors.add(getResources().getColor(R.color.colorLight, null));
         colors.add(getResources().getColor(R.color.colorOrange, null));

@@ -18,9 +18,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import ling.yuze.mymoviememoir.R;
 import ling.yuze.mymoviememoir.data.Movie;
+import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 import ling.yuze.mymoviememoir.data.viewModel.MovieToWatchViewModel;
 import ling.yuze.mymoviememoir.data.viewModel.MovieViewModel;
 import ling.yuze.mymoviememoir.network.SearchMovieDB;
+import ling.yuze.mymoviememoir.utility.DateFormat;
 import ling.yuze.mymoviememoir.utility.ListParser;
 
 import static ling.yuze.mymoviememoir.network.ImageDownload.setImage;
@@ -109,8 +111,8 @@ public class MovieViewFragment extends Fragment implements View.OnClickListener 
                 break;
 
             case R.id.btAddWatchlist:
-                //viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
-                //viewModel.insert(new MovieToWatch(name, releaseDate, DateFormat.getCurrentDatetime()));
+                viewModel = new ViewModelProvider(getActivity()).get(MovieToWatchViewModel.class);
+                viewModel.insert(new MovieToWatch(movie.getName(), movie.getReleaseDate(), DateFormat.getCurrentDatetime()));
                 Toast.makeText(getContext(), R.string.success_add_watchlist, Toast.LENGTH_LONG).show();
                 replaceFragment(new WatchlistFragment());
 

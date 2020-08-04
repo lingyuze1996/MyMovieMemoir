@@ -18,7 +18,7 @@ import ling.yuze.mymoviememoir.data.Memoir;
 import ling.yuze.mymoviememoir.network.ImageDownload;
 import ling.yuze.mymoviememoir.utility.DateFormat;
 
-public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAdapter.MovieViewHolder> {
+public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAdapter.MemoirViewHolder> {
 
     private OnItemClickListener itemClickListener;
     private List<Memoir> memoirs;
@@ -33,15 +33,15 @@ public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAd
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MemoirViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View cinemasView = inflater.inflate(R.layout.recycler_item_memoir, parent, false);
-        return new MovieViewHolder(cinemasView);
+        View memoirView = inflater.inflate(R.layout.recycler_item_memoir, parent, false);
+        return new MemoirViewHolder(memoirView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MemoirViewHolder holder, final int position) {
         final Memoir memoir = memoirs.get(position);
 
         holder.tvMovieName.setText(memoir.getMovie().getName());
@@ -81,7 +81,7 @@ public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAd
         return memoirs.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder {
+    class MemoirViewHolder extends RecyclerView.ViewHolder {
         private TextView tvMovieName;
         private TextView tvMovieRelease;
         private TextView tvMemoirDate;
@@ -91,7 +91,7 @@ public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAd
         private RatingBar ratingMy;
         private ImageView imagePoster;
 
-        public MovieViewHolder(View itemView) {
+        public MemoirViewHolder(View itemView) {
             super(itemView);
             tvMovieName = itemView.findViewById(R.id.tv_rec_memoir_movie_name);
             tvMovieRelease = itemView.findViewById(R.id.tv_rec_memoir_movie_release);

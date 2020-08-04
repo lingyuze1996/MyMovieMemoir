@@ -14,12 +14,12 @@
     </style>
 
     <style name="Widget.AppCompat.RatingBar.Small.my" parent="Widget.AppCompat.RatingBar.Small">
-        <item name="android:progressTint">@color/colorYellow</item>
-        <item name="android:secondaryProgressTint">#ffffff</item>
+        <item name="android:progressTint">@color/colorStar</item>
+        <item name="android:secondaryProgressTint">#FFFFFF</item>
     </style>
 
     <style name="Widget.AppCompat.RatingBar.Indicator.my" parent="Widget.AppCompat.RatingBar.Indicator">
-        <item name="android:progressTint">@color/colorYellow</item>
+        <item name="android:progressTint">@color/colorStar</item>
         <item name="android:secondaryProgressTint">#ffffff</item>
     </style>
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
-import ling.yuze.mymoviememoir.data.Movie;
-import ling.yuze.mymoviememoir.network.ImageDownload;
+import ling.yuze.mymoviememoir.data.room.entity.MovieToWatch;
 
-public class MovieSearchRecyclerAdapter extends RecyclerView.Adapter<MovieSearchRecyclerAdapter.MovieViewHolder> {
+public class WatchlistRecyclerAdapter extends RecyclerView.Adapter<WatchlistRecyclerAdapter.MovieToWatchViewHolder> {
 
     private OnItemClickListener itemClickListener;
-    private List<Movie> movies;
+    private List<MovieToWatch> movies;
 
-    public MovieSearchRecyclerAdapter(List<Movie> movies) {
+    public WatchlistRecyclerAdapter(List<MovieToWatch> movies) {
         this.movies = movies;
     }
 
@@ -31,19 +29,22 @@ public class MovieSearchRecyclerAdapter extends RecyclerView.Adapter<MovieSearch
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MovieToWatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View movieView = inflater.inflate(R.layout.recycler_item_search, parent, false);
-        return new MovieViewHolder(movieView);
+        View moviesView = inflater.inflate(R.layout.recycler_item_watchlist, parent, false);
+        return new MovieToWatchViewHolder(moviesView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, final int position) {
-        final Movie movie = movies.get(position);
-        holder.tvName.setText(movie.getName());
-        holder.tvReleaseYear.setText(movie.getReleaseYear());
-        ImageDownload.setImage(holder.imagePoster, movie.getImagePath());
+    public void onBindViewHolder(@NonNull MovieToWatchViewHolder holder, final int position) {
+        final MovieToWatch movie = movies.get(position);
+
+        holder.tvMovieName.setText(movie.getMovieName());
+
+        holder.tvMovieRelease.setText(movie.getReleaseDate());
+
+        holder.tvAddedTime.setText(movie.getTimeAdded());
 
         final int currentPosition = holder.getAdapterPosition();
 
@@ -63,16 +64,16 @@ public class MovieSearchRecyclerAdapter extends RecyclerView.Adapter<MovieSearch
         return movies.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName;
-        private TextView tvReleaseYear;
-        private ImageView imagePoster;
+    class MovieToWatchViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvMovieName;
+        private TextView tvMovieRelease;
+        private TextView tvAddedTime;
 
-        public MovieViewHolder(View itemView) {
+        public MovieToWatchViewHolder(View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_rec_movie_search_name);
-            tvReleaseYear = itemView.findViewById(R.id.tv_rec_movie_search_release_year);
-            imagePoster = itemView.findViewById(R.id.image_rec_movie_search_poster);
+            tvMovieName = itemView.findViewById(R.id.tv_rec_watchlist_movie_name);
+            tvMovieRelease = itemView.findViewById(R.id.tv_rec_watchlist_release);
+            tvAddedTime = itemView.findViewById(R.id.tv_rec_watchlist_added_time);
         }
     }
 }
