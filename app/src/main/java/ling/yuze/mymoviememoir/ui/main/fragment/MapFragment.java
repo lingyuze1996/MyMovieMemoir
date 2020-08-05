@@ -1,11 +1,11 @@
 package ling.yuze.mymoviememoir.ui.main.fragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.AsyncTask;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,32 +22,41 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import java.util.ArrayList;
+
+import java.io.IOException;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
+import ling.yuze.mymoviememoir.data.Cinema;
+import ling.yuze.mymoviememoir.data.viewModel.UserViewModel;
+import ling.yuze.mymoviememoir.network.AWS;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
-    private int id;
+    private UserViewModel userViewModel;
     private GoogleMap mMap;
-    private LatLng homeAddress;
+    private Handler handler = new Handler();
+    private Geocoder geocoder;
+    private AWS aws;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Initialize Geocoder
+        geocoder = new Geocoder(getContext());
+
         View v = inflater.inflate(R.layout.fragment_map, container, false);
+
+        // Retrieve token information
+        String token = getContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
+                .getString("token", null);
+
+        aws = new AWS();
+        aws.setToken(token);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        // get person id
-        SharedPreferences shared = getActivity().getSharedPreferences("Info", Context.MODE_PRIVATE);
-        id = shared.getInt("id", 0);
-
-        //retrieve person's home address and show it on the map
-        new TaskGetAddress().execute();
-
-        //retrieve addresses of all cinemas in server database and show them on the map
-        new TaskGetCinemas().execute();
+        userViewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
 
         return v;
     }
@@ -54,73 +64,83 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        try {
+            // Retrieve user's home address and show it on the map
+            String homeAddressString = userViewModel.getUser().getValue().getAddress();
+            Address homeAddress = geocoder.getFromLocationName(homeAddressString, 1).get(0);
+            LatLng homeLatLng = new LatLng(homeAddress.getLatitude(), homeAddress.getLongitude());
+
+            showLocation("Home", homeLatLng);
+
+            // Retrieve addresses of all cinemas nearby and show them on the map
+            new Thread(new GetCinemasNearby(homeAddress, 6)).start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private class TaskGetCinemas extends AsyncTask<Void, Void, List<Object[]>> {
-        @Override
-        protected List<Object[]> doInBackground(Void... voids) {
-            List<Object[]> cinemaList = new ArrayList<>();
-            //RestService rs = new RestService();
-            //cinemaList = rs.getAllCinemas();
-            return cinemaList;
+    private class GetCinemasNearby implements Runnable {
+        private Address address;
+        private double maxDistanceKm;
+
+        public GetCinemasNearby(Address address, double maxDistanceKm) {
+            this.address = address;
+            this.maxDistanceKm = maxDistanceKm;
         }
 
         @Override
-        protected void onPostExecute(List<Object[]> list) {
-            for (Object[] cinema : list) {
-                String suburb = (String) cinema[1];
-                String name = (String) cinema[2];
-
-                try {
-                    Geocoder geocoder = new Geocoder(getContext());
-                    Address address = geocoder
-                            .getFromLocationName(suburb + "Australia", 1)
+        public void run() {
+            List<Cinema> cinemas = aws.getCinemas(userViewModel.getUser().getValue().getState(), "All");
+            try {
+                for (final Cinema cinema : cinemas) {
+                    // Address for an individual cinema
+                    Address cinemaAddress = geocoder
+                            .getFromLocationName(cinema.getAddress(), 1)
                             .get(0);
 
-                    LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
+                    if (getDistance(cinemaAddress, address) > maxDistanceKm * 1000)
+                        continue;
 
-                    // add marker for each cinema and set color to azure
-                    mMap.addMarker(new MarkerOptions()
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                            .position(location).title(name));
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    final LatLng cinemaLatLng = new LatLng(cinemaAddress.getLatitude(), cinemaAddress.getLongitude());
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            // add marker for each cinema and set color to azure
+                            mMap.addMarker(new MarkerOptions()
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                                    .position(cinemaLatLng).title(cinema.getName()));
+                        }
+                    });
+
                 }
-            }
-        }
-    }
-
-    private class TaskGetAddress extends AsyncTask<Void, Void, Double[]> {
-        @Override
-        protected Double[] doInBackground(Void... voids) {
-            Double[] coordinate = new Double[2];
-            /*
-            RestService rs = new RestService();
-            String address = rs.getAddressByPersonId(id);
-            Geocoder geocoder = new Geocoder(getContext());
-            try {
-                List<Address> addressList = geocoder.getFromLocationName(address, 1);
-                double latitude = addressList.get(0).getLatitude();
-                double longitude = addressList.get(0).getLongitude();
-                coordinate[0] = latitude;
-                coordinate[1] = longitude;
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-             */
-            return coordinate;
         }
+    }
 
-        @Override
-        protected void onPostExecute(Double[] coordinate) {
-            if (coordinate[0] == null || coordinate[1] == null) return;
-            homeAddress = new LatLng(coordinate[0], coordinate[1]);
-            mMap.addMarker(new MarkerOptions().position(homeAddress).title("Home"));
+    private float getDistance(Address a1, Address a2) {
+        float[] results = new float[1];
+        double startLatitude = a1.getLatitude();
+        double startLongitude = a1.getLongitude();
+        double endLatitude = a2.getLatitude();
+        double endLongitude = a2.getLongitude();
 
-            float zoomLevel = 10f;
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeAddress, zoomLevel));
-        }
+        Location.distanceBetween(startLatitude, startLongitude, endLatitude, endLongitude, results);
+
+        return results[0];
+    }
+
+
+    private void showLocation(String title, LatLng latLng) {
+        mMap.addMarker(new MarkerOptions().position(latLng).title(title));
+
+        float zoomLevel = 10f;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
     }
 
 }

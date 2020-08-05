@@ -11,18 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7b784660-b01e-4a6e-8d32-6117524fb3c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/CinemaChooseRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/CinemaChooseRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/ListAdapterWatchlist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MemoirRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MovieSearchRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/adapter/MovieSearchRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MovieMemoirFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/ReportFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/ReportFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_watchlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_watchlist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_view_watchlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_watchlist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,46 +179,46 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="267" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1366.745@0.23.1366.745" timestamp="1596340382213" />
-    <state width="1324" height="232" key="GridCell.Tab.0.bottom" timestamp="1596377910492">
+    <state width="662" height="232" key="GridCell.Tab.0.bottom" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596377910492" />
-    <state width="1324" height="232" key="GridCell.Tab.0.center" timestamp="1596377910491">
+    <state width="662" height="232" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
+    <state width="662" height="232" key="GridCell.Tab.0.center" timestamp="1596618230359">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1596377910491" />
-    <state width="1324" height="232" key="GridCell.Tab.0.left" timestamp="1596377910491">
+    <state width="662" height="232" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1596618230359" />
+    <state width="662" height="232" key="GridCell.Tab.0.left" timestamp="1596618230359">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595947983905" />
-    <state width="1324" height="232" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1596377910491" />
-    <state width="1324" height="232" key="GridCell.Tab.0.right" timestamp="1596377910491">
+    <state width="662" height="232" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1596618230359" />
+    <state width="662" height="232" key="GridCell.Tab.0.right" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983906" />
-    <state width="1324" height="232" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1596377910491" />
-    <state width="1324" height="232" key="GridCell.Tab.1.bottom" timestamp="1596377910492">
+    <state width="662" height="232" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
+    <state width="662" height="232" key="GridCell.Tab.1.bottom" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595947983908" />
-    <state width="1324" height="232" key="GridCell.Tab.1.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596377910492" />
-    <state width="1324" height="232" key="GridCell.Tab.1.center" timestamp="1596377910492">
+    <state width="662" height="232" key="GridCell.Tab.1.bottom/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
+    <state width="662" height="232" key="GridCell.Tab.1.center" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.center/0.23.1366.745@0.23.1366.745" timestamp="1596377910492" />
-    <state width="1324" height="232" key="GridCell.Tab.1.left" timestamp="1596377910492">
+    <state width="662" height="232" key="GridCell.Tab.1.center/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
+    <state width="662" height="232" key="GridCell.Tab.1.left" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.left/0.23.1366.745@0.23.1366.745" timestamp="1596377910492" />
-    <state width="1324" height="232" key="GridCell.Tab.1.right" timestamp="1596377910492">
+    <state width="662" height="232" key="GridCell.Tab.1.left/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
+    <state width="662" height="232" key="GridCell.Tab.1.right" timestamp="1596618230360">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595947983907" />
-    <state width="1324" height="232" key="GridCell.Tab.1.right/0.23.1366.745@0.23.1366.745" timestamp="1596377910492" />
+    <state width="662" height="232" key="GridCell.Tab.1.right/0.23.1366.745@0.23.1366.745" timestamp="1596618230360" />
     <state x="184" y="34" key="SettingsEditor" timestamp="1596358255657">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
@@ -242,12 +231,12 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="100" y="123" width="1166" height="545" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1366.745@0.23.1366.745" timestamp="1596358372166" />
-    <state x="378" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1596510573442">
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1596594684176">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="378" y="228" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1596074550359" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1595948002209" />
-    <state x="378" y="256" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1596510573442" />
+    <state x="378" y="256" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1596594684176" />
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596082284068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -256,14 +245,23 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="348" y="178" key="run.anything.popup/0.23.1366.745@0.23.1366.745" timestamp="1596358214359" />
+    <state x="348" y="92" width="670" height="676" key="search.everywhere.popup" timestamp="1596522641696">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="348" y="92" width="670" height="676" key="search.everywhere.popup/0.23.1366.745@0.23.1366.745" timestamp="1596522641696" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/WatchlistFragment.java</url>
-          <line>52</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java</url>
+          <line>102</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ling/yuze/mymoviememoir/ui/main/fragment/MapFragment.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
