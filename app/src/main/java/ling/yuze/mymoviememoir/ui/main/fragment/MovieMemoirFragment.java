@@ -18,12 +18,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class MovieMemoirFragment extends Fragment {
     private MemoirViewModel memoirViewModel;
     private ArrayAdapter<String> genreAdapter;
     private ArrayAdapter<String> sortOptionAdapter;
-    private List<Memoir> memoirs = new ArrayList<>();
+    //private List<Memoir> memoirs = new ArrayList<>();
     private List<String> genres = new ArrayList<>();
     private List<String> sortOptions = new ArrayList<>();
     private Spinner spinnerGenreFilter;
@@ -79,7 +78,7 @@ public class MovieMemoirFragment extends Fragment {
         movieViewModel = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
         memoirViewModel = new ViewModelProvider(getActivity()).get(MemoirViewModel.class);
 
-        memoirViewModel.getMemoirs().observe(this.getActivity(), new Observer<List<Memoir>>() {
+        memoirViewModel.getMemoirsAll().observe(this.getActivity(), new Observer<List<Memoir>>() {
             @Override
             public void onChanged(List<Memoir> memoirList) {
                 ArrayList<String> genreList = new ArrayList<>(extractGenres(memoirList));
@@ -133,17 +132,37 @@ public class MovieMemoirFragment extends Fragment {
 
 
         RecyclerView recyclerView = v.findViewById(R.id.memoirs_recycler);
-        recyclerAdapter = new MemoirRecyclerAdapter(memoirs);
+        recyclerAdapter = new MemoirRecyclerAdapter();
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        recyclerView.setHasFixedSize(true);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                //viewHolder.getAdapterPosition();
+            }
+        }).attachToRecyclerView(recyclerView);
+
+        memoirViewModel.getMemoirsForDisplay().observe(this.getActivity(), new Observer<List<Memoir>>() {
+            @Override
+            public void onChanged(List<Memoir> memoirsForDisplay) {
+                recyclerAdapter.setMemoirs(memoirsForDisplay);
+            }
+        });
 
         new Thread(new GetMemoirs()).start();
 
         recyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Object item) {
-                final Memoir memoir = (Memoir) item;
+                Memoir memoir = (Memoir) item;
                 movieViewModel.setMovie(memoir.getMovie());
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -161,24 +180,10 @@ public class MovieMemoirFragment extends Fragment {
         @Override
         public void run() {
             String username = userViewModel.getUser().getValue().getUsername();
-            final List<Memoir> memoirList = aws.getUserMemoirs(username);
+            List<Memoir> memoirList = aws.getUserMemoirs(username);
 
-            setMemoirs(memoirList);
-
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    memoirViewModel.setMemoirs(memoirList);
-                    recyclerAdapter.notifyDataSetChanged();
-                }
-            });
+            memoirViewModel.setMemoirsAll(memoirList);
         }
-    }
-
-    private void setMemoirs(List<Memoir> memoirList) {
-        memoirs.clear();
-        memoirs.addAll(memoirList);
     }
 
     private HashSet<String> extractGenres(List<Memoir> memoirList) {
@@ -191,14 +196,9 @@ public class MovieMemoirFragment extends Fragment {
 
     private void filterByGenre(String genre) {
         if (genre.toLowerCase().equals("all")) {
-            setMemoirs(memoirViewModel.getMemoirs().getValue());
+            recyclerAdapter.setMemoirs(memoirViewModel.getMemoirsAll().getValue());
         } else {
-            memoirs.clear();
-            for (Memoir memoir : memoirViewModel.getMemoirs().getValue()) {
-                if (memoir.getMovie().getGenres().contains(genre))
-                    memoirs.add(memoir);
-            }
-
+            memoirViewModel.filterMemoirsByGenres(genre);
         }
 
         sortMemoirs(spinnerSort.getSelectedItem().toString());
@@ -217,83 +217,28 @@ public class MovieMemoirFragment extends Fragment {
     private void sortMemoirs(String sortOption) {
         switch (sortOption) {
             case "My Rating: High - Low":
-                sortMyRatingDescending();
+                memoirViewModel.sortMyRatingDescending();
                 break;
             case "My Rating: Low - High":
-                sortMyRatingAscending();
+                memoirViewModel.sortMyRatingAscending();
                 break;
             case "Public Rating: High - Low":
-                sortPublicRatingDescending();
+                memoirViewModel.sortPublicRatingDescending();
                 break;
             case "Public Rating: Low - High":
-                sortPublicRatingAscending();
+                memoirViewModel.sortPublicRatingAscending();
                 break;
             case "New - Old":
-                sortWatchingDateDescending();
+                memoirViewModel.sortWatchingDateDescending();
                 break;
             case "Old - New":
-                sortWatchingDateAscending();
+                memoirViewModel.sortWatchingDateAscending();
                 break;
         }
-
-        recyclerAdapter.notifyDataSetChanged();
     }
 
 
-    private void sortMyRatingDescending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return Float.compare(o1.getMemoirRating(), o2.getMemoirRating()) * (-1);
-            }
-        });
 
-    }
-
-    private void sortMyRatingAscending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return Float.compare(o1.getMemoirRating(), o2.getMemoirRating());
-            }
-        });
-    }
-
-    private void sortPublicRatingDescending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating()) * (-1);
-            }
-        });
-    }
-
-    private void sortPublicRatingAscending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return Float.compare(o1.getMovie().getPublicRating(), o2.getMovie().getPublicRating());
-            }
-        });
-    }
-
-    private void sortWatchingDateAscending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return o1.getMemoirTime().compareTo(o2.getMemoirTime());
-            }
-        });
-    }
-
-    private void sortWatchingDateDescending() {
-        Collections.sort(memoirs, new Comparator<Memoir>() {
-            @Override
-            public int compare(Memoir o1, Memoir o2) {
-                return o1.getMemoirTime().compareTo(o2.getMemoirTime()) * (-1);
-            }
-        });
-    }
 
 
 }

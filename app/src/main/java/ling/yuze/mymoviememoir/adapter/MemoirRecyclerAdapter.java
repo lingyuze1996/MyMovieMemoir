@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ling.yuze.mymoviememoir.R;
@@ -23,12 +24,21 @@ public class MemoirRecyclerAdapter extends RecyclerView.Adapter<MemoirRecyclerAd
     private OnItemClickListener itemClickListener;
     private List<Memoir> memoirs;
 
-    public MemoirRecyclerAdapter(List<Memoir> memoirs) {
-        this.memoirs = memoirs;
+    public MemoirRecyclerAdapter() {
+        memoirs = new ArrayList<>();
     }
 
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
+    }
+
+    public Memoir getMemoirAt(int position) {
+        return memoirs.get(position);
+    }
+
+    public void setMemoirs(List<Memoir> memoirs) {
+        this.memoirs = memoirs;
+        notifyDataSetChanged();
     }
 
     @NonNull
